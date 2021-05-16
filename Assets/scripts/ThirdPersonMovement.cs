@@ -26,7 +26,6 @@ public class ThirdPersonMovement : MonoBehaviour
     void Update()
     {
         Vector3 movementDirection = CalculateHorizontalMovement();
-        //movementDirection = AdjustVerticalSpeed(movementDirection);
 
         movementDirection.y = -2f;
         characterController.Move(movementDirection);
