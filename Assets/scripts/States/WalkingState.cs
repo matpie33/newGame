@@ -22,7 +22,12 @@ namespace Assets.scripts.States
 
         public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
         {
+            if (previousState.Equals(daleStateHandler.grabbingLedgeState))
+            {
+                daleStateHandler.gravityHandler.enabled = true;
+                daleStateHandler.animator.SetBool("climbLedge", false);
 
+            }
         }
     }
 }

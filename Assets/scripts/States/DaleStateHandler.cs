@@ -13,7 +13,6 @@ namespace Assets.scripts.States
         public GrabbingLedgeState grabbingLedgeState { get; private set; }
         public JumpingState jumpingState { get; private set; }
         public WalkingState walkingState { get; private set; }
-        public ClimbingLedgeState climbingLedgeState { get; private set; }
         public KeyboardController keyboardController { get; private set; }
         public CharacterController characterController { get; private set; }
         public ThirdPersonMovement thirdPersonMovement { get; private set; }
@@ -35,7 +34,6 @@ namespace Assets.scripts.States
             grabbingLedgeState = new GrabbingLedgeState();
             jumpingState = new JumpingState();
             walkingState = new WalkingState();
-            climbingLedgeState = new ClimbingLedgeState();
             currentState = walkingState;
         }
 

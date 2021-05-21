@@ -3,13 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClimbingFinished : StateMachineBehaviour
-
+public class GrabbingAnimationFinished : StateMachineBehaviour
 {
-
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        FindObjectOfType<DaleStateHandler>().climbingLedgeState.OnClimbingAnimationFinished();
+        FindObjectOfType<DaleStateHandler>().grabbingLedgeState.OnGrabbingAnimationFinished();
     }
 
 }

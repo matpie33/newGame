@@ -81,7 +81,7 @@ public class GravityHandler : MonoBehaviour
 
     public void StopJump()
     {
-        jumpTriggered = false;
+        verticalVelocity = 0;
 
     }
 

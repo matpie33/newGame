@@ -8,12 +8,21 @@ namespace Assets.scripts.States
 {
     class GrabbingLedgeState : State
     {
+        private bool grabbingAnimationFinished;
+        private bool climbingAnimationFinished;
 
         public State DuringState(DaleStateHandler daleStateHandler)
         {
-            if (daleStateHandler.keyboardController.isJumpKeyPressed)
+            if (grabbingAnimationFinished && daleStateHandler.keyboardController.isJumpKeyPressed)
             {
-                return daleStateHandler.climbingLedgeState;
+                grabbingAnimationFinished = false;
+                daleStateHandler.animator.SetBool("climbLedge", true);
+                daleStateHandler.animator.SetBool("isGrabbing", false);
+            }
+            if (climbingAnimationFinished)
+            {
+                climbingAnimationFinished = false;
+                return daleStateHandler.walkingState;
             }
             return this;
         }
@@ -25,6 +34,17 @@ namespace Assets.scripts.States
             daleStateHandler.gravityHandler.StopJump();
         }
 
+        public void OnGrabbingAnimationFinished()
+        {
+            grabbingAnimationFinished = true;
+        }
+        public void OnClimbingAnimationFinished()
+        {
+            climbingAnimationFinished = true;
+        }
+
     }
+
+    
 
 }

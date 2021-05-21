@@ -35,6 +35,7 @@ namespace Assets.scripts.States
             Debug.Log("jumping transition");
             animator.SetBool("jump", true);
             animator.SetBool("run", false);
+            animator.SetBool("movingBackward", false);
             thirdPersonMovement.enabled = false;
         }
     }
