@@ -18,10 +18,12 @@ namespace Assets.scripts.States
                 grabbingAnimationFinished = false;
                 daleStateHandler.animator.SetBool("climbLedge", true);
                 daleStateHandler.animator.SetBool("isGrabbing", false);
+                daleStateHandler.animator.applyRootMotion = true;
             }
             if (climbingAnimationFinished)
             {
                 climbingAnimationFinished = false;
+                daleStateHandler.animator.applyRootMotion = false;
                 return daleStateHandler.walkingState;
             }
             return this;
@@ -45,6 +47,6 @@ namespace Assets.scripts.States
 
     }
 
-    
+
 
 }

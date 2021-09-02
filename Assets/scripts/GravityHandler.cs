@@ -7,8 +7,8 @@ public class GravityHandler : MonoBehaviour
 
     private CharacterController controller;
     private float verticalVelocity;
-    private float gravity = 4f;
-    public float jumpForce = 5f;
+    public float gravity = 4f;
+    public float jumpForce = 2f;
     private bool gravityEnabled = true;
     private bool jumpTriggered;
     private ThirdPersonMovement thirdPersonMovement;
@@ -75,6 +75,7 @@ public class GravityHandler : MonoBehaviour
     public void Jump()
     {
         jumpTriggered = true;
+
 
 
     }

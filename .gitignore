@@ -6,3 +6,5 @@
 /SwitchIL2CPPStats
 /Logs
 /obj/Debug
+*csproj
+/.vs

@@ -7,8 +7,6 @@ public class DetectObjectsInFront : MonoBehaviour
     private LedgeDetectionState ledgeDetectionState;
     public GameObject objectsMarker;
 
-    public Vector3 contactPoint { get; set; }
-
     void Start()
     {
         ledgeDetectionState = GetComponentInParent<LedgeDetectionState>();

@@ -24,9 +24,18 @@ public class KeyboardController : MonoBehaviour
         {
             isJumpKeyPressed = false;
         }
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            isPickupObjectsKeyPressed = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            isPickupObjectsKeyPressed = false;
+        }
 
     }
 
     public bool isJumpKeyPressed { get; private set; }
+    public bool isPickupObjectsKeyPressed { get; private set; }
 
 }

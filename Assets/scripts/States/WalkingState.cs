@@ -17,6 +17,10 @@ namespace Assets.scripts.States
             {
                 return daleStateHandler.jumpingState;
             }
+            if (keyboardController.isPickupObjectsKeyPressed)
+            {
+                return daleStateHandler.pickupObjectsState;
+            }
             return this;
         }
 
