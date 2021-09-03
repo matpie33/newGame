@@ -26,6 +26,12 @@ public class GameManagement : MonoBehaviour
 
     void Update()
     {
+        
+
+    }
+
+    void notImplementedYet()
+    {
         Collider colliderComponent = dale.GetComponent<Collider>();
         Collider[] colliders = Physics.OverlapBox(dale.transform.position, colliderComponent.bounds.extents + minDistanceToPick);
         IEnumerable<Collider> pickableObjects = colliders.Where(collider => collider.GetComponent<Rigidbody>() != null && collider.GetComponent<Rigidbody>().mass < 10);
@@ -66,7 +72,6 @@ public class GameManagement : MonoBehaviour
         {
             animationController.SetBool("isThrowing", true);
         }
-
     }
 
     public void SetIdle()

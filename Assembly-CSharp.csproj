@@ -64,6 +64,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DaleHealth.cs" />
+    <Compile Include="Assets\EnemyCollisionController.cs" />
     <Compile Include="Assets\PickupObjectsFinished.cs" />
     <Compile Include="Assets\scripts\CalculatePredictedTrajectory.cs" />
     <Compile Include="Assets\scripts\ClimbingAnimationFinished.cs" />
