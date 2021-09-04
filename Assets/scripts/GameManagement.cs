@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using UnityEngine.UI;
 
 public class GameManagement : MonoBehaviour
 {
@@ -19,14 +20,45 @@ public class GameManagement : MonoBehaviour
     private bool isPushing;
     public const int force = 3000;
 
+    private const int HP_DECREASE_VALUE = 20;
+    public int hpMaxValue = 100;
+    private DaleHealth daleHealth;
+    public Slider daleHPSlider;
+
+    private bool timeOffsetPassedBetweenDrainingHP = true;
+    private const int SECONDS_BETWEEN_DRAINING_HP = 2;
+
     void Start()
     {
         thirdPersonMovement = FindObjectOfType<ThirdPersonMovement>();
+        daleHealth = GetPlayer.instance.player.GetComponent<DaleHealth>();
+        daleHealth.health = hpMaxValue;
+        daleHPSlider.maxValue = hpMaxValue;
+        daleHPSlider.value = hpMaxValue;
     }
 
     void Update()
     {
-        
+
+
+    }
+
+    public void DecreasePlayerHP()
+    {
+        if (timeOffsetPassedBetweenDrainingHP)
+        {
+            StartCoroutine(DrainHpFromPlayer());
+        }
+    }
+
+    IEnumerator DrainHpFromPlayer()
+    {
+        timeOffsetPassedBetweenDrainingHP = false;
+        daleHealth.health = daleHealth.health - HP_DECREASE_VALUE;
+        daleHPSlider.value = daleHealth.health;
+        yield return new WaitForSeconds(SECONDS_BETWEEN_DRAINING_HP);
+        timeOffsetPassedBetweenDrainingHP = true;
+
 
     }
 

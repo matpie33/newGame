@@ -7,9 +7,9 @@ public class DaleHealth : MonoBehaviour
 
     public int health { get; set; }
 
-    void Start()
+    public void SetHealth(int health)
     {
-        health = 100;
+        this.health = health;
     }
 
 

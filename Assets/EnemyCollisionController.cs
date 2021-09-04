@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class EnemyCollisionController : MonoBehaviour
 {
-    private const int SECONDS_BETWEEN_DRAINING_HP = 2;
-    private DaleHealth daleHealth;
-    private bool timeOffsetPassedBetweenDrainingHP = true;
-    private bool isEnemyCollidingWithPlayer = false;
     private GameObject player;
     public float stoppingDistance = 1.2f;
+    private GameManagement gameManagement;
 
     void Start()
     {
         player = GetPlayer.instance.player;
-        daleHealth = GetPlayer.instance.player.GetComponent<DaleHealth>();
+        gameManagement = FindObjectOfType<GameManagement>();
 
     }
 
@@ -22,39 +19,9 @@ public class EnemyCollisionController : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, player.transform.position) < stoppingDistance)
         {
-            isEnemyCollidingWithPlayer = true;
-            if (timeOffsetPassedBetweenDrainingHP)
-            {
-                StartCoroutine(DrainHpFromPlayer());
-            }
-        }
-        else
-        {
-            isEnemyCollidingWithPlayer = false;
+            gameManagement.DecreasePlayerHP();
+
         }
     }
-
-
-
-    void OnCollisionExit(Collision collision)
-    {
-        isEnemyCollidingWithPlayer = false;
-    }
-
-
-    IEnumerator DrainHpFromPlayer()
-    {
-        while (isEnemyCollidingWithPlayer)
-        {
-            timeOffsetPassedBetweenDrainingHP = false;
-            daleHealth.health = daleHealth.health - 20;
-            Debug.Log(daleHealth.health);
-            yield return new WaitForSeconds(SECONDS_BETWEEN_DRAINING_HP);
-            timeOffsetPassedBetweenDrainingHP = true;
-        }
-
-
-    }
-
 
 }
