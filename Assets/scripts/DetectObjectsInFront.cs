@@ -1,34 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.scripts.States;
 
 public class DetectObjectsInFront : MonoBehaviour
 {
     private LedgeDetectionState ledgeDetectionState;
-    public GameObject objectsMarker;
+    private DaleStateHandler daleStateHandler;
 
     void Start()
     {
         ledgeDetectionState = GetComponentInParent<LedgeDetectionState>();
+        daleStateHandler = GetComponentInParent<DaleStateHandler>();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("is wall");
         ledgeDetectionState.isThereWall = true;
-        if (other.attachedRigidbody!= null && other.attachedRigidbody.mass <20)
-        {
-            objectsMarker.SetActive(true);
-            Vector3 positionForMarker = other.transform.position;
-            positionForMarker.y += other.bounds.size.y/2 + objectsMarker.GetComponent<MeshRenderer>().bounds.size.y/2;
-            objectsMarker.transform.position = positionForMarker;
-        }
+        GameManagement.instance.HandleShowingPickableObjectMarker(other);
+
     }
 
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("no wall");
-        objectsMarker.SetActive(false);
+        GameManagement.instance.HidePickableObjectMarker();
         ledgeDetectionState.isThereWall = false;
+        daleStateHandler.ObjectToPickup = null;
     }
 }

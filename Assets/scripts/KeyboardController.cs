@@ -26,16 +26,16 @@ public class KeyboardController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            isPickupObjectsKeyPressed = true;
+            isPickupOrReleaseObjectsKeyPressed = true;
         }
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
-            isPickupObjectsKeyPressed = false;
+            isPickupOrReleaseObjectsKeyPressed = false;
         }
 
     }
 
     public bool isJumpKeyPressed { get; private set; }
-    public bool isPickupObjectsKeyPressed { get; private set; }
+    public bool isPickupOrReleaseObjectsKeyPressed { get; private set; }
 
 }

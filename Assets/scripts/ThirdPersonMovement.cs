@@ -17,7 +17,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     void Start()
     {
-        animator = FindObjectOfType<Animator>();
+        animator = this.GetComponent<Animator>();
         characterController = FindObjectOfType<CharacterController>();
         gravityHandler = FindObjectOfType<GravityHandler>();
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 using UnityEngine.UI;
-
+using Assets.scripts.States;
 public class GameManagement : MonoBehaviour
 {
 
@@ -27,6 +27,15 @@ public class GameManagement : MonoBehaviour
 
     private bool timeOffsetPassedBetweenDrainingHP = true;
     private const int SECONDS_BETWEEN_DRAINING_HP = 2;
+    public GameObject objectsMarker;
+    private DaleStateHandler daleStateHandler;
+
+    public static GameManagement instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -35,12 +44,30 @@ public class GameManagement : MonoBehaviour
         daleHealth.health = hpMaxValue;
         daleHPSlider.maxValue = hpMaxValue;
         daleHPSlider.value = hpMaxValue;
+        daleStateHandler = FindObjectOfType<DaleStateHandler>();
     }
 
     void Update()
     {
 
 
+    }
+
+    public void HandleShowingPickableObjectMarker(Collider other)
+    {
+        if (other.attachedRigidbody != null && other.attachedRigidbody.mass < 20)
+        {
+            daleStateHandler.ObjectToPickup = other.gameObject;
+            objectsMarker.SetActive(true);
+            Vector3 positionForMarker = other.transform.position;
+            positionForMarker.y += other.bounds.size.y / 2 + objectsMarker.GetComponent<MeshRenderer>().bounds.size.y / 2;
+            objectsMarker.transform.position = positionForMarker;
+        }
+    }
+
+    public void HidePickableObjectMarker()
+    {
+        objectsMarker.SetActive(false);
     }
 
     public void DecreasePlayerHP()

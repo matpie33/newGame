@@ -19,7 +19,11 @@ namespace Assets.scripts.States
         public Animator animator { get; private set; }
         public GravityHandler gravityHandler { get; private set; }
         public LedgeDetectionState ledgeDetectionState { get; private set; }
-        public PickupObjectsState pickupObjectsState { get; private set; }
+        public PickingUpObjectsState pickupObjectsState { get; private set; }
+        public ReleasingObjectsState releasingObjectsState { get; private set; }
+        public HoldingObjectState holdingObjectState { get; private set; }
+
+        public GameObject ObjectToPickup { get; set; }
 
         private State currentState;
 
@@ -35,7 +39,9 @@ namespace Assets.scripts.States
             grabbingLedgeState = new GrabbingLedgeState();
             jumpingState = new JumpingState();
             walkingState = new WalkingState();
-            pickupObjectsState = new PickupObjectsState();
+            pickupObjectsState = new PickingUpObjectsState();
+            releasingObjectsState = new ReleasingObjectsState();
+            holdingObjectState = new HoldingObjectState();
             currentState = walkingState;
         }
 
