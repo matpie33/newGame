@@ -33,7 +33,7 @@ namespace Assets.scripts.States
             characterController = FindObjectOfType<CharacterController>();
             gravityHandler = FindObjectOfType<GravityHandler>();
             thirdPersonMovement = FindObjectOfType<ThirdPersonMovement>();
-            animator = FindObjectOfType<Animator>();
+            animator = GetComponent<Animator>();
             ledgeDetectionState = FindObjectOfType<LedgeDetectionState>();
 
             grabbingLedgeState = new GrabbingLedgeState();
