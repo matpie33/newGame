@@ -1127,7 +1127,7 @@ Transform:
   - {fileID: 891520518}
   - {fileID: 1790788507}
   m_Father: {fileID: 2604641366592797183}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &507364571
 GameObject:
@@ -1764,59 +1764,6 @@ Transform:
   m_Father: {fileID: 8265646917264754024}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1044688029
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1044688030}
-  - component: {fileID: 1044688032}
-  - component: {fileID: 1044688031}
-  m_Layer: 0
-  m_Name: PickingObjectsPlaceholder
-  m_TagString: Picking
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1044688030
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044688029}
-  m_LocalRotation: {x: 0.00040622242, y: 0.00027507966, z: 0.006425502, w: 0.99997926}
-  m_LocalPosition: {x: 0.00025073305, y: 0.0010061596, z: 0.009102112}
-  m_LocalScale: {x: 0.01, y: 0.010000002, z: 0.01}
-  m_Children: []
-  m_Father: {fileID: 2604641366592797183}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1044688031
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044688029}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1044688032
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044688029}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1224396645
 GameObject:
   m_ObjectHideFlags: 0
@@ -3274,6 +3221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460b037b6b74a6546a95ac931cf428a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IsPickingUpAnimationInProgress>k__BackingField: 0
 --- !u!4 &1021632129353290585
 Transform:
   m_ObjectHideFlags: 0
@@ -3501,7 +3449,6 @@ Transform:
   m_Children:
   - {fileID: 5768005629009629256}
   - {fileID: 4522065837832304809}
-  - {fileID: 1044688030}
   - {fileID: 3405219276369579092}
   - {fileID: 500693284}
   m_Father: {fileID: 4113014694326267872}
@@ -3646,7 +3593,7 @@ Transform:
   m_Children:
   - {fileID: 8369259667413948549}
   m_Father: {fileID: 2604641366592797183}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -20.11712, y: 13.149831, z: -120.44512}
 --- !u!1 &3731217031223169844
 GameObject:
