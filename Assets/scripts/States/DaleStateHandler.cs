@@ -25,7 +25,14 @@ namespace Assets.scripts.States
 
         public GameObject ObjectToPickup { get; set; }
 
+        public GameObject ParentPositionObject;
+
+        public RigsHandler RigsHandler { get; private set; }
+
+        public BoxCollider ObjectsInFrontDetectingCollider;
+
         private State currentState;
+        private bool IsPickingUpObject;
 
         void Start()
         {
@@ -43,6 +50,7 @@ namespace Assets.scripts.States
             releasingObjectsState = new ReleasingObjectsState();
             holdingObjectState = new HoldingObjectState();
             currentState = walkingState;
+            RigsHandler = GetComponent<RigsHandler>();
         }
 
         public void Update()
@@ -54,6 +62,16 @@ namespace Assets.scripts.States
                 currentState = newState;
             }
 
+        }
+
+        public void SetPickingUpObject()
+        {
+            IsPickingUpObject = true;
+        }
+
+        public bool GetIsPickingUpObject()
+        {
+            return IsPickingUpObject;
         }
 
     }

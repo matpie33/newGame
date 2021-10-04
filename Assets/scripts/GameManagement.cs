@@ -5,6 +5,7 @@ using System.Linq;
 using System;
 using UnityEngine.UI;
 using Assets.scripts.States;
+using UnityEngine.Animations.Rigging;
 public class GameManagement : MonoBehaviour
 {
 
@@ -68,6 +69,7 @@ public class GameManagement : MonoBehaviour
     public void HidePickableObjectMarker()
     {
         objectsMarker.SetActive(false);
+
     }
 
     public void DecreasePlayerHP()

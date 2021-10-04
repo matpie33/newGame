@@ -10,10 +10,9 @@ namespace Assets.scripts.States
     class PickingUpObjectsState : MonoBehaviour, State
     {
 
-
         public State DuringState(DaleStateHandler daleStateHandler)
         {
-            if (daleStateHandler.keyboardController.isPickupOrReleaseObjectsKeyPressed)
+            if (!daleStateHandler.GetIsPickingUpObject())
             {
                 return this;
             }
@@ -25,15 +24,14 @@ namespace Assets.scripts.States
 
         public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
         {
-            Debug.Log("picking up");
             daleStateHandler.animator.SetBool("pickupObjects", true);
-            daleStateHandler.ObjectToPickup.transform.parent = GameObject.FindGameObjectWithTag("Picking").transform;
-            daleStateHandler.ObjectToPickup.GetComponent<Rigidbody>().isKinematic = true;
+            GameManagement.instance.HidePickableObjectMarker();
 
 
 
 
         }
+
 
 
     }
