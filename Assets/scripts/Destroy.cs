@@ -12,8 +12,8 @@ public class Destroy : MonoBehaviour
     {
         if (Input.GetKeyDown("e"))
         {
-        GameObject clone = Instantiate(crackedWindow, transform.position, transform.rotation);
-        Destroy(gameObject);
+            GameObject clone = Instantiate(crackedWindow, transform.position, transform.rotation);
+            Destroy(gameObject);
 
         }
     }
