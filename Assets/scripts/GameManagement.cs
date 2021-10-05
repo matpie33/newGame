@@ -29,7 +29,7 @@ public class GameManagement : MonoBehaviour
     private bool timeOffsetPassedBetweenDrainingHP = true;
     private const int SECONDS_BETWEEN_DRAINING_HP = 2;
     public GameObject objectsMarker;
-    private DaleStateHandler daleStateHandler;
+    private PickingUpObjectsHandler PickingUpObjectsHandler;
 
     public static GameManagement instance;
 
@@ -45,7 +45,7 @@ public class GameManagement : MonoBehaviour
         daleHealth.health = hpMaxValue;
         daleHPSlider.maxValue = hpMaxValue;
         daleHPSlider.value = hpMaxValue;
-        daleStateHandler = FindObjectOfType<DaleStateHandler>();
+        PickingUpObjectsHandler = FindObjectOfType<PickingUpObjectsHandler>();
     }
 
     void Update()
@@ -58,7 +58,7 @@ public class GameManagement : MonoBehaviour
     {
         if (other.attachedRigidbody != null && other.attachedRigidbody.mass < 20)
         {
-            daleStateHandler.ObjectToPickup = other.gameObject;
+            PickingUpObjectsHandler.ObjectToPickup = other.gameObject;
             objectsMarker.SetActive(true);
             Vector3 positionForMarker = other.transform.position;
             positionForMarker.y += other.bounds.size.y / 2 + objectsMarker.GetComponent<MeshRenderer>().bounds.size.y / 2;

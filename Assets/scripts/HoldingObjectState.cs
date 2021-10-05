@@ -21,12 +21,7 @@ namespace Assets.scripts.States
 
         public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
         {
-            GameObject objectToPickup = daleStateHandler.ObjectToPickup;
-            daleStateHandler.ObjectToPickup.GetComponent<Rigidbody>().isKinematic = true;
-            daleStateHandler.ObjectsInFrontDetectingCollider.enabled = false;
-            objectToPickup.transform.parent = daleStateHandler.ParentPositionObject.transform;
-            daleStateHandler.animator.SetBool("pickupObjects", false);
-            daleStateHandler.RigsHandler.EnablePickupObjectRig();
+            daleStateHandler.PickingUpObjectsHandler.PickupObject();
 
         }
 

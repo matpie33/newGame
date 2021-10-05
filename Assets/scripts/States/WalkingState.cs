@@ -29,7 +29,7 @@ namespace Assets.scripts.States
             if (previousState.Equals(daleStateHandler.grabbingLedgeState))
             {
                 daleStateHandler.gravityHandler.enabled = true;
-                daleStateHandler.animator.SetBool("climbLedge", false);
+                daleStateHandler.Animator.SetBool("climbLedge", false);
 
             }
         }

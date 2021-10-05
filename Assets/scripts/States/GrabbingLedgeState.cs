@@ -16,14 +16,14 @@ namespace Assets.scripts.States
             if (grabbingAnimationFinished && daleStateHandler.keyboardController.isJumpKeyPressed)
             {
                 grabbingAnimationFinished = false;
-                daleStateHandler.animator.SetBool("climbLedge", true);
-                daleStateHandler.animator.SetBool("isGrabbing", false);
-                daleStateHandler.animator.applyRootMotion = true;
+                daleStateHandler.Animator.SetBool("climbLedge", true);
+                daleStateHandler.Animator.SetBool("isGrabbing", false);
+                daleStateHandler.Animator.applyRootMotion = true;
             }
             if (climbingAnimationFinished)
             {
                 climbingAnimationFinished = false;
-                daleStateHandler.animator.applyRootMotion = false;
+                daleStateHandler.Animator.applyRootMotion = false;
                 return daleStateHandler.walkingState;
             }
             return this;
@@ -31,7 +31,7 @@ namespace Assets.scripts.States
 
         public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
         {
-            daleStateHandler.animator.SetBool("isGrabbing", true);
+            daleStateHandler.Animator.SetBool("isGrabbing", true);
             daleStateHandler.gravityHandler.enabled = false;
             daleStateHandler.gravityHandler.StopJump();
         }

@@ -6,12 +6,12 @@ using Assets.scripts.States;
 public class DetectObjectsInFront : MonoBehaviour
 {
     private LedgeDetectionState ledgeDetectionState;
-    private DaleStateHandler daleStateHandler;
+    private PickingUpObjectsHandler PickingUpObjectsHandler;
 
     void Start()
     {
         ledgeDetectionState = GetComponentInParent<LedgeDetectionState>();
-        daleStateHandler = GetComponentInParent<DaleStateHandler>();
+        PickingUpObjectsHandler = GetComponentInParent<PickingUpObjectsHandler>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -25,6 +25,6 @@ public class DetectObjectsInFront : MonoBehaviour
     {
         GameManagement.instance.HidePickableObjectMarker();
         ledgeDetectionState.isThereWall = false;
-        daleStateHandler.ObjectToPickup = null;
+        PickingUpObjectsHandler.ObjectToPickup = null;
     }
 }

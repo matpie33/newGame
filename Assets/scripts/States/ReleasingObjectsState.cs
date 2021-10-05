@@ -26,11 +26,8 @@ namespace Assets.scripts.States
 
         public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
         {
-            Debug.Log("released");
-            daleStateHandler.animator.SetBool("pickupObjects", false);
-            daleStateHandler.ObjectToPickup.transform.parent = null;
-            daleStateHandler.ObjectToPickup.GetComponent<Rigidbody>().isKinematic = false;
 
+            daleStateHandler.PickingUpObjectsHandler.ReleaseObject();
 
 
         }

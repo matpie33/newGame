@@ -12,7 +12,7 @@ namespace Assets.scripts.States
 
         public State DuringState(DaleStateHandler daleStateHandler)
         {
-            if (!daleStateHandler.GetIsPickingUpObject())
+            if (!daleStateHandler.PickingUpObjectsHandler.GetIsPickingUpObject())
             {
                 return this;
             }
@@ -24,7 +24,7 @@ namespace Assets.scripts.States
 
         public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
         {
-            daleStateHandler.animator.SetBool("pickupObjects", true);
+            daleStateHandler.Animator.SetBool("pickupObjects", true);
             GameManagement.instance.HidePickableObjectMarker();
 
 

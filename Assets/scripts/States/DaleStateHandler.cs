@@ -16,23 +16,18 @@ namespace Assets.scripts.States
         public KeyboardController keyboardController { get; private set; }
         public CharacterController characterController { get; private set; }
         public ThirdPersonMovement thirdPersonMovement { get; private set; }
-        public Animator animator { get; private set; }
+
         public GravityHandler gravityHandler { get; private set; }
         public LedgeDetectionState ledgeDetectionState { get; private set; }
         public PickingUpObjectsState pickupObjectsState { get; private set; }
         public ReleasingObjectsState releasingObjectsState { get; private set; }
         public HoldingObjectState holdingObjectState { get; private set; }
 
-        public GameObject ObjectToPickup { get; set; }
+        public Animator Animator { get; private set; }
 
-        public GameObject ParentPositionObject;
-
-        public RigsHandler RigsHandler { get; private set; }
-
-        public BoxCollider ObjectsInFrontDetectingCollider;
+        public PickingUpObjectsHandler PickingUpObjectsHandler;
 
         private State currentState;
-        private bool IsPickingUpObject;
 
         void Start()
         {
@@ -40,7 +35,7 @@ namespace Assets.scripts.States
             characterController = FindObjectOfType<CharacterController>();
             gravityHandler = FindObjectOfType<GravityHandler>();
             thirdPersonMovement = FindObjectOfType<ThirdPersonMovement>();
-            animator = GetComponent<Animator>();
+            PickingUpObjectsHandler = GetComponent<PickingUpObjectsHandler>();
             ledgeDetectionState = FindObjectOfType<LedgeDetectionState>();
 
             grabbingLedgeState = new GrabbingLedgeState();
@@ -50,7 +45,8 @@ namespace Assets.scripts.States
             releasingObjectsState = new ReleasingObjectsState();
             holdingObjectState = new HoldingObjectState();
             currentState = walkingState;
-            RigsHandler = GetComponent<RigsHandler>();
+            Animator = GetComponent<Animator>();
+
         }
 
         public void Update()
@@ -64,15 +60,7 @@ namespace Assets.scripts.States
 
         }
 
-        public void SetPickingUpObject()
-        {
-            IsPickingUpObject = true;
-        }
 
-        public bool GetIsPickingUpObject()
-        {
-            return IsPickingUpObject;
-        }
 
     }
 

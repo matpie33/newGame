@@ -28,7 +28,7 @@ namespace Assets.scripts.States
 
         public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
         {
-            Animator animator = daleStateHandler.animator;
+            Animator animator = daleStateHandler.Animator;
             ThirdPersonMovement thirdPersonMovement = daleStateHandler.thirdPersonMovement;
             GravityHandler gravityHandler = daleStateHandler.gravityHandler;
             gravityHandler.Jump();
