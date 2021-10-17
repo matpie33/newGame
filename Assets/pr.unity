@@ -410,8 +410,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121304186}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: -0.34, z: 1.19}
-  m_LocalScale: {x: 1, y: 1.5004672, z: 1}
+  m_LocalPosition: {x: -0.051, y: -0.34, z: 0.743}
+  m_LocalScale: {x: 1, y: 1.5004672, z: 0.074948}
   m_Children: []
   m_Father: {fileID: 543450651653574250}
   m_RootOrder: 2
@@ -2336,7 +2336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 763a58abc4f33114b8602b38e0d0c8f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickingUpObjectsHandler: {fileID: 0}
 --- !u!114 &1429518838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3144,6 +3143,7 @@ GameObject:
   - component: {fileID: 919132147987797202}
   - component: {fileID: 919132147987797203}
   - component: {fileID: 919132147987797204}
+  - component: {fileID: 919132147987797205}
   m_Layer: 0
   m_Name: dale7
   m_TagString: Untagged
@@ -3230,6 +3230,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectsInFrontDetectingCollider: {fileID: 121304189}
   ParentPositionObject: {fileID: 500693283}
+--- !u!114 &919132147987797205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147987797200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac10ab166ea47864eaa3f16e8256e106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1021632129353290585
 Transform:
   m_ObjectHideFlags: 0

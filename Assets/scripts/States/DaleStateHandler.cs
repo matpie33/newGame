@@ -24,11 +24,14 @@ namespace Assets.scripts.States
         public ThrowingObjectsState throwingObjectsState { get; private set; }
         public HoldingObjectState holdingObjectState { get; private set; }
 
+        public MovingToTarget movingToTarget { get; private set; }
+
         public Animator Animator { get; private set; }
 
-        public PickingUpObjectsHandler PickingUpObjectsHandler;
+        public PickingUpObjectsHandler PickingUpObjectsHandler { get; private set; }
 
         private State currentState;
+
 
         void Start()
         {
@@ -46,6 +49,7 @@ namespace Assets.scripts.States
             releasingObjectsState = new ReleasingObjectsState();
             holdingObjectState = new HoldingObjectState();
             throwingObjectsState = new ThrowingObjectsState();
+            movingToTarget = FindObjectOfType<MovingToTarget>();
             currentState = walkingState;
             Animator = GetComponent<Animator>();
 
@@ -61,6 +65,7 @@ namespace Assets.scripts.States
             }
 
         }
+
 
 
 
