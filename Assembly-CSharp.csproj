@@ -54,13 +54,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\scripts\Push.cs" />
+    <Compile Include="Assets\scripts\States\ReleasingObjectsState.cs" />
     <Compile Include="Assets\scripts\EnemyController.cs" />
     <Compile Include="Assets\scripts\DetectFreeSpaceToClimb.cs" />
     <Compile Include="Assets\scripts\KeyboardController.cs" />
     <Compile Include="Assets\scripts\GravityHandler.cs" />
     <Compile Include="Assets\scripts\DisableRootMotion.cs" />
     <Compile Include="Assets\scripts\HoldingObjectState.cs" />
-    <Compile Include="Assets\scripts\States\ReleasingObjectsState.cs" />
+    <Compile Include="Assets\scripts\States\ThrowingObjectsState.cs" />
     <Compile Include="Assets\scripts\GrabbingAnimationFinished.cs" />
     <Compile Include="Assets\scripts\States\JumpingState.cs" />
     <Compile Include="Assets\DaleRigsHandler.cs" />
@@ -78,9 +79,9 @@
     <Compile Include="Assets\scripts\States\WalkingState.cs" />
     <Compile Include="Assets\scripts\States\State.cs" />
     <Compile Include="Assets\scripts\States\DaleStateHandler.cs" />
+    <Compile Include="Assets\PickingUpObjectsHandler.cs" />
     <Compile Include="Assets\scripts\GetPlayer.cs" />
     <Compile Include="Assets\scripts\DetectObjectsInFront.cs" />
-    <Compile Include="Assets\PickingUpObjectsHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

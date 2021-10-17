@@ -7,6 +7,9 @@ public class KeyboardController : MonoBehaviour
     private Animator animator;
     private GravityHandler gravityHandler;
 
+    public bool IsJumpKeyPressed { get; private set; }
+    public bool IsPickupOrReleaseObjectsKeyPressed { get; private set; }
+    public bool IsThrowingObjectKeyPressed { get; private set; }
 
     void Start()
     {
@@ -18,24 +21,30 @@ public class KeyboardController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            isJumpKeyPressed = true;
+            IsJumpKeyPressed = true;
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            isJumpKeyPressed = false;
+            IsJumpKeyPressed = false;
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            isPickupOrReleaseObjectsKeyPressed = true;
+            IsPickupOrReleaseObjectsKeyPressed = true;
         }
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
-            isPickupOrReleaseObjectsKeyPressed = false;
+            IsPickupOrReleaseObjectsKeyPressed = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            IsThrowingObjectKeyPressed = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            IsThrowingObjectKeyPressed = false;
         }
 
     }
 
-    public bool isJumpKeyPressed { get; private set; }
-    public bool isPickupOrReleaseObjectsKeyPressed { get; private set; }
 
 }

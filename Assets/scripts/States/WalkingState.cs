@@ -13,11 +13,11 @@ namespace Assets.scripts.States
         public State DuringState(DaleStateHandler daleStateHandler)
         {
             KeyboardController keyboardController = daleStateHandler.keyboardController;
-            if (keyboardController.isJumpKeyPressed)
+            if (keyboardController.IsJumpKeyPressed)
             {
                 return daleStateHandler.jumpingState;
             }
-            if (keyboardController.isPickupOrReleaseObjectsKeyPressed)
+            if (keyboardController.IsPickupOrReleaseObjectsKeyPressed)
             {
                 return daleStateHandler.pickupObjectsState;
             }

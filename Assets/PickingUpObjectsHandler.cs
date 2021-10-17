@@ -54,5 +54,18 @@ public class PickingUpObjectsHandler : MonoBehaviour
         SetPickingUpObject(false);
     }
 
+    public void ThrowObject()
+    {
+        RigsHandler.DisablePickupObjectRig();
+        ObjectToPickup.transform.parent = null;
+        ObjectToPickup.GetComponent<Rigidbody>().isKinematic = false;
+        ObjectsInFrontDetectingCollider.enabled = true;
+        SetPickingUpObject(false);
+        Animator.SetBool("throwObjects", false);
+        ObjectToPickup.GetComponent<Rigidbody>().AddForce(50 * Vector3.Scale(
+            transform.forward, new Vector3(1, 0, 1)), ForceMode.Impulse);
+
+    }
+
 
 }

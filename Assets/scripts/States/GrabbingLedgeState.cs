@@ -13,7 +13,7 @@ namespace Assets.scripts.States
 
         public State DuringState(DaleStateHandler daleStateHandler)
         {
-            if (grabbingAnimationFinished && daleStateHandler.keyboardController.isJumpKeyPressed)
+            if (grabbingAnimationFinished && daleStateHandler.keyboardController.IsJumpKeyPressed)
             {
                 grabbingAnimationFinished = false;
                 daleStateHandler.Animator.SetBool("climbLedge", true);

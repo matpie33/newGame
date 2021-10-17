@@ -7,14 +7,15 @@ using UnityEngine;
 
 namespace Assets.scripts.States
 {
-    class ReleasingObjectsState : MonoBehaviour, State
+    class ThrowingObjectsState : MonoBehaviour, State
     {
 
 
         public State DuringState(DaleStateHandler daleStateHandler)
         {
-            if (!daleStateHandler.keyboardController.IsPickupOrReleaseObjectsKeyPressed)
+            if (!daleStateHandler.keyboardController.IsThrowingObjectKeyPressed)
             {
+
                 return daleStateHandler.walkingState;
             }
             else
@@ -27,8 +28,8 @@ namespace Assets.scripts.States
         public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
         {
 
-            daleStateHandler.PickingUpObjectsHandler.ReleaseObject();
-
+            daleStateHandler.Animator.SetBool("throwObjects", true);
+            daleStateHandler.PickingUpObjectsHandler.RigsHandler.DisablePickupObjectRig();
 
         }
 

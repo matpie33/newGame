@@ -21,6 +21,7 @@ namespace Assets.scripts.States
         public LedgeDetectionState ledgeDetectionState { get; private set; }
         public PickingUpObjectsState pickupObjectsState { get; private set; }
         public ReleasingObjectsState releasingObjectsState { get; private set; }
+        public ThrowingObjectsState throwingObjectsState { get; private set; }
         public HoldingObjectState holdingObjectState { get; private set; }
 
         public Animator Animator { get; private set; }
@@ -44,6 +45,7 @@ namespace Assets.scripts.States
             pickupObjectsState = new PickingUpObjectsState();
             releasingObjectsState = new ReleasingObjectsState();
             holdingObjectState = new HoldingObjectState();
+            throwingObjectsState = new ThrowingObjectsState();
             currentState = walkingState;
             Animator = GetComponent<Animator>();
 

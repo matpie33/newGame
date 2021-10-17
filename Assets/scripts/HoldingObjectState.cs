@@ -9,9 +9,13 @@ namespace Assets.scripts.States
 
         public State DuringState(DaleStateHandler daleStateHandler)
         {
-            if (daleStateHandler.keyboardController.isPickupOrReleaseObjectsKeyPressed)
+            if (daleStateHandler.keyboardController.IsPickupOrReleaseObjectsKeyPressed)
             {
                 return daleStateHandler.releasingObjectsState;
+            }
+            else if (daleStateHandler.keyboardController.IsThrowingObjectKeyPressed)
+            {
+                return daleStateHandler.throwingObjectsState;
             }
             else
             {
