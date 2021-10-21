@@ -84,6 +84,7 @@
     <Compile Include="Assets\scripts\GetPlayer.cs" />
     <Compile Include="Assets\scripts\DetectObjectsInFront.cs" />
     <Compile Include="Assets\scripts\HandsReferenceCalculator.cs" />
+    <Compile Include="Assets\ThrowBothHandsAnimationStartBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

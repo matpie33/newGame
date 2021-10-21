@@ -29,7 +29,6 @@ namespace Assets.scripts.States
         {
 
             daleStateHandler.Animator.SetBool("throwObjects", true);
-            daleStateHandler.PickingUpObjectsHandler.RigsHandler.DisablePickupObjectRig();
 
         }
 

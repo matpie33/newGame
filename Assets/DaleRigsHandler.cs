@@ -8,6 +8,13 @@ public class DaleRigsHandler : MonoBehaviour
 
     public Rig PickingUpObjectsHandsRig;
 
+    public bool ChangeRigWeightTowardsValue { private get; set; }
+
+    private float TargetRigWeight;
+
+    [SerializeField]
+    private float RigWeightChangingSpeed;
+
     void Start()
     {
         PickingUpObjectsHandsRig.weight = 0f;
@@ -15,10 +22,21 @@ public class DaleRigsHandler : MonoBehaviour
 
     public void EnablePickupObjectRig()
     {
-        PickingUpObjectsHandsRig.weight = 1f;
+        TargetRigWeight = 1f;
+        ChangeRigWeightTowardsValue = true;
     }
     public void DisablePickupObjectRig()
     {
-        PickingUpObjectsHandsRig.weight = 0f;
+        TargetRigWeight = 0f;
+        ChangeRigWeightTowardsValue = true;
     }
+
+    void Update()
+    {
+        if (ChangeRigWeightTowardsValue)
+        {
+            PickingUpObjectsHandsRig.weight = Mathf.MoveTowards(PickingUpObjectsHandsRig.weight, TargetRigWeight, Time.deltaTime * RigWeightChangingSpeed);
+        }
+    }
+
 }
