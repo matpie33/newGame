@@ -12,11 +12,15 @@ public class PickingUpObjectsHandler : MonoBehaviour
     public GameObject ObjectToPickup { get; set; }
 
     private Animator Animator;
+    private HandsReferenceCalculator HandsReferenceCalculator;
+
+
 
     void Start()
     {
         RigsHandler = GetComponent<DaleRigsHandler>();
         Animator = GetComponent<Animator>();
+        HandsReferenceCalculator = GetComponent<HandsReferenceCalculator>();
     }
 
     public void MarkPickingUpObjectTrue()
@@ -37,6 +41,7 @@ public class PickingUpObjectsHandler : MonoBehaviour
     public void PickupObject()
     {
 
+        HandsReferenceCalculator.CalculateHandsReference(ObjectToPickup);
         ObjectToPickup.GetComponent<Rigidbody>().isKinematic = true;
         ObjectsInFrontDetectingCollider.enabled = false;
         ObjectToPickup.transform.parent = ParentPositionObject.transform;

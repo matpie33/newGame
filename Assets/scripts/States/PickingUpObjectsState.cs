@@ -41,10 +41,11 @@ namespace Assets.scripts.States
                 targetPosition = objectToPickup.transform.position + new Vector3(sizeOfPickedObject.x / 2, 0, 0);
             }
 
-            MovingToTarget movingToTarget = daleStateHandler.movingToTarget;
+            //MovingToTarget movingToTarget = daleStateHandler.movingToTarget;
             animator = daleStateHandler.Animator;
-            movingToTarget.setTargetPosition(targetPosition);
-            movingToTarget.callback = animatePickingUp;
+            animatePickingUp();
+            //movingToTarget.setTargetPosition(targetPosition);
+            //movingToTarget.callback = animatePickingUp;
 
 
 
