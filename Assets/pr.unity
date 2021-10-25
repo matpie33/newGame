@@ -2361,7 +2361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 2
-  jumpForce: 1
+  jumpForce: 1.5
 --- !u!114 &1429518840
 MonoBehaviour:
   m_ObjectHideFlags: 0
