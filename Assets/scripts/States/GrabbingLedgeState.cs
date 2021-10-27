@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.scripts.States
 {
@@ -19,11 +20,17 @@ namespace Assets.scripts.States
                 daleStateHandler.Animator.SetBool("climbLedge", true);
                 daleStateHandler.Animator.SetBool("isGrabbing", false);
                 daleStateHandler.Animator.applyRootMotion = true;
+                CharacterController characterController = daleStateHandler.gameObject.GetComponent<CharacterController>();
+                characterController.enabled = false;
             }
             if (climbingAnimationFinished)
             {
                 climbingAnimationFinished = false;
+                daleStateHandler.Animator.SetBool("climbLedge", false);
+                CharacterController characterController = daleStateHandler.gameObject.GetComponent<CharacterController>();
+                characterController.enabled = true;
                 daleStateHandler.Animator.applyRootMotion = false;
+
                 return daleStateHandler.walkingState;
             }
             return this;
