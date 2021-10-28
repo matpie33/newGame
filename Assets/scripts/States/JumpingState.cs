@@ -29,14 +29,13 @@ namespace Assets.scripts.States
         public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
         {
             Animator animator = daleStateHandler.Animator;
-            ThirdPersonMovement thirdPersonMovement = daleStateHandler.thirdPersonMovement;
-            GravityHandler gravityHandler = daleStateHandler.gravityHandler;
-            gravityHandler.Jump();
+            MovementController movementController = daleStateHandler.movementController;
+            movementController.Jump();
             Debug.Log("jumping transition");
             animator.SetBool("jump", true);
             animator.SetBool("run", false);
             animator.SetBool("movingBackward", false);
-            thirdPersonMovement.enabled = false;
+            movementController.IsHorizontalMovementEnabled = false;
         }
     }
 }

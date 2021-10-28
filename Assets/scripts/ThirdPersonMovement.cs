@@ -15,23 +15,13 @@ public class ThirdPersonMovement : MonoBehaviour
     private Animator animator;
     private Vector3 currentMovementDirection;
 
-    void Start()
+    public void Start()
     {
-        animator = this.GetComponent<Animator>();
-        characterController = FindObjectOfType<CharacterController>();
-        gravityHandler = FindObjectOfType<GravityHandler>();
+        animator = GetComponent<Animator>();
     }
 
 
-    void Update()
-    {
-        Vector3 movementDirection = CalculateHorizontalMovement();
-
-        movementDirection.y = -2f;
-        characterController.Move(movementDirection);
-    }
-
-    private Vector3 CalculateHorizontalMovement()
+    public Vector3 CalculateHorizontalMovement()
     {
         Vector3 direction = CalculateDirectionToMove();
         bool isMovingBackward = IsMovingBackward();

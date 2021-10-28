@@ -85,6 +85,7 @@
     <Compile Include="Assets\PickingUpObjectsHandler.cs" />
     <Compile Include="Assets\scripts\GetPlayer.cs" />
     <Compile Include="Assets\scripts\DetectObjectsInFront.cs" />
+    <Compile Include="Assets\MovementController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -507,7 +507,7 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!114 &3850719536479062264
+--- !u!114 &3969837853167912273
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -584,7 +584,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1823933441174252311}
   m_StateMachineBehaviours:
-  - {fileID: 3850719536479062264}
+  - {fileID: 3969837853167912273}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -673,7 +673,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 9165136c859e8e344b0db54620e0216d, type: 2}
+  m_Motion: {fileID: 7400000, guid: b32599d7499dc464881b10b75286cc66, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

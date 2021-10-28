@@ -2,21 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GravityHandler : MonoBehaviour
+public class GravityHandler: MonoBehaviour
 {
 
     private CharacterController controller;
     private float verticalVelocity;
     public float gravity = 4f;
-    public float jumpForce = 2f;
+    public float jumpForce = 5f;
     private bool gravityEnabled = true;
     private bool jumpTriggered;
-    private ThirdPersonMovement thirdPersonMovement;
 
-    void Start()
+    public void Start()
     {
         controller = FindObjectOfType<CharacterController>();
-        thirdPersonMovement = FindObjectOfType<ThirdPersonMovement>();
     }
 
 
@@ -29,17 +27,16 @@ public class GravityHandler : MonoBehaviour
         }
     }
 
-    void Update()
+
+    public float GetVerticalMovement()
     {
-        Vector3 movementDirection = thirdPersonMovement.GetCurrentMovementDirection();
-        float verticalSpeed = CalculateVerticalSpeed();
-        movementDirection.y = verticalSpeed * 0.1f;
-        controller.Move(movementDirection);
+        float verticalSpeed = CalculateVerticalSpeed() * 0.1f;
         if (controller.isGrounded)
         {
             jumpTriggered = false;
-            thirdPersonMovement.enabled = true;
+
         }
+        return verticalSpeed;
     }
 
 

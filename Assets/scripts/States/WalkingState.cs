@@ -28,10 +28,11 @@ namespace Assets.scripts.States
         {
             if (previousState.Equals(daleStateHandler.grabbingLedgeState))
             {
-                daleStateHandler.gravityHandler.enabled = true;
+                daleStateHandler.movementController.IsVerticalMovementEnabled = true;
                 daleStateHandler.Animator.SetBool("climbLedge", false);
 
             }
+            daleStateHandler.movementController.IsHorizontalMovementEnabled = true;
         }
     }
 }

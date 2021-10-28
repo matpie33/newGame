@@ -4,18 +4,11 @@ using UnityEngine;
 
 public class KeyboardController : MonoBehaviour
 {
-    private Animator animator;
-    private GravityHandler gravityHandler;
 
     public bool IsJumpKeyPressed { get; private set; }
     public bool IsPickupOrReleaseObjectsKeyPressed { get; private set; }
     public bool IsThrowingObjectKeyPressed { get; private set; }
 
-    void Start()
-    {
-        animator = FindObjectOfType<Animator>();
-        gravityHandler = FindObjectOfType<GravityHandler>();
-    }
 
     void Update()
     {

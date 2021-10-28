@@ -15,7 +15,7 @@ namespace Assets.scripts.States
         public WalkingState walkingState { get; private set; }
         public KeyboardController keyboardController { get; private set; }
         public CharacterController characterController { get; private set; }
-        public ThirdPersonMovement thirdPersonMovement { get; private set; }
+        public MovementController movementController { get; private set; }
 
         public GravityHandler gravityHandler { get; private set; }
         public LedgeDetectionState ledgeDetectionState { get; private set; }
@@ -37,10 +37,10 @@ namespace Assets.scripts.States
         {
             keyboardController = FindObjectOfType<KeyboardController>();
             characterController = FindObjectOfType<CharacterController>();
-            gravityHandler = FindObjectOfType<GravityHandler>();
-            thirdPersonMovement = FindObjectOfType<ThirdPersonMovement>();
+            movementController = FindObjectOfType<MovementController>();
             PickingUpObjectsHandler = GetComponent<PickingUpObjectsHandler>();
             ledgeDetectionState = FindObjectOfType<LedgeDetectionState>();
+            gravityHandler = GetComponent<GravityHandler>();
 
             grabbingLedgeState = new GrabbingLedgeState();
             jumpingState = new JumpingState();
