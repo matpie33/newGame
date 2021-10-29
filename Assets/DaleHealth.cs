@@ -5,11 +5,11 @@ using UnityEngine;
 public class DaleHealth : MonoBehaviour
 {
 
-    public int health { get; set; }
+    public int Health { get; set; }
 
     public void SetHealth(int health)
     {
-        this.health = health;
+        this.Health = health;
     }
 
 

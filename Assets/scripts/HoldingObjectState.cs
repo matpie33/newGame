@@ -25,7 +25,7 @@ namespace Assets.scripts.States
 
         public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
         {
-            daleStateHandler.PickingUpObjectsHandler.PickupObject();
+            daleStateHandler.pickingUpObjectsHandler.PickupObject();
 
         }
 

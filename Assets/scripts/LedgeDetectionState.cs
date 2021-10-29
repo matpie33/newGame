@@ -5,11 +5,11 @@
 public class LedgeDetectionState : MonoBehaviour
 {
 
-    public bool isThereWall { get; set; }
+    public bool IsThereWall { get; set; }
 
-    public bool isThereSpaceToClimb { get; set; }
+    public bool IsThereSpaceToClimb { get; set; }
 
-    public Vector3 locationToTeleport { get; set; }
+    public Vector3 LocationToTeleport { get; set; }
 
 
 }

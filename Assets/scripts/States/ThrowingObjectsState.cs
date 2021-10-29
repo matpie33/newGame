@@ -28,7 +28,7 @@ namespace Assets.scripts.States
         public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
         {
 
-            daleStateHandler.Animator.SetBool("throwObjects", true);
+            daleStateHandler.animator.SetBool("throwObjects", true);
 
         }
 

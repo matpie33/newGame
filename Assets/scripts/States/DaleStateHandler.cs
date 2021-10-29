@@ -24,11 +24,10 @@ namespace Assets.scripts.States
         public ThrowingObjectsState throwingObjectsState { get; private set; }
         public HoldingObjectState holdingObjectState { get; private set; }
 
-        public MovingToTarget movingToTarget { get; private set; }
 
-        public Animator Animator { get; private set; }
+        public Animator animator { get; private set; }
 
-        public PickingUpObjectsHandler PickingUpObjectsHandler { get; private set; }
+        public PickingUpObjectsHandler pickingUpObjectsHandler { get; private set; }
 
         private State currentState;
 
@@ -38,7 +37,7 @@ namespace Assets.scripts.States
             keyboardController = FindObjectOfType<KeyboardController>();
             characterController = FindObjectOfType<CharacterController>();
             movementController = FindObjectOfType<MovementController>();
-            PickingUpObjectsHandler = GetComponent<PickingUpObjectsHandler>();
+            pickingUpObjectsHandler = GetComponent<PickingUpObjectsHandler>();
             ledgeDetectionState = FindObjectOfType<LedgeDetectionState>();
             gravityHandler = GetComponent<VerticalMovementController>();
 
@@ -49,9 +48,8 @@ namespace Assets.scripts.States
             releasingObjectsState = new ReleasingObjectsState();
             holdingObjectState = new HoldingObjectState();
             throwingObjectsState = new ThrowingObjectsState();
-            movingToTarget = FindObjectOfType<MovingToTarget>();
             currentState = walkingState;
-            Animator = GetComponent<Animator>();
+            animator = GetComponent<Animator>();
 
         }
 

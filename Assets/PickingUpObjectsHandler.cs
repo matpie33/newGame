@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class PickingUpObjectsHandler : MonoBehaviour
 {
-    private bool IsPickingUpObject;
-    public BoxCollider ObjectsInFrontDetectingCollider;
-    public DaleRigsHandler RigsHandler { get; private set; }
-
-    public GameObject ParentPositionObject;
+    private bool isPickingUpObject;
+    public BoxCollider objectsInFrontDetectingCollider;
+    private DaleRigsHandler rigsHandler;
+    public GameObject parentPositionObject;
     public GameObject ObjectToPickup { get; set; }
 
-    private Animator Animator;
-    private HandsReferenceCalculator HandsReferenceCalculator;
+    private Animator animator;
+    private HandsReferenceCalculator handsReferenceCalculator;
 
 
 
     void Start()
     {
-        RigsHandler = GetComponent<DaleRigsHandler>();
-        Animator = GetComponent<Animator>();
-        HandsReferenceCalculator = GetComponent<HandsReferenceCalculator>();
+        rigsHandler = GetComponent<DaleRigsHandler>();
+        animator = GetComponent<Animator>();
+        handsReferenceCalculator = GetComponent<HandsReferenceCalculator>();
     }
 
     public void MarkPickingUpObjectTrue()
@@ -30,43 +29,43 @@ public class PickingUpObjectsHandler : MonoBehaviour
 
     public void SetPickingUpObject(bool isPickingObject)
     {
-        IsPickingUpObject = isPickingObject;
+        isPickingUpObject = isPickingObject;
     }
 
     public bool GetIsPickingUpObject()
     {
-        return IsPickingUpObject;
+        return isPickingUpObject;
     }
 
     public void PickupObject()
     {
 
-        HandsReferenceCalculator.CalculateHandsReference(ObjectToPickup);
+        handsReferenceCalculator.CalculateHandsReference(ObjectToPickup);
         ObjectToPickup.GetComponent<Rigidbody>().isKinematic = true;
-        ObjectsInFrontDetectingCollider.enabled = false;
-        ObjectToPickup.transform.parent = ParentPositionObject.transform;
-        Animator.SetBool("pickupObjects", false);
-        RigsHandler.EnablePickupObjectRig();
+        objectsInFrontDetectingCollider.enabled = false;
+        ObjectToPickup.transform.parent = parentPositionObject.transform;
+        animator.SetBool("pickupObjects", false);
+        rigsHandler.EnablePickupObjectRig();
     }
 
     public void ReleaseObject()
     {
-        RigsHandler.DisablePickupObjectRig();
-        Animator.SetBool("pickupObjects", false);
+        rigsHandler.DisablePickupObjectRig();
+        animator.SetBool("pickupObjects", false);
         ObjectToPickup.transform.parent = null;
         ObjectToPickup.GetComponent<Rigidbody>().isKinematic = false;
-        ObjectsInFrontDetectingCollider.enabled = true;
+        objectsInFrontDetectingCollider.enabled = true;
         SetPickingUpObject(false);
     }
 
     public void ThrowObject()
     {
-        RigsHandler.DisablePickupObjectRig();
+        rigsHandler.DisablePickupObjectRig();
         ObjectToPickup.transform.parent = null;
         ObjectToPickup.GetComponent<Rigidbody>().isKinematic = false;
-        ObjectsInFrontDetectingCollider.enabled = true;
+        objectsInFrontDetectingCollider.enabled = true;
         SetPickingUpObject(false);
-        Animator.SetBool("throwObjects", false);
+        animator.SetBool("throwObjects", false);
         ObjectToPickup.GetComponent<Rigidbody>().AddForce(50 * Vector3.Scale(
             transform.forward, new Vector3(1, 0, 1)), ForceMode.Impulse);
 

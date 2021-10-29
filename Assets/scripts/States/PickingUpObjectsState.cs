@@ -13,7 +13,7 @@ namespace Assets.scripts.States
 
         public State DuringState(DaleStateHandler daleStateHandler)
         {
-            if (!daleStateHandler.PickingUpObjectsHandler.GetIsPickingUpObject())
+            if (!daleStateHandler.pickingUpObjectsHandler.GetIsPickingUpObject())
             {
                 return this;
             }
@@ -26,33 +26,11 @@ namespace Assets.scripts.States
         public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
         {
             GameManagement.instance.HidePickableObjectMarker();
-            GameObject dale = daleStateHandler.gameObject;
-            GameObject objectToPickup = daleStateHandler.PickingUpObjectsHandler.ObjectToPickup;
-            Vector3 sizeOfPickedObject = objectToPickup.GetComponent<Renderer>().bounds.size;
-            Vector3 daleForward = dale.transform.forward;
-            Vector3 directionTowardDale = -daleForward;
-            Vector3 targetPosition;
-            if (directionTowardDale.x < directionTowardDale.z)
-            {
-                targetPosition = objectToPickup.transform.position + new Vector3(0, 0, sizeOfPickedObject.z / 2);
-            }
-            else
-            {
-                targetPosition = objectToPickup.transform.position + new Vector3(sizeOfPickedObject.x / 2, 0, 0);
-            }
-
-            //MovingToTarget movingToTarget = daleStateHandler.movingToTarget;
-            animator = daleStateHandler.Animator;
-            animatePickingUp();
-            //movingToTarget.setTargetPosition(targetPosition);
-            //movingToTarget.callback = animatePickingUp;
-
-
-
-
+            animator = daleStateHandler.animator;
+            AnimatePickingUp();
         }
 
-        public void animatePickingUp()
+        public void AnimatePickingUp()
         {
             animator.SetBool("pickupObjects", true);
         }

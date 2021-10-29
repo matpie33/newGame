@@ -6,17 +6,17 @@ using Assets.scripts.States;
 public class DetectObjectsInFront : MonoBehaviour
 {
     private LedgeDetectionState ledgeDetectionState;
-    private PickingUpObjectsHandler PickingUpObjectsHandler;
+    private PickingUpObjectsHandler pickingUpObjectsHandler;
 
     void Start()
     {
         ledgeDetectionState = GetComponentInParent<LedgeDetectionState>();
-        PickingUpObjectsHandler = GetComponentInParent<PickingUpObjectsHandler>();
+        pickingUpObjectsHandler = GetComponentInParent<PickingUpObjectsHandler>();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        ledgeDetectionState.isThereWall = true;
+        ledgeDetectionState.IsThereWall = true;
         GameManagement.instance.HandleShowingPickableObjectMarker(other);
 
     }
@@ -24,7 +24,7 @@ public class DetectObjectsInFront : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         GameManagement.instance.HidePickableObjectMarker();
-        ledgeDetectionState.isThereWall = false;
-        PickingUpObjectsHandler.ObjectToPickup = null;
+        ledgeDetectionState.IsThereWall = false;
+        pickingUpObjectsHandler.ObjectToPickup = null;
     }
 }

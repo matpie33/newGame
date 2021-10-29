@@ -6,28 +6,28 @@ using UnityEngine.Animations.Rigging;
 public class DaleRigsHandler : MonoBehaviour
 {
 
-    public Rig PickingUpObjectsHandsRig;
+    public Rig pickingUpObjectsHandsRig;
 
     public bool ChangeRigWeightTowardsValue { private get; set; }
 
-    private float TargetRigWeight;
+    private float targetRigWeight;
 
     [SerializeField]
-    private float RigWeightChangingSpeed;
+    private float rigWeightChangingSpeed;
 
     void Start()
     {
-        PickingUpObjectsHandsRig.weight = 0f;
+        pickingUpObjectsHandsRig.weight = 0f;
     }
 
     public void EnablePickupObjectRig()
     {
-        TargetRigWeight = 1f;
+        targetRigWeight = 1f;
         ChangeRigWeightTowardsValue = true;
     }
     public void DisablePickupObjectRig()
     {
-        TargetRigWeight = 0f;
+        targetRigWeight = 0f;
         ChangeRigWeightTowardsValue = true;
     }
 
@@ -35,7 +35,7 @@ public class DaleRigsHandler : MonoBehaviour
     {
         if (ChangeRigWeightTowardsValue)
         {
-            PickingUpObjectsHandsRig.weight = Mathf.MoveTowards(PickingUpObjectsHandsRig.weight, TargetRigWeight, Time.deltaTime * RigWeightChangingSpeed);
+            pickingUpObjectsHandsRig.weight = Mathf.MoveTowards(pickingUpObjectsHandsRig.weight, targetRigWeight, Time.deltaTime * rigWeightChangingSpeed);
         }
     }
 

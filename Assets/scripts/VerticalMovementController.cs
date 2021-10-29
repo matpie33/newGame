@@ -5,7 +5,7 @@ using UnityEngine;
 public class VerticalMovementController : MonoBehaviour
 {
 
-    private CharacterController controller;
+    private CharacterController character;
     private float verticalVelocity;
     public float gravity = 4f;
     public float jumpForce = 5f;
@@ -13,16 +13,13 @@ public class VerticalMovementController : MonoBehaviour
 
     public void Start()
     {
-        controller = FindObjectOfType<CharacterController>();
+        character = FindObjectOfType<CharacterController>();
     }
-
-
-
 
     public float GetVerticalMovement()
     {
         float verticalSpeed = CalculateVerticalSpeed() * 0.1f;
-        if (controller.isGrounded)
+        if (character.isGrounded)
         {
             jumpTriggered = false;
 
@@ -34,9 +31,8 @@ public class VerticalMovementController : MonoBehaviour
 
     public float CalculateVerticalSpeed()
     {
-        if (controller.isGrounded)
+        if (character.isGrounded)
         {
-
 
             verticalVelocity = -gravity * Time.deltaTime;
             if (jumpTriggered)

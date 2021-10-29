@@ -10,7 +10,7 @@ public class HorizontalMovementController : MonoBehaviour
     public float speed = 1f;
     float smoothVelocity;
     public float turnSmoothTime = 0.1f;
-    public Transform camera;
+    public Transform cameraTransform;
     private VerticalMovementController gravityHandler;
     private Animator animator;
     private Vector3 currentMovementDirection;
@@ -84,7 +84,7 @@ public class HorizontalMovementController : MonoBehaviour
 
     private float CalculateTargetAngle(Vector3 direction)
     {
-        return Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + camera.eulerAngles.y;
+        return Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
     }
 
     private float SmoothAngle(float targetAngle)

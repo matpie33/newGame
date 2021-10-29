@@ -7,8 +7,6 @@ public class DetectFreeSpaceToClimb : MonoBehaviour
 
     private LedgeDetectionState ledgeDetectionState;
 
-
-
     void Start()
     {
         ledgeDetectionState = GetComponentInParent<LedgeDetectionState>();
@@ -17,7 +15,7 @@ public class DetectFreeSpaceToClimb : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("can't climb");
-        ledgeDetectionState.isThereSpaceToClimb = false;
+        ledgeDetectionState.IsThereSpaceToClimb = false;
 
     }
 
@@ -25,8 +23,8 @@ public class DetectFreeSpaceToClimb : MonoBehaviour
     {
         Debug.Log("can climb");
 
-        ledgeDetectionState.isThereSpaceToClimb = true;
-        ledgeDetectionState.locationToTeleport = transform.position;
+        ledgeDetectionState.IsThereSpaceToClimb = true;
+        ledgeDetectionState.LocationToTeleport = transform.position;
 
     }
 

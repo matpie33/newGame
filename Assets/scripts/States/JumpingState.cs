@@ -19,7 +19,7 @@ namespace Assets.scripts.States
             {
                 return daleStateHandler.walkingState;
             }
-            if (daleStateHandler.ledgeDetectionState.isThereWall && daleStateHandler.ledgeDetectionState.isThereSpaceToClimb)
+            if (daleStateHandler.ledgeDetectionState.IsThereWall && daleStateHandler.ledgeDetectionState.IsThereSpaceToClimb)
             {
                 return daleStateHandler.grabbingLedgeState;
             }
@@ -28,7 +28,7 @@ namespace Assets.scripts.States
 
         public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
         {
-            Animator animator = daleStateHandler.Animator;
+            Animator animator = daleStateHandler.animator;
             MovementController movementController = daleStateHandler.movementController;
             movementController.Jump();
             Debug.Log("jumping transition");
