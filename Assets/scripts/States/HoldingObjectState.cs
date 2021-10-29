@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-class HoldingObjectState : MonoBehaviour, State
+class HoldingObjectState : State
 {
 
     public State DuringState(DaleStateHandler daleStateHandler)

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-class ReleasingObjectsState : MonoBehaviour, State
+class ReleasingObjectsState :  State
 {
 
 

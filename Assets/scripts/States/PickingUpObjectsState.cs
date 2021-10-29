@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-class PickingUpObjectsState : MonoBehaviour, State
+class PickingUpObjectsState : State
 {
     private Animator animator;
 
