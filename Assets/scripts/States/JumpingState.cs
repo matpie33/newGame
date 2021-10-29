@@ -11,7 +11,7 @@ class JumpingState : State
     public State DuringState(DaleStateHandler daleStateHandler)
     {
 
-        if (daleStateHandler.characterController.isGrounded)
+        if (daleStateHandler.characterController.isGrounded && !daleStateHandler.verticalMovementController.IsJumpInProgress())
         {
             return daleStateHandler.walkingState;
         }
@@ -26,11 +26,11 @@ class JumpingState : State
     {
         Animator animator = daleStateHandler.animator;
         MovementController movementController = daleStateHandler.movementController;
-        movementController.Jump();
+
         Debug.Log("jumping transition");
         animator.SetBool("jump", true);
-        animator.SetBool("run", false);
         animator.SetBool("movingBackward", false);
         movementController.IsHorizontalMovementEnabled = false;
+        daleStateHandler.verticalMovementController.PrepareToJump();
     }
 }

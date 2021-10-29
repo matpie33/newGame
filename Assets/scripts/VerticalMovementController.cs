@@ -13,6 +13,8 @@ public class VerticalMovementController : MonoBehaviour
     private float jumpForce = 5f;
     private bool jumpTriggered;
 
+    private JumpStatus jumpStatus;
+
     public void Start()
     {
         character = FindObjectOfType<CharacterController>();
@@ -37,10 +39,11 @@ public class VerticalMovementController : MonoBehaviour
         {
 
             verticalVelocity = -gravity * Time.deltaTime;
-            if (jumpTriggered)
+            if (jumpStatus.Equals(JumpStatus.IN_AIR))
             {
                 verticalVelocity = jumpForce;
                 jumpTriggered = false;
+                jumpStatus = JumpStatus.FINISHED;
             }
         }
         else
@@ -53,18 +56,26 @@ public class VerticalMovementController : MonoBehaviour
     }
 
 
-    public void Jump()
+
+    public void PrepareToJump()
     {
-        jumpTriggered = true;
-
-
-
+        jumpStatus = JumpStatus.PREPARING;
     }
 
     public void StopJump()
     {
         verticalVelocity = 0;
 
+    }
+
+    public bool IsJumpInProgress()
+    {
+        return !jumpStatus.Equals(JumpStatus.FINISHED);
+    }
+
+    public void JumpToAir()
+    {
+        jumpStatus = JumpStatus.IN_AIR;
     }
 
 }

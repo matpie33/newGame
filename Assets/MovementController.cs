@@ -44,10 +44,6 @@ public class MovementController : MonoBehaviour
 
     }
 
-    public void Jump()
-    {
-        verticalMovementController.Jump();
-    }
 
     public void SetVerticalMovementEnabled(bool enabled)
     {

@@ -36,7 +36,7 @@ class GrabbingLedgeState : State
     {
         daleStateHandler.animator.SetBool("isGrabbing", true);
         daleStateHandler.movementController.SetVerticalMovementEnabled(false);
-        daleStateHandler.gravityHandler.StopJump();
+        daleStateHandler.verticalMovementController.StopJump();
     }
 
     public void OnGrabbingAnimationFinished()

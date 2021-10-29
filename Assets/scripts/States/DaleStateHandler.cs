@@ -15,7 +15,7 @@ class DaleStateHandler : MonoBehaviour
     public CharacterController characterController { get; private set; }
     public MovementController movementController { get; private set; }
 
-    public VerticalMovementController gravityHandler { get; private set; }
+    public VerticalMovementController verticalMovementController { get; private set; }
     public LedgeDetectionState ledgeDetectionState { get; private set; }
     public PickingUpObjectsState pickupObjectsState { get; private set; }
     public ReleasingObjectsState releasingObjectsState { get; private set; }
@@ -37,7 +37,7 @@ class DaleStateHandler : MonoBehaviour
         movementController = FindObjectOfType<MovementController>();
         pickingUpObjectsHandler = GetComponent<PickingUpObjectsHandler>();
         ledgeDetectionState = FindObjectOfType<LedgeDetectionState>();
-        gravityHandler = GetComponent<VerticalMovementController>();
+        verticalMovementController = GetComponent<VerticalMovementController>();
 
         grabbingLedgeState = new GrabbingLedgeState();
         jumpingState = new JumpingState();

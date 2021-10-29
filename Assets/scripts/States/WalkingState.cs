@@ -31,5 +31,7 @@ class WalkingState : State
 
         }
         daleStateHandler.movementController.IsHorizontalMovementEnabled = true;
+        daleStateHandler.animator.SetBool("jump", false);
+
     }
 }
