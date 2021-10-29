@@ -17,7 +17,7 @@ namespace Assets.scripts.States
         public CharacterController characterController { get; private set; }
         public MovementController movementController { get; private set; }
 
-        public GravityHandler gravityHandler { get; private set; }
+        public VerticalMovementController gravityHandler { get; private set; }
         public LedgeDetectionState ledgeDetectionState { get; private set; }
         public PickingUpObjectsState pickupObjectsState { get; private set; }
         public ReleasingObjectsState releasingObjectsState { get; private set; }
@@ -40,7 +40,7 @@ namespace Assets.scripts.States
             movementController = FindObjectOfType<MovementController>();
             PickingUpObjectsHandler = GetComponent<PickingUpObjectsHandler>();
             ledgeDetectionState = FindObjectOfType<LedgeDetectionState>();
-            gravityHandler = GetComponent<GravityHandler>();
+            gravityHandler = GetComponent<VerticalMovementController>();
 
             grabbingLedgeState = new GrabbingLedgeState();
             jumpingState = new JumpingState();

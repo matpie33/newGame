@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThirdPersonMovement : MonoBehaviour
+public class HorizontalMovementController : MonoBehaviour
 {
     private const float MOVEMENT_SPEED = 0.1f;
     private CharacterController characterController;
@@ -11,7 +11,7 @@ public class ThirdPersonMovement : MonoBehaviour
     float smoothVelocity;
     public float turnSmoothTime = 0.1f;
     public Transform camera;
-    private GravityHandler gravityHandler;
+    private VerticalMovementController gravityHandler;
     private Animator animator;
     private Vector3 currentMovementDirection;
 

@@ -17,7 +17,7 @@ public class GameManagement : MonoBehaviour
     public GameObject carryingPosition;
     private Collider objectReadyToPick;
     private bool isCarryingObject;
-    private ThirdPersonMovement thirdPersonMovement;
+    private HorizontalMovementController thirdPersonMovement;
     private bool isPushing;
     public const int force = 3000;
 
@@ -40,7 +40,7 @@ public class GameManagement : MonoBehaviour
 
     void Start()
     {
-        thirdPersonMovement = FindObjectOfType<ThirdPersonMovement>();
+        thirdPersonMovement = FindObjectOfType<HorizontalMovementController>();
         daleHealth = GetPlayer.instance.player.GetComponent<DaleHealth>();
         daleHealth.health = hpMaxValue;
         daleHPSlider.maxValue = hpMaxValue;

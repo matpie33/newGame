@@ -5,9 +5,9 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
 
-    private ThirdPersonMovement thirdPersonMovement;
+    private HorizontalMovementController horizontalMovementController;
 
-    private GravityHandler gravityHandler;
+    private VerticalMovementController verticalMovementController;
 
     private CharacterController characterController;
 
@@ -16,9 +16,9 @@ public class MovementController : MonoBehaviour
 
     void Start()
     {
-        thirdPersonMovement = GetComponent<ThirdPersonMovement>();
-        gravityHandler = GetComponent<GravityHandler>();
-        characterController = FindObjectOfType <CharacterController>();
+        horizontalMovementController = GetComponent<HorizontalMovementController>();
+        verticalMovementController = GetComponent<VerticalMovementController>();
+        characterController = FindObjectOfType<CharacterController>();
         IsHorizontalMovementEnabled = true;
         IsVerticalMovementEnabled = true;
 
@@ -30,21 +30,21 @@ public class MovementController : MonoBehaviour
         Vector3 vectorToMove = Vector3.zero;
         if (IsHorizontalMovementEnabled)
         {
-            Vector3 horizontalMovement = thirdPersonMovement.CalculateHorizontalMovement();
+            Vector3 horizontalMovement = horizontalMovementController.CalculateHorizontalMovement();
             vectorToMove.x = horizontalMovement.x;
             vectorToMove.z = horizontalMovement.z;
         }
         if (IsVerticalMovementEnabled)
         {
-            vectorToMove.y = gravityHandler.GetVerticalMovement();
+            vectorToMove.y = verticalMovementController.GetVerticalMovement();
         }
         characterController.Move(vectorToMove);
-        
+
     }
 
     public void Jump()
     {
-        gravityHandler.Jump();
+        verticalMovementController.Jump();
     }
 
 }
