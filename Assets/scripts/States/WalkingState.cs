@@ -28,7 +28,7 @@ namespace Assets.scripts.States
         {
             if (previousState.Equals(daleStateHandler.grabbingLedgeState))
             {
-                daleStateHandler.movementController.IsVerticalMovementEnabled = true;
+                daleStateHandler.movementController.SetVerticalMovementEnabled(true);
                 daleStateHandler.Animator.SetBool("climbLedge", false);
 
             }

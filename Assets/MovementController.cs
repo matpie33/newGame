@@ -12,7 +12,9 @@ public class MovementController : MonoBehaviour
     private CharacterController characterController;
 
     public bool IsHorizontalMovementEnabled { get; set; }
-    public bool IsVerticalMovementEnabled { get; set; }
+    [SerializeField]
+    private bool isVerticalMovementEnabled;
+
 
     void Start()
     {
@@ -20,7 +22,7 @@ public class MovementController : MonoBehaviour
         verticalMovementController = GetComponent<VerticalMovementController>();
         characterController = FindObjectOfType<CharacterController>();
         IsHorizontalMovementEnabled = true;
-        IsVerticalMovementEnabled = true;
+        isVerticalMovementEnabled = true;
 
     }
 
@@ -34,7 +36,7 @@ public class MovementController : MonoBehaviour
             vectorToMove.x = horizontalMovement.x;
             vectorToMove.z = horizontalMovement.z;
         }
-        if (IsVerticalMovementEnabled)
+        if (isVerticalMovementEnabled)
         {
             vectorToMove.y = verticalMovementController.GetVerticalMovement();
         }
@@ -45,6 +47,11 @@ public class MovementController : MonoBehaviour
     public void Jump()
     {
         verticalMovementController.Jump();
+    }
+
+    public void SetVerticalMovementEnabled(bool enabled)
+    {
+        isVerticalMovementEnabled = enabled;
     }
 
 }

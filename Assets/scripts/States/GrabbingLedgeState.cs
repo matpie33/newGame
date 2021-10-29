@@ -37,7 +37,7 @@ namespace Assets.scripts.States
         public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
         {
             daleStateHandler.Animator.SetBool("isGrabbing", true);
-            daleStateHandler.movementController.IsVerticalMovementEnabled = false;
+            daleStateHandler.movementController.SetVerticalMovementEnabled(false);
             daleStateHandler.gravityHandler.StopJump();
         }
 

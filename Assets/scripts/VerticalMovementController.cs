@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VerticalMovementController: MonoBehaviour
+public class VerticalMovementController : MonoBehaviour
 {
 
     private CharacterController controller;
     private float verticalVelocity;
     public float gravity = 4f;
     public float jumpForce = 5f;
-    private bool gravityEnabled = true;
     private bool jumpTriggered;
 
     public void Start()
@@ -18,14 +17,6 @@ public class VerticalMovementController: MonoBehaviour
     }
 
 
-    public void setGravityEnabled(bool enabled)
-    {
-        gravityEnabled = enabled;
-        if (!gravityEnabled)
-        {
-            verticalVelocity = 0;
-        }
-    }
 
 
     public float GetVerticalMovement()
@@ -43,11 +34,6 @@ public class VerticalMovementController: MonoBehaviour
 
     public float CalculateVerticalSpeed()
     {
-        if (!gravityEnabled)
-        {
-            return 0;
-        }
-
         if (controller.isGrounded)
         {
 
