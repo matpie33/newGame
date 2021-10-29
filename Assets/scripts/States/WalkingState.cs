@@ -15,7 +15,7 @@ class WalkingState : State
         {
             return daleStateHandler.jumpingState;
         }
-        if (keyboardController.IsPickupOrReleaseObjectsKeyPressed)
+        if (keyboardController.IsPickupOrReleaseObjectsKeyPressed && daleStateHandler.pickingUpObjectsHandler.ObjectToPickup != null)
         {
             return daleStateHandler.pickupObjectsState;
         }

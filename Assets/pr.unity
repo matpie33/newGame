@@ -832,17 +832,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 56c95732efb5c5e4bb74ee32a6f50dca,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.22
+      value: -3.58
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 56c95732efb5c5e4bb74ee32a6f50dca,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.53
+      value: 8.87
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 56c95732efb5c5e4bb74ee32a6f50dca,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 112.52
+      value: 99.95
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 56c95732efb5c5e4bb74ee32a6f50dca,
         type: 3}
@@ -1111,7 +1111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6eaea175fe5b0f46acf9ab85ed955ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoppingDistance: 1.5
 --- !u!1 &500693283
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,12 +1285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ac71983f99ae44bb91d72fc85d51d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickableObjectMarker: {fileID: 645201372}
-  dale: {fileID: 919132147987797200}
-  minDistanceToPick: {x: 0.1, y: 0.1, z: 0.1}
-  destination: {x: -5, y: 5, z: 90}
-  animationController: {fileID: 0}
-  carryingPosition: {fileID: 0}
   hpMaxValue: 200
   daleHPSlider: {fileID: 176226778}
   objectsMarker: {fileID: 645201372}
@@ -2332,8 +2325,8 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2.23
-  m_Radius: 0.62
+  m_Height: 2.3
+  m_Radius: 0.7
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -2655,11 +2648,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 0.6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 4
+  m_StoppingDistance: 1.2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -2692,7 +2685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6eaea175fe5b0f46acf9ab85ed955ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoppingDistance: 1.2
 --- !u!65 &1880164545
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2704,8 +2696,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.74, y: 3.07, z: 6.3}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.74, y: 3.07, z: 6.07}
+  m_Center: {x: 0, y: 0, z: -0.31}
 --- !u!1 &2001828564
 GameObject:
   m_ObjectHideFlags: 3
@@ -3139,7 +3131,6 @@ GameObject:
   - component: {fileID: 1429518840}
   - component: {fileID: 1429518841}
   - component: {fileID: 1429518845}
-  - component: {fileID: 919132147987797201}
   - component: {fileID: 919132147987797202}
   - component: {fileID: 919132147987797203}
   - component: {fileID: 919132147987797204}
@@ -3153,18 +3144,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &919132147987797201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132147987797200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60827d5270d62594cb00d8495bf73e4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &919132147987797202
 MonoBehaviour:
   m_ObjectHideFlags: 0
