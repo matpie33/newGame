@@ -26,4 +26,15 @@ public class EnemyCollisionController : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        Rigidbody rigidBody = collision.collider.GetComponent<Rigidbody>();
+        if (rigidBody != null && collision.impulse.magnitude > 5)
+        {
+            Destroy(gameObject);
+            Destroy(collision.collider.gameObject);
+        }
+
+    }
+
 }
