@@ -5,33 +5,30 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.scripts.States
+class ReleasingObjectsState : MonoBehaviour, State
 {
-    class ReleasingObjectsState : MonoBehaviour, State
+
+
+    public State DuringState(DaleStateHandler daleStateHandler)
+    {
+        if (!daleStateHandler.keyboardController.IsPickupOrReleaseObjectsKeyPressed)
+        {
+            return daleStateHandler.walkingState;
+        }
+        else
+        {
+            return this;
+        }
+
+    }
+
+    public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
     {
 
-
-        public State DuringState(DaleStateHandler daleStateHandler)
-        {
-            if (!daleStateHandler.keyboardController.IsPickupOrReleaseObjectsKeyPressed)
-            {
-                return daleStateHandler.walkingState;
-            }
-            else
-            {
-                return this;
-            }
-
-        }
-
-        public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
-        {
-
-            daleStateHandler.pickingUpObjectsHandler.ReleaseObject();
-
-
-        }
+        daleStateHandler.pickingUpObjectsHandler.ReleaseObject();
 
 
     }
+
+
 }

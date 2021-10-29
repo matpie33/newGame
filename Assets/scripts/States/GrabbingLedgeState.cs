@@ -5,52 +5,49 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.scripts.States
+class GrabbingLedgeState : State
 {
-    class GrabbingLedgeState : State
+    private bool grabbingAnimationFinished;
+    private bool climbingAnimationFinished;
+
+    public State DuringState(DaleStateHandler daleStateHandler)
     {
-        private bool grabbingAnimationFinished;
-        private bool climbingAnimationFinished;
-
-        public State DuringState(DaleStateHandler daleStateHandler)
+        if (grabbingAnimationFinished && daleStateHandler.keyboardController.IsJumpKeyPressed)
         {
-            if (grabbingAnimationFinished && daleStateHandler.keyboardController.IsJumpKeyPressed)
-            {
-                grabbingAnimationFinished = false;
-                daleStateHandler.animator.SetBool("climbLedge", true);
-                daleStateHandler.animator.SetBool("isGrabbing", false);
-                daleStateHandler.animator.applyRootMotion = true;
-                daleStateHandler.movementController.enabled = false;
-            }
-            if (climbingAnimationFinished)
-            {
-                climbingAnimationFinished = false;
-                daleStateHandler.animator.SetBool("climbLedge", false);
-                daleStateHandler.movementController.enabled = true;
-                daleStateHandler.animator.applyRootMotion = false;
-
-                return daleStateHandler.walkingState;
-            }
-            return this;
+            grabbingAnimationFinished = false;
+            daleStateHandler.animator.SetBool("climbLedge", true);
+            daleStateHandler.animator.SetBool("isGrabbing", false);
+            daleStateHandler.animator.applyRootMotion = true;
+            daleStateHandler.movementController.enabled = false;
         }
-
-        public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
+        if (climbingAnimationFinished)
         {
-            daleStateHandler.animator.SetBool("isGrabbing", true);
-            daleStateHandler.movementController.SetVerticalMovementEnabled(false);
-            daleStateHandler.gravityHandler.StopJump();
-        }
+            climbingAnimationFinished = false;
+            daleStateHandler.animator.SetBool("climbLedge", false);
+            daleStateHandler.movementController.enabled = true;
+            daleStateHandler.animator.applyRootMotion = false;
 
-        public void OnGrabbingAnimationFinished()
-        {
-            grabbingAnimationFinished = true;
+            return daleStateHandler.walkingState;
         }
-        public void OnClimbingAnimationFinished()
-        {
-            climbingAnimationFinished = true;
-        }
-
+        return this;
     }
+
+    public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
+    {
+        daleStateHandler.animator.SetBool("isGrabbing", true);
+        daleStateHandler.movementController.SetVerticalMovementEnabled(false);
+        daleStateHandler.gravityHandler.StopJump();
+    }
+
+    public void OnGrabbingAnimationFinished()
+    {
+        grabbingAnimationFinished = true;
+    }
+    public void OnClimbingAnimationFinished()
+    {
+        climbingAnimationFinished = true;
+    }
+
 
 
 

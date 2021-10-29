@@ -5,37 +5,34 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.scripts.States
+class PickingUpObjectsState : MonoBehaviour, State
 {
-    class PickingUpObjectsState : MonoBehaviour, State
+    private Animator animator;
+
+    public State DuringState(DaleStateHandler daleStateHandler)
     {
-        private Animator animator;
-
-        public State DuringState(DaleStateHandler daleStateHandler)
+        if (!daleStateHandler.pickingUpObjectsHandler.GetIsPickingUpObject())
         {
-            if (!daleStateHandler.pickingUpObjectsHandler.GetIsPickingUpObject())
-            {
-                return this;
-            }
-            else
-            {
-                return daleStateHandler.holdingObjectState;
-            }
+            return this;
         }
-
-        public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
+        else
         {
-            GameManagement.instance.HidePickableObjectMarker();
-            animator = daleStateHandler.animator;
-            AnimatePickingUp();
+            return daleStateHandler.holdingObjectState;
         }
-
-        public void AnimatePickingUp()
-        {
-            animator.SetBool("pickupObjects", true);
-        }
-
-
-
     }
+
+    public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
+    {
+        GameManagement.instance.HidePickableObjectMarker();
+        animator = daleStateHandler.animator;
+        AnimatePickingUp();
+    }
+
+    public void AnimatePickingUp()
+    {
+        animator.SetBool("pickupObjects", true);
+    }
+
+
+
 }

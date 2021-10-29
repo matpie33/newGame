@@ -58,7 +58,7 @@
     <Compile Include="Assets\scripts\EnemyController.cs" />
     <Compile Include="Assets\scripts\DetectFreeSpaceToClimb.cs" />
     <Compile Include="Assets\scripts\KeyboardController.cs" />
-    <Compile Include="Assets\scripts\HoldingObjectState.cs" />
+    <Compile Include="Assets\scripts\States\HoldingObjectState.cs" />
     <Compile Include="Assets\scripts\States\ThrowingObjectsState.cs" />
     <Compile Include="Assets\MovementController.cs" />
     <Compile Include="Assets\scripts\GrabbingAnimationFinished.cs" />

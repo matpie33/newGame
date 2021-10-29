@@ -5,34 +5,31 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.scripts.States
+class WalkingState : State
 {
-    class WalkingState : State
+
+    public State DuringState(DaleStateHandler daleStateHandler)
     {
-
-        public State DuringState(DaleStateHandler daleStateHandler)
+        KeyboardController keyboardController = daleStateHandler.keyboardController;
+        if (keyboardController.IsJumpKeyPressed)
         {
-            KeyboardController keyboardController = daleStateHandler.keyboardController;
-            if (keyboardController.IsJumpKeyPressed)
-            {
-                return daleStateHandler.jumpingState;
-            }
-            if (keyboardController.IsPickupOrReleaseObjectsKeyPressed)
-            {
-                return daleStateHandler.pickupObjectsState;
-            }
-            return this;
+            return daleStateHandler.jumpingState;
         }
-
-        public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
+        if (keyboardController.IsPickupOrReleaseObjectsKeyPressed)
         {
-            if (previousState.Equals(daleStateHandler.grabbingLedgeState))
-            {
-                daleStateHandler.movementController.SetVerticalMovementEnabled(true);
-                daleStateHandler.animator.SetBool("climbLedge", false);
-
-            }
-            daleStateHandler.movementController.IsHorizontalMovementEnabled = true;
+            return daleStateHandler.pickupObjectsState;
         }
+        return this;
+    }
+
+    public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
+    {
+        if (previousState.Equals(daleStateHandler.grabbingLedgeState))
+        {
+            daleStateHandler.movementController.SetVerticalMovementEnabled(true);
+            daleStateHandler.animator.SetBool("climbLedge", false);
+
+        }
+        daleStateHandler.movementController.IsHorizontalMovementEnabled = true;
     }
 }

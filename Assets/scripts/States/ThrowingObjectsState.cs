@@ -4,34 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-
-namespace Assets.scripts.States
+class ThrowingObjectsState : MonoBehaviour, State
 {
-    class ThrowingObjectsState : MonoBehaviour, State
+
+
+    public State DuringState(DaleStateHandler daleStateHandler)
     {
-
-
-        public State DuringState(DaleStateHandler daleStateHandler)
-        {
-            if (!daleStateHandler.keyboardController.IsThrowingObjectKeyPressed)
-            {
-
-                return daleStateHandler.walkingState;
-            }
-            else
-            {
-                return this;
-            }
-
-        }
-
-        public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
+        if (!daleStateHandler.keyboardController.IsThrowingObjectKeyPressed)
         {
 
-            daleStateHandler.animator.SetBool("throwObjects", true);
-
+            return daleStateHandler.walkingState;
         }
-
+        else
+        {
+            return this;
+        }
 
     }
+
+    public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
+    {
+
+        daleStateHandler.animator.SetBool("throwObjects", true);
+
+    }
+
+
 }

@@ -2377,7 +2377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   turnSmoothTime: 0.1
-  camera: {fileID: 340656349}
+  cameraTransform: {fileID: 340656349}
 --- !u!114 &1429518841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3143,7 +3143,6 @@ GameObject:
   - component: {fileID: 919132147987797202}
   - component: {fileID: 919132147987797203}
   - component: {fileID: 919132147987797204}
-  - component: {fileID: 919132147987797205}
   - component: {fileID: 919132147987797206}
   - component: {fileID: 919132147987797207}
   - component: {fileID: 919132147987797208}
@@ -3226,8 +3225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efec79dba4b3b9f4fb3ece5d86e91e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickingUpObjectsHandsRig: {fileID: 40504641}
-  RigWeightChangingSpeed: 5
+  pickingUpObjectsHandsRig: {fileID: 40504641}
+  rigWeightChangingSpeed: 2
 --- !u!114 &919132147987797204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3240,20 +3239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab78e6afdd9a0094fbd8e6cdf3d8ca0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectsInFrontDetectingCollider: {fileID: 121304189}
-  ParentPositionObject: {fileID: 500693283}
---- !u!114 &919132147987797205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132147987797200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac10ab166ea47864eaa3f16e8256e106, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  objectsInFrontDetectingCollider: {fileID: 121304189}
+  parentPositionObject: {fileID: 500693283}
 --- !u!114 &919132147987797206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3280,6 +3267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8d756e7b1e25a4d927875630c2b050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isVerticalMovementEnabled: 0
 --- !u!114 &919132147987797208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3289,10 +3277,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 919132147987797200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4f37b7be6c82d24ebe79940cf42de7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5487c1c307209d2409c90237714ed532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 3.5
+  gravity: 3
   jumpForce: 1
 --- !u!4 &1021632129353290585
 Transform:
