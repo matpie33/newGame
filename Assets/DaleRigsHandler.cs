@@ -5,8 +5,8 @@ using UnityEngine.Animations.Rigging;
 
 public class DaleRigsHandler : MonoBehaviour
 {
-
-    public Rig pickingUpObjectsHandsRig;
+    [SerializeField]
+    private Rig pickingUpObjectsHandsRig;
 
     public bool ChangeRigWeightTowardsValue { private get; set; }
 

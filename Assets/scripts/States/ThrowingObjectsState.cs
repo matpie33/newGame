@@ -7,7 +7,6 @@ using UnityEngine;
 class ThrowingObjectsState : State
 {
 
-
     public State DuringState(DaleStateHandler daleStateHandler)
     {
         if (!daleStateHandler.keyboardController.IsThrowingObjectKeyPressed)

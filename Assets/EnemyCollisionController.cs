@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class EnemyCollisionController : MonoBehaviour
 {
     private GameObject player;
-    public float stoppingDistance = 1.2f;
     private GameManagement gameManagement;
     private NavMeshAgent navMeshAgent;
 

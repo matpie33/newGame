@@ -5,8 +5,10 @@ using UnityEngine;
 public class PickingUpObjectsHandler : MonoBehaviour
 {
     private bool isPickingUpObject;
-    public BoxCollider objectsInFrontDetectingCollider;
+    [SerializeField]
+    private BoxCollider objectsInFrontDetectingCollider;
     private DaleRigsHandler rigsHandler;
+    [SerializeField]
     public GameObject parentPositionObject;
     public GameObject ObjectToPickup { get; set; }
 

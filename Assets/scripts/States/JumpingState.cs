@@ -8,8 +8,6 @@ using UnityEngine;
 class JumpingState : State
 {
 
-
-
     public State DuringState(DaleStateHandler daleStateHandler)
     {
 

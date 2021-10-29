@@ -5,9 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-class ReleasingObjectsState :  State
+class ReleasingObjectsState : State
 {
-
 
     public State DuringState(DaleStateHandler daleStateHandler)
     {

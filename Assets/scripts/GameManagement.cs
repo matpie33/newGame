@@ -7,17 +7,6 @@ using UnityEngine.UI;
 using UnityEngine.Animations.Rigging;
 public class GameManagement : MonoBehaviour
 {
-
-    public GameObject pickableObjectMarker;
-    public GameObject dale;
-    public Vector3 minDistanceToPick = new Vector3(0.1f, 0.1f, 0.1f);
-    public Vector3 destination;
-    public Animator animationController;
-    public GameObject carryingPosition;
-    private Collider objectReadyToPick;
-    private bool isCarryingObject;
-    private HorizontalMovementController thirdPersonMovement;
-    private bool isPushing;
     public const int force = 3000;
 
     private const int HP_DECREASE_VALUE = 20;
@@ -39,7 +28,6 @@ public class GameManagement : MonoBehaviour
 
     void Start()
     {
-        thirdPersonMovement = FindObjectOfType<HorizontalMovementController>();
         daleHealth = GetPlayer.instance.player.GetComponent<DaleHealth>();
         daleHealth.Health = hpMaxValue;
         daleHPSlider.maxValue = hpMaxValue;
@@ -82,10 +70,6 @@ public class GameManagement : MonoBehaviour
         timeOffsetPassedBetweenDrainingHP = true;
 
 
-    }
-    public void SetIdle()
-    {
-        isCarryingObject = false;
     }
 
 

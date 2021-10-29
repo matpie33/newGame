@@ -5,8 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    public float lookRadius = 10f;
-    Transform player;
+    [SerializeField]
+    private float lookRadius = 10f;
+    private Transform player;
     NavMeshAgent navMeshAgent;
 
     void Start()

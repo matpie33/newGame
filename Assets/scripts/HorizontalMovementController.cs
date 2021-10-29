@@ -6,11 +6,13 @@ using UnityEngine;
 public class HorizontalMovementController : MonoBehaviour
 {
     private const float MOVEMENT_SPEED = 0.1f;
-    private CharacterController characterController;
-    public float speed = 1f;
+    [SerializeField]
+    private float speed = 1f;
     float smoothVelocity;
-    public float turnSmoothTime = 0.1f;
-    public Transform cameraTransform;
+    [SerializeField]
+    private float turnSmoothTime = 0.1f;
+    [SerializeField]
+    private Transform cameraTransform;
     private VerticalMovementController gravityHandler;
     private Animator animator;
     private Vector3 currentMovementDirection;

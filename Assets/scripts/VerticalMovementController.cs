@@ -7,8 +7,10 @@ public class VerticalMovementController : MonoBehaviour
 
     private CharacterController character;
     private float verticalVelocity;
-    public float gravity = 4f;
-    public float jumpForce = 5f;
+    [SerializeField]
+    private float gravity = 4f;
+    [SerializeField]
+    private float jumpForce = 5f;
     private bool jumpTriggered;
 
     public void Start()
