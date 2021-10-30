@@ -26,7 +26,7 @@ class GrabbingLedgeState : State
             climbingAnimationFinished = false;
             daleStateHandler.animator.SetBool("climbLedge", false);
             daleStateHandler.movementController.enabled = true;
-            daleStateHandler.characterController.enabled = true;
+
             daleStateHandler.animator.applyRootMotion = false;
 
             return daleStateHandler.walkingState;
@@ -38,6 +38,7 @@ class GrabbingLedgeState : State
     {
         daleStateHandler.animator.SetBool("isGrabbing", true);
         daleStateHandler.movementController.SetVerticalMovementEnabled(false);
+        daleStateHandler.horizontalMovementController.KeepHorizontalSpeed(false);
         daleStateHandler.verticalMovementController.StopJump();
     }
 

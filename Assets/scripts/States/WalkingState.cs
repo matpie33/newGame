@@ -31,6 +31,8 @@ class WalkingState : State
 
         }
         daleStateHandler.horizontalMovementController.SetRespondingToArrowKeys(true);
+        daleStateHandler.horizontalMovementController.KeepHorizontalSpeed(false);
+        daleStateHandler.characterController.enabled = true;
         daleStateHandler.animator.SetBool("jump", false);
 
     }

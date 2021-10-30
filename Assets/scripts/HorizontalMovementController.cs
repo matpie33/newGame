@@ -20,6 +20,7 @@ public class HorizontalMovementController : MonoBehaviour
     [SerializeField]
     private float maxDelta = 0.1f;
     private bool respondToArrowKeys = true;
+    private bool keepHorizontalSpeed;
 
     public void Start()
     {
@@ -34,6 +35,7 @@ public class HorizontalMovementController : MonoBehaviour
         bool isMovingBackward = IsMovingBackward();
         float targetAngle = CalculateTargetAngle(direction);
         Vector3 movementDirection = CalculateHorizontalMovementDirection(targetAngle);
+
         if (direction.magnitude > 0 && !isMovingBackward)
         {
             RotateCharacterTowardsAngle(targetAngle);
@@ -51,9 +53,18 @@ public class HorizontalMovementController : MonoBehaviour
             animator.SetBool("run", false);
             animator.SetBool("movingBackward", false);
         }
+        if (keepHorizontalSpeed)
+        {
+            movementDirection = currentMovementDirection;
+        }
         currentMovementDirection = movementDirection;
         movementDirection *= Time.deltaTime * MOVEMENT_SPEED;
         return movementDirection;
+    }
+
+    public void KeepHorizontalSpeed (bool shouldKeep)
+    {
+        keepHorizontalSpeed = shouldKeep;
     }
 
     public void SetRespondingToArrowKeys(bool respondToArrowKeys)
