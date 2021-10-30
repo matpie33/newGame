@@ -33,18 +33,24 @@ public class HorizontalMovementController : MonoBehaviour
 
         Vector3 direction = CalculateDirectionToMove();
         bool isMovingBackward = IsMovingBackward();
-        float targetAngle = CalculateTargetAngle(direction);
-        Vector3 movementDirection = CalculateHorizontalMovementDirection(targetAngle);
+        int directionMultiplier = isMovingBackward ? -1 : 1;
+        float targetAngle = CalculateTargetAngle(directionMultiplier * direction);
+        Vector3 movementDirection = directionMultiplier * CalculateHorizontalMovementDirection(targetAngle);
 
         if (direction.magnitude > 0 && !isMovingBackward)
         {
+
             RotateCharacterTowardsAngle(targetAngle);
             animator.SetBool("run", true);
+            animator.SetBool("movingBackward", false);
+
 
         }
         else if (isMovingBackward)
         {
             animator.SetBool("movingBackward", true);
+            animator.SetBool("run", false);
+            RotateCharacterTowardsAngle(targetAngle);
             movementDirection *= 0.25f;
         }
         else
@@ -62,7 +68,7 @@ public class HorizontalMovementController : MonoBehaviour
         return movementDirection;
     }
 
-    public void KeepHorizontalSpeed (bool shouldKeep)
+    public void KeepHorizontalSpeed(bool shouldKeep)
     {
         keepHorizontalSpeed = shouldKeep;
     }
