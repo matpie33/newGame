@@ -30,7 +30,7 @@ class JumpingState : State
         Debug.Log("jumping transition");
         animator.SetBool("jump", true);
         animator.SetBool("movingBackward", false);
-        movementController.IsHorizontalMovementEnabled = false;
+        daleStateHandler.horizontalMovementController.SetRespondingToArrowKeys(false);
         daleStateHandler.verticalMovementController.PrepareToJump();
     }
 }

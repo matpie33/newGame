@@ -16,6 +16,8 @@ public class HorizontalMovementController : MonoBehaviour
     private VerticalMovementController gravityHandler;
     private Animator animator;
     private Vector3 currentMovementDirection;
+    private float maxDelta = 0.03f;
+    private bool respondToArrowKeys = true;
 
     public void Start()
     {
@@ -25,6 +27,7 @@ public class HorizontalMovementController : MonoBehaviour
 
     public Vector3 CalculateHorizontalMovement()
     {
+
         Vector3 direction = CalculateDirectionToMove();
         bool isMovingBackward = IsMovingBackward();
         float targetAngle = CalculateTargetAngle(direction);
@@ -42,13 +45,18 @@ public class HorizontalMovementController : MonoBehaviour
         }
         else
         {
-            movementDirection = Vector3.zero;
+            movementDirection = new Vector3(Mathf.MoveTowards(currentMovementDirection.x, 0, maxDelta), 0, Mathf.MoveTowards(currentMovementDirection.z, 0, maxDelta));
             animator.SetBool("run", false);
             animator.SetBool("movingBackward", false);
         }
-        movementDirection *= Time.deltaTime * MOVEMENT_SPEED;
         currentMovementDirection = movementDirection;
+        movementDirection *= Time.deltaTime * MOVEMENT_SPEED;
         return movementDirection;
+    }
+
+    public void SetRespondingToArrowKeys(bool respondToArrowKeys)
+    {
+        this.respondToArrowKeys = respondToArrowKeys;
     }
 
     public Vector3 GetCurrentMovementDirection()
@@ -96,6 +104,10 @@ public class HorizontalMovementController : MonoBehaviour
 
     private Vector3 CalculateDirectionToMove()
     {
+        if (!respondToArrowKeys)
+        {
+            return Vector3.zero;
+        }
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
