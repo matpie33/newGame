@@ -16,6 +16,8 @@ public class HorizontalMovementController : MonoBehaviour
     private VerticalMovementController gravityHandler;
     private Animator animator;
     private Vector3 currentMovementDirection;
+
+    [SerializeField]
     private float maxDelta = 0.1f;
     private bool respondToArrowKeys = true;
 

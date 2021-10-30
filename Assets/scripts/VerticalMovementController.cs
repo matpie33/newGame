@@ -38,7 +38,7 @@ public class VerticalMovementController : MonoBehaviour
         if (character.isGrounded)
         {
 
-            verticalVelocity = -gravity * Time.deltaTime;
+            verticalVelocity = -gravity * 0.1f;
             if (jumpStatus.Equals(JumpStatus.IN_AIR))
             {
                 verticalVelocity = jumpForce;
@@ -48,7 +48,7 @@ public class VerticalMovementController : MonoBehaviour
         }
         else
         {
-            verticalVelocity -= gravity * Time.deltaTime;
+            verticalVelocity -= gravity * 0.01f; ;
         }
 
         return verticalVelocity;
