@@ -16,7 +16,7 @@ public class HorizontalMovementController : MonoBehaviour
     private VerticalMovementController gravityHandler;
     private Animator animator;
     private Vector3 currentMovementDirection;
-    private float maxDelta = 0.03f;
+    private float maxDelta = 0.1f;
     private bool respondToArrowKeys = true;
 
     public void Start()
