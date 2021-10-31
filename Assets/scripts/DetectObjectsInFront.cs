@@ -15,6 +15,7 @@ public class DetectObjectsInFront : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+
         ledgeDetectionState.IsThereWall = true;
         GameManagement.instance.HandleShowingPickableObjectMarker(other);
 

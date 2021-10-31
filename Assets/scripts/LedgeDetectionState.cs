@@ -11,5 +11,10 @@ public class LedgeDetectionState : MonoBehaviour
 
     public Vector3 LocationToTeleport { get; set; }
 
+    public void Awake()
+    {
+        IsThereSpaceToClimb = true;
+    }
+
 
 }
