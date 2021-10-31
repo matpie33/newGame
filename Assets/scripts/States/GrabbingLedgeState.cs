@@ -31,6 +31,14 @@ class GrabbingLedgeState : State
 
             return daleStateHandler.walkingState;
         }
+        if (daleStateHandler.keyboardController.IsPickupOrReleaseObjectsKeyPressed)
+        {
+            daleStateHandler.animator.SetBool("isGrabbing", false);
+            daleStateHandler.movementController.enabled = true;
+
+            daleStateHandler.animator.applyRootMotion = false;
+            return daleStateHandler.walkingState;
+        }
         return this;
     }
 
