@@ -88,6 +88,7 @@
     <Compile Include="Assets\scripts\GetPlayer.cs" />
     <Compile Include="Assets\scripts\DetectObjectsInFront.cs" />
     <Compile Include="Assets\PrepareToJumpFinished.cs" />
+    <Compile Include="Assets\MoveToTarget.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
