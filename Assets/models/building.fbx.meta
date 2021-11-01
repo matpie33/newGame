@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7d8dc9507f5956548bf7a8cb022513db
+guid: e6ecedf6fe6e5be4098b09779064a68d
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
@@ -7,8 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: df65cf7b947477f41817305407f16ac5, type: 2}
+      name: frames
+    second: {fileID: 2100000, guid: a1db4a4aa63092d43a08c9a980da7f71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass
+    second: {fileID: 2100000, guid: b5aa2cf56471e794b9b284099dee598a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: roof
+    second: {fileID: 2100000, guid: afda905a2bffda842a63e48933682c6e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: walls
+    second: {fileID: 2100000, guid: 94e8c7174d724da4a85249bd0c01466c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
