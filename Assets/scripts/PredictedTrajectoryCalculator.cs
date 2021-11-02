@@ -5,24 +5,38 @@ using UnityEngine;
 public class PredictedTrajectoryCalculator : MonoBehaviour
 {
 
-    [SerializeField]
     private GameObject destinationMarker;
 
     private PickingUpObjectsHandler pickingUpObjectsHandler;
 
-    private float deltaTimeToCalculateTrajectory = 0.05f;
+    private float deltaTimeToCalculateTrajectory = 0.01f;
 
     private float maxTimeOfCalculation = 0.4f;
+
+    [SerializeField]
+    private LayerMask collidableLayers;
+
+    [SerializeField]
+    private float sphereRadiusToCheckForObstacles = 1;
 
     public void Start()
     {
         pickingUpObjectsHandler = GetComponent<PickingUpObjectsHandler>();
+        enabled = false;
     }
 
     public void SetEnabled(bool enabled)
     {
         this.enabled = enabled;
-        destinationMarker.SetActive(enabled);
+        if (enabled)
+        {
+            destinationMarker = Instantiate(pickingUpObjectsHandler.ObjectToPickup);
+            destinationMarker.GetComponent<Collider>().isTrigger = true;
+            destinationMarker.transform.localScale = Vector3.one;
+        }
+        else {
+            Destroy(destinationMarker);
+        }
     }
 
 
@@ -38,8 +52,14 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
             newPoint = startingPosition + t * startingVelocity;
             newPoint.y = startingPosition.y + startingVelocity.y * t + Physics.gravity.y / 2f * t * t;
             destination = newPoint;
+            Collider[] colliders = Physics.OverlapSphere(newPoint, sphereRadiusToCheckForObstacles, collidableLayers);
+            if (colliders.Length > 0 && !colliders[0].gameObject.Equals(destinationMarker) && !colliders[0].gameObject.Equals(pickingUpObjectsHandler.ObjectToPickup))
+            {
+                break;
+            }
         }
         destinationMarker.transform.position = destination;
+        destinationMarker.transform.rotation = Quaternion.identity;
     }
 
 }
