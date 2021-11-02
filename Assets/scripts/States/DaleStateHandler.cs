@@ -7,7 +7,7 @@ using UnityEngine;
 
 class DaleStateHandler : MonoBehaviour
 {
-
+    public PredictedTrajectoryCalculator predictedTrajectoryCalculator { get; private set; }
     public GrabbingLedgeState grabbingLedgeState { get; private set; }
     public JumpingState jumpingState { get; private set; }
     public WalkingState walkingState { get; private set; }
@@ -41,6 +41,7 @@ class DaleStateHandler : MonoBehaviour
         ledgeDetectionState = FindObjectOfType<LedgeDetectionState>();
         verticalMovementController = GetComponent<VerticalMovementController>();
         horizontalMovementController = GetComponent<HorizontalMovementController>();
+        predictedTrajectoryCalculator = GetComponent<PredictedTrajectoryCalculator>();
 
         grabbingLedgeState = new GrabbingLedgeState();
         jumpingState = new JumpingState();

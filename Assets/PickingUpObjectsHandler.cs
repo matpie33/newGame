@@ -14,6 +14,8 @@ public class PickingUpObjectsHandler : MonoBehaviour
 
     private Animator animator;
     private HandsReferenceCalculator handsReferenceCalculator;
+    [SerializeField]
+    private int initialThrowingSpeed = 40;
 
 
 
@@ -60,6 +62,12 @@ public class PickingUpObjectsHandler : MonoBehaviour
         SetPickingUpObject(false);
     }
 
+    public Vector3 GetInitialSpeedForThrownObject()
+    {
+        return initialThrowingSpeed * Vector3.Scale(
+            transform.forward, new Vector3(1, 0, 1));
+    }
+
     public void ThrowObject()
     {
         rigsHandler.DisablePickupObjectRig();
@@ -68,8 +76,7 @@ public class PickingUpObjectsHandler : MonoBehaviour
         objectsInFrontDetectingCollider.enabled = true;
         SetPickingUpObject(false);
         animator.SetBool("throwObjects", false);
-        ObjectToPickup.GetComponent<Rigidbody>().AddForce(50 * Vector3.Scale(
-            transform.forward, new Vector3(1, 0, 1)), ForceMode.Impulse);
+        ObjectToPickup.GetComponent<Rigidbody>().AddForce(GetInitialSpeedForThrownObject(), ForceMode.VelocityChange);
 
     }
 

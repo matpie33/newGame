@@ -25,6 +25,7 @@ class ThrowingObjectsState : State
     {
 
         daleStateHandler.animator.SetBool("throwObjects", true);
+        daleStateHandler.predictedTrajectoryCalculator.SetEnabled(false);
 
     }
 

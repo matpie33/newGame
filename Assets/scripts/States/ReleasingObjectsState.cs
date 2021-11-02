@@ -25,6 +25,7 @@ class ReleasingObjectsState : State
     {
 
         daleStateHandler.pickingUpObjectsHandler.ReleaseObject();
+        daleStateHandler.predictedTrajectoryCalculator.SetEnabled(false);
 
 
     }

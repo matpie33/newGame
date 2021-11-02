@@ -24,6 +24,7 @@ class HoldingObjectState : State
     public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
     {
         daleStateHandler.pickingUpObjectsHandler.PickupObject();
+        daleStateHandler.predictedTrajectoryCalculator.SetEnabled(true);
 
     }
 
