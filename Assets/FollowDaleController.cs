@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MoveToTarget : MonoBehaviour
+public class FollowDaleController : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
 

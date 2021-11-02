@@ -32,9 +32,13 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
         {
             destinationMarker = Instantiate(pickingUpObjectsHandler.ObjectToPickup);
             destinationMarker.GetComponent<Collider>().isTrigger = true;
+            destinationMarker.GetComponent<Rigidbody>().useGravity = false;
             destinationMarker.transform.localScale = Vector3.one;
+            destinationMarker.transform.parent = null;
+            destinationMarker.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
         }
-        else {
+        else
+        {
             Destroy(destinationMarker);
         }
     }
