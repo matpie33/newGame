@@ -21,7 +21,7 @@ class HandsReferenceCalculator : MonoBehaviour
         Vector3 objectToPickupPosition = objectToPickup.transform.position;
         Vector3 dalePosition = transform.position;
 
-        Vector3 objectToPickupSize = objectToPickup.GetComponent<Renderer>().bounds.size;
+        Vector3 objectToPickupSize = objectToPickup.GetComponentInChildren<Renderer>().bounds.size;
         Vector3 leftHandReferencePosition;
         Vector3 rightHandReferencePosition;
         if (Vector3.Distance(GetValueAlongXAxis(dalePosition), GetValueAlongXAxis(objectToPickupPosition)) <
