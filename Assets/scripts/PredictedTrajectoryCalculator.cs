@@ -17,7 +17,19 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
     private LayerMask collidableLayers;
 
     [SerializeField]
-    private float sphereRadiusToCheckForObstacles = 1;
+    private float sphereRadiusToCheckForObstacles = 0.5f;
+
+    [SerializeField]
+    private GameObject target;
+
+    [SerializeField]
+    private Material materialToApply;
+
+    private Dictionary<GameObject, Material> objectsMarkedAsThrowingDestination = new Dictionary<GameObject, Material>();
+
+    [SerializeField]
+    private Material materialForDestinationMarker;
+
 
     public void Start()
     {
@@ -33,9 +45,8 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
             destinationMarker = Instantiate(pickingUpObjectsHandler.ObjectToPickup);
             destinationMarker.GetComponent<Collider>().isTrigger = true;
             destinationMarker.GetComponent<Rigidbody>().useGravity = false;
-            destinationMarker.transform.localScale = Vector3.one;
-            destinationMarker.transform.parent = null;
-            destinationMarker.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+            destinationMarker.transform.localScale = pickingUpObjectsHandler.ObjectToPickup.transform.lossyScale;
+            destinationMarker.GetComponent<Renderer>().material = materialForDestinationMarker;
         }
         else
         {
@@ -43,6 +54,10 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        ClearObjectsMarkedAsDestinations();
+    }
 
     public void Update()
     {
@@ -50,8 +65,9 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
         Vector3 startingVelocity = pickingUpObjectsHandler.GetInitialSpeedForThrownObject();
         Vector3 startingPosition = thrownObjectRB.gameObject.transform.position;
         Vector3 destination = Vector3.zero;
-        Vector3 newPoint = Vector3.zero;
-        for (float t = 0; t < maxTimeOfCalculation; t += deltaTimeToCalculateTrajectory)
+        Vector3 newPoint = startingPosition;
+
+        for (float t = 0; t < 0.4; t += deltaTimeToCalculateTrajectory)
         {
             newPoint = startingPosition + t * startingVelocity;
             newPoint.y = startingPosition.y + startingVelocity.y * t + Physics.gravity.y / 2f * t * t;
@@ -59,11 +75,33 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
             Collider[] colliders = Physics.OverlapSphere(newPoint, sphereRadiusToCheckForObstacles, collidableLayers);
             if (colliders.Length > 0 && !colliders[0].gameObject.Equals(destinationMarker) && !colliders[0].gameObject.Equals(pickingUpObjectsHandler.ObjectToPickup))
             {
-                break;
+                if (objectsMarkedAsThrowingDestination.ContainsKey(colliders[0].gameObject))
+                {
+                    destinationMarker.transform.position = destination;
+                    return;
+                }
+                ClearObjectsMarkedAsDestinations();
+                objectsMarkedAsThrowingDestination.Add(colliders[0].gameObject, colliders[0].gameObject.GetComponent<Renderer>().material);
+                colliders[0].gameObject.GetComponent<Renderer>().material = materialToApply;
+                destinationMarker.transform.position = destination;
+                return;
             }
         }
         destinationMarker.transform.position = destination;
+        if (objectsMarkedAsThrowingDestination.Count > 0)
+        {
+            ClearObjectsMarkedAsDestinations();
+            destinationMarker.SetActive(true);
+        }
         destinationMarker.transform.rotation = Quaternion.identity;
     }
 
+    private void ClearObjectsMarkedAsDestinations()
+    {
+        foreach (KeyValuePair<GameObject, Material> entry in objectsMarkedAsThrowingDestination)
+        {
+            entry.Key.GetComponent<Renderer>().material = entry.Value;
+        }
+        objectsMarkedAsThrowingDestination.Clear();
+    }
 }
