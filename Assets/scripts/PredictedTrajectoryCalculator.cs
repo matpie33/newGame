@@ -14,13 +14,7 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
     private float maxTimeOfCalculation = 0.4f;
 
     [SerializeField]
-    private LayerMask collidableLayers;
-
-    [SerializeField]
     private float sphereRadiusToCheckForObstacles = 0.5f;
-
-    [SerializeField]
-    private GameObject target;
 
     [SerializeField]
     private Material materialToApply;
@@ -54,6 +48,7 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
         }
     }
 
+
     private void OnDisable()
     {
         ClearObjectsMarkedAsDestinations();
@@ -72,7 +67,7 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
             newPoint = startingPosition + t * startingVelocity;
             newPoint.y = startingPosition.y + startingVelocity.y * t + Physics.gravity.y / 2f * t * t;
             destination = newPoint;
-            Collider[] colliders = Physics.OverlapSphere(newPoint, sphereRadiusToCheckForObstacles, collidableLayers);
+            Collider[] colliders = Physics.OverlapSphere(newPoint, sphereRadiusToCheckForObstacles);
             if (colliders.Length > 0 && !colliders[0].gameObject.Equals(destinationMarker) && !colliders[0].gameObject.Equals(pickingUpObjectsHandler.ObjectToPickup))
             {
                 if (objectsMarkedAsThrowingDestination.ContainsKey(colliders[0].gameObject))
@@ -81,8 +76,8 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
                     return;
                 }
                 ClearObjectsMarkedAsDestinations();
-                objectsMarkedAsThrowingDestination.Add(colliders[0].gameObject, colliders[0].gameObject.GetComponent<Renderer>().material);
-                colliders[0].gameObject.GetComponent<Renderer>().material = materialToApply;
+                objectsMarkedAsThrowingDestination.Add(colliders[0].gameObject, colliders[0].gameObject.GetComponentInChildren<Renderer>().material);
+                colliders[0].gameObject.GetComponentInChildren<Renderer>().material = materialToApply;
                 destinationMarker.transform.position = destination;
                 return;
             }
@@ -100,7 +95,7 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
     {
         foreach (KeyValuePair<GameObject, Material> entry in objectsMarkedAsThrowingDestination)
         {
-            entry.Key.GetComponent<Renderer>().material = entry.Value;
+            entry.Key.GetComponentInChildren<Renderer>().material = entry.Value;
         }
         objectsMarkedAsThrowingDestination.Clear();
     }

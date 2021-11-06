@@ -42,7 +42,7 @@ public class GameManagement : MonoBehaviour
             PickingUpObjectsHandler.ObjectToPickup = other.gameObject;
             objectsMarker.SetActive(true);
             Vector3 positionForMarker = other.transform.position;
-            positionForMarker.y += other.bounds.size.y / 2 + objectsMarker.GetComponent<MeshRenderer>().bounds.size.y / 2;
+            positionForMarker.y += other.bounds.size.y / 2 + objectsMarker.GetComponentInChildren<MeshRenderer>().bounds.size.y / 2;
             objectsMarker.transform.position = positionForMarker;
         }
     }
