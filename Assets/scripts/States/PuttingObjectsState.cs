@@ -25,6 +25,7 @@ class PuttingObjectsState : State
 
     public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
     {
+        daleStateHandler.predictedTrajectoryCalculator.SetEnabled(false);
 
     }
 

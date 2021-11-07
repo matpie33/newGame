@@ -31,8 +31,8 @@ class HoldingObjectState : State
         if (!previousState.Equals(daleStateHandler.puttingObjectsState))
         {
             daleStateHandler.pickingUpObjectsHandler.PickupObject();
-            daleStateHandler.predictedTrajectoryCalculator.SetEnabled(true);
         }
+        daleStateHandler.predictedTrajectoryCalculator.SetEnabled(true);
 
     }
 

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -62,6 +63,7 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
         Vector3 destination = Vector3.zero;
         Vector3 newPoint = startingPosition;
 
+
         for (float t = 0; t < 0.4; t += deltaTimeToCalculateTrajectory)
         {
             newPoint = startingPosition + t * startingVelocity;
@@ -70,6 +72,10 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
             Collider[] colliders = Physics.OverlapSphere(newPoint, sphereRadiusToCheckForObstacles);
             if (colliders.Length > 0 && !colliders[0].gameObject.Equals(destinationMarker) && !colliders[0].gameObject.Equals(pickingUpObjectsHandler.objectToPickup))
             {
+                if (AreAllCollidersChildrenOfDale(colliders))
+                {
+                    continue;
+                }
                 if (objectsMarkedAsThrowingDestination.ContainsKey(colliders[0].gameObject))
                 {
                     destinationMarker.transform.position = destination;
@@ -89,6 +95,20 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
             destinationMarker.SetActive(true);
         }
         destinationMarker.transform.rotation = Quaternion.identity;
+    }
+
+    private bool AreAllCollidersChildrenOfDale(Collider[] colliders)
+    {
+
+        foreach (Collider c in colliders)
+        {
+            if (!c.gameObject.transform.IsChildOf(gameObject.transform))
+            {
+
+                return false;
+            }
+        }
+        return true;
     }
 
     private void ClearObjectsMarkedAsDestinations()
