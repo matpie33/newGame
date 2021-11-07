@@ -21,6 +21,15 @@ public class HorizontalMovementController : MonoBehaviour
     private float maxDelta = 0.1f;
     private bool respondToArrowKeys = true;
     private bool keepHorizontalSpeed;
+    private bool moveBackOnCollision = false;
+
+    [SerializeField]
+    private float howMuchToMoveBackOnCollision = 0.01f;
+
+    public void MoveBack()
+    {
+        moveBackOnCollision = true;
+    }
 
     public void Start()
     {
@@ -30,7 +39,11 @@ public class HorizontalMovementController : MonoBehaviour
 
     public Vector3 CalculateHorizontalMovement()
     {
-
+        if (moveBackOnCollision)
+        {
+            moveBackOnCollision = false;
+            return -howMuchToMoveBackOnCollision * currentMovementDirection;
+        }
         Vector3 direction = CalculateDirectionToMove();
         bool isMovingBackward = IsMovingBackward();
         int directionMultiplier = isMovingBackward ? -1 : 1;
