@@ -12,7 +12,6 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
 
     private float deltaTimeToCalculateTrajectory = 0.01f;
 
-    private float maxTimeOfCalculation = 0.4f;
 
     [SerializeField]
     private float sphereRadiusToCheckForObstacles = 0.5f;
@@ -22,8 +21,6 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
 
     private Dictionary<GameObject, Material> objectsMarkedAsThrowingDestination = new Dictionary<GameObject, Material>();
 
-    [SerializeField]
-    private Material materialForDestinationMarker;
 
 
     public void Start()
