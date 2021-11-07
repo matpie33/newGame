@@ -24,7 +24,7 @@ class ReleasingObjectsState : State
     public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
     {
 
-        daleStateHandler.pickingUpObjectsHandler.ReleaseObject();
+        daleStateHandler.pickingUpObjectsHandler.PutObjectInFront();
         daleStateHandler.predictedTrajectoryCalculator.SetEnabled(false);
 
 

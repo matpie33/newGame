@@ -15,7 +15,6 @@ class DaleStateHandler : MonoBehaviour
     public CharacterController characterController { get; private set; }
     public MovementController movementController { get; private set; }
 
-    public PuttingObjectsState puttingObjectsState { get; private set; }
 
     public HorizontalMovementController horizontalMovementController { get; private set; }
 
@@ -45,7 +44,6 @@ class DaleStateHandler : MonoBehaviour
         horizontalMovementController = GetComponent<HorizontalMovementController>();
         predictedTrajectoryCalculator = GetComponent<PredictedTrajectoryCalculator>();
 
-        puttingObjectsState = new PuttingObjectsState();
         grabbingLedgeState = new GrabbingLedgeState();
         jumpingState = new JumpingState();
         walkingState = new WalkingState();

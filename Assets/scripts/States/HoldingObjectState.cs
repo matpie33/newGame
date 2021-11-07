@@ -11,14 +11,9 @@ class HoldingObjectState : State
         {
             return daleStateHandler.releasingObjectsState;
         }
-        else if (daleStateHandler.keyboardController.IsThrowingOrPuttingObjectKeyPressed)
+        else if (daleStateHandler.keyboardController.IsThrowingKeyPressed)
         {
             return daleStateHandler.throwingObjectsState;
-        }
-        else if (daleStateHandler.keyboardController.IsSwitchBetweenPuttingAndThrowingObjectsKeyPressed)
-        {
-            daleStateHandler.keyboardController.SwitchBetweenPuttingAndThrowingObjectsConsumed();
-            return daleStateHandler.puttingObjectsState;
         }
         else
         {
@@ -28,10 +23,7 @@ class HoldingObjectState : State
 
     public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
     {
-        if (!previousState.Equals(daleStateHandler.puttingObjectsState))
-        {
-            daleStateHandler.pickingUpObjectsHandler.PickupObject();
-        }
+        daleStateHandler.pickingUpObjectsHandler.PickupObject();
         daleStateHandler.predictedTrajectoryCalculator.SetEnabled(true);
 
     }

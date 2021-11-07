@@ -7,9 +7,8 @@ public class KeyboardController : MonoBehaviour
 
     public bool IsJumpKeyPressed { get; private set; }
     public bool IsPickupOrReleaseObjectsKeyPressed { get; private set; }
-    public bool IsThrowingOrPuttingObjectKeyPressed { get; private set; }
+    public bool IsThrowingKeyPressed { get; private set; }
 
-    public bool IsSwitchBetweenPuttingAndThrowingObjectsKeyPressed { get; private set; }
 
 
     void Update()
@@ -32,27 +31,15 @@ public class KeyboardController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            IsThrowingOrPuttingObjectKeyPressed = true;
+            IsThrowingKeyPressed = true;
         }
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            IsThrowingOrPuttingObjectKeyPressed = false;
-        }
-        if (Input.GetKeyUp(KeyCode.Tab))
-        {
-            IsSwitchBetweenPuttingAndThrowingObjectsKeyPressed = false;
-        }
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            IsSwitchBetweenPuttingAndThrowingObjectsKeyPressed = true;
+            IsThrowingKeyPressed = false;
         }
 
     }
 
-    public void SwitchBetweenPuttingAndThrowingObjectsConsumed()
-    {
-        IsSwitchBetweenPuttingAndThrowingObjectsKeyPressed = false;
-    }
 
 
 }
