@@ -36,10 +36,10 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
         this.enabled = enabled;
         if (enabled)
         {
-            destinationMarker = Instantiate(pickingUpObjectsHandler.ObjectToPickup);
+            destinationMarker = Instantiate(pickingUpObjectsHandler.objectToPickup);
             destinationMarker.GetComponent<Collider>().isTrigger = true;
             destinationMarker.GetComponent<Rigidbody>().useGravity = false;
-            destinationMarker.transform.localScale = pickingUpObjectsHandler.ObjectToPickup.transform.lossyScale;
+            destinationMarker.transform.localScale = pickingUpObjectsHandler.objectToPickup.transform.lossyScale;
             destinationMarker.GetComponentInChildren<Renderer>().material.color = Color.red;
         }
         else
@@ -56,7 +56,7 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
 
     public void Update()
     {
-        Rigidbody thrownObjectRB = pickingUpObjectsHandler.ObjectToPickup.GetComponent<Rigidbody>();
+        Rigidbody thrownObjectRB = pickingUpObjectsHandler.objectToPickup.GetComponent<Rigidbody>();
         Vector3 startingVelocity = pickingUpObjectsHandler.GetInitialSpeedForThrownObject();
         Vector3 startingPosition = thrownObjectRB.gameObject.transform.position;
         Vector3 destination = Vector3.zero;
@@ -68,7 +68,7 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
             newPoint.y = startingPosition.y + startingVelocity.y * t + Physics.gravity.y / 2f * t * t;
             destination = newPoint;
             Collider[] colliders = Physics.OverlapSphere(newPoint, sphereRadiusToCheckForObstacles);
-            if (colliders.Length > 0 && !colliders[0].gameObject.Equals(destinationMarker) && !colliders[0].gameObject.Equals(pickingUpObjectsHandler.ObjectToPickup))
+            if (colliders.Length > 0 && !colliders[0].gameObject.Equals(destinationMarker) && !colliders[0].gameObject.Equals(pickingUpObjectsHandler.objectToPickup))
             {
                 if (objectsMarkedAsThrowingDestination.ContainsKey(colliders[0].gameObject))
                 {

@@ -9,7 +9,7 @@ class ThrowingObjectsState : State
 
     public State DuringState(DaleStateHandler daleStateHandler)
     {
-        if (!daleStateHandler.keyboardController.IsThrowingObjectKeyPressed)
+        if (!daleStateHandler.keyboardController.IsThrowingOrPuttingObjectKeyPressed)
         {
 
             return daleStateHandler.walkingState;

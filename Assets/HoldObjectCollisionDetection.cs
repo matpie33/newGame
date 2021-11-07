@@ -16,7 +16,7 @@ public class HoldObjectCollisionDetection : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (gameObject.Equals(pickingUpObjectsHandler.ObjectToPickup))
+        if (gameObject.Equals(pickingUpObjectsHandler.objectToPickup))
         {
             horizontalMovementController.MoveBack();
         }

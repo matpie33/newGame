@@ -22,6 +22,6 @@ public class DetectObjectsInFront : MonoBehaviour
     {
         GameManagement.instance.HidePickableObjectMarker();
         ledgeDetectionState.IsThereWall = false;
-        pickingUpObjectsHandler.ObjectToPickup = null;
+        pickingUpObjectsHandler.objectToPickup = null;
     }
 }
