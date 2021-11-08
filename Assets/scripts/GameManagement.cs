@@ -37,7 +37,7 @@ public class GameManagement : MonoBehaviour
 
     public void HandleShowingPickableObjectMarker(Collider other)
     {
-        if (other.attachedRigidbody != null && other.gameObject.CompareTag("pickable"))
+        if (pickingUpObjectsHandler.objectToPickup == null && other.attachedRigidbody != null && other.gameObject.CompareTag("pickable"))
         {
             objectsMarker.SetActive(true);
             Vector3 positionForMarker = other.transform.position;
