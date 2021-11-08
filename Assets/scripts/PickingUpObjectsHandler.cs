@@ -18,6 +18,8 @@ public class PickingUpObjectsHandler : MonoBehaviour
     [SerializeField]
     private int initialThrowingSpeed = 40;
 
+    private LocationCalculatorForPuttingObjectsInFront locationCalculatorForPuttingObjectsInFront;
+
 
 
     void Start()
@@ -25,14 +27,18 @@ public class PickingUpObjectsHandler : MonoBehaviour
         rigsHandler = GetComponent<DaleRigsHandler>();
         animator = GetComponent<Animator>();
         handsReferenceCalculator = GetComponent<HandsReferenceCalculator>();
+        locationCalculatorForPuttingObjectsInFront = GetComponent<LocationCalculatorForPuttingObjectsInFront>();
     }
 
     public void PutObjectInFront()
     {
         ReleaseObject();
-        Vector3 daleSize = gameObject.GetComponentInChildren<Renderer>().bounds.size;
-        objectToPickup.transform.position = gameObject.transform.position + Vector3.Scale(
-            gameObject.transform.forward, daleSize);
+        LocationForPuttingObject locationForPuttingObject = locationCalculatorForPuttingObjectsInFront.CalculateLocationWhereToPutObject();
+        if (locationForPuttingObject.CanPlaceObject)
+        {
+            objectToPickup.transform.position = locationForPuttingObject.WhereToPut + 0.5f * objectToPickup.GetComponentInChildren<Renderer>().bounds.size.y * Vector3.up + Vector3.up * 0.5f;
+        }
+        objectToPickup = null;
 
 
 
@@ -58,6 +64,7 @@ public class PickingUpObjectsHandler : MonoBehaviour
 
         handsReferenceCalculator.CalculateHandsReference(objectToPickup);
         objectToPickup.GetComponent<Rigidbody>().isKinematic = true;
+        objectToPickup.GetComponent<Collider>().enabled = false;
         objectsInFrontDetectingCollider.enabled = false;
         objectToPickup.transform.SetParent(parentPositionObject.transform);
         animator.SetBool("pickupObjects", false);
@@ -68,10 +75,12 @@ public class PickingUpObjectsHandler : MonoBehaviour
     {
         rigsHandler.DisablePickupObjectRig();
         animator.SetBool("pickupObjects", false);
+        objectToPickup.GetComponent<Collider>().enabled = true;
         objectToPickup.transform.SetParent(null);
         objectToPickup.GetComponent<Rigidbody>().isKinematic = false;
         objectsInFrontDetectingCollider.enabled = true;
         SetPickingUpObject(false);
+
     }
 
     public Vector3 GetInitialSpeedForThrownObject()
@@ -83,12 +92,14 @@ public class PickingUpObjectsHandler : MonoBehaviour
     public void ThrowObject()
     {
         rigsHandler.DisablePickupObjectRig();
+        objectToPickup.GetComponent<Collider>().enabled = true;
         objectToPickup.transform.SetParent(null);
         objectToPickup.GetComponent<Rigidbody>().isKinematic = false;
         objectsInFrontDetectingCollider.enabled = true;
         SetPickingUpObject(false);
         animator.SetBool("throwObjects", false);
         objectToPickup.GetComponent<Rigidbody>().AddForce(GetInitialSpeedForThrownObject(), ForceMode.VelocityChange);
+        objectToPickup = null;
 
     }
 
