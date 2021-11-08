@@ -9,6 +9,8 @@ public class LocationCalculatorForPuttingObjectsInFront : MonoBehaviour
     private float distanceAboveDaleCenterForRaycastStart = 0.6f;
     [SerializeField]
     private float howFarToSearchForObstacleFromDale = 3f;
+    [SerializeField]
+    private LayerMask layerMask;
 
 
     public LocationForPuttingObject CalculateLocationWhereToPutObject()
@@ -18,6 +20,7 @@ public class LocationCalculatorForPuttingObjectsInFront : MonoBehaviour
         RaycastHit raycastInfo;
         bool isAnyObjectInFrontOfDale;
         CheckIfThereIsObjectInFrontOfDale(out daleSize, out maximumHeightOnWhichDaleCanPlaceObjects, out raycastInfo, out isAnyObjectInFrontOfDale);
+       
 
         bool canPlaceObject = false;
         Vector3 position = Vector3.zero;
@@ -41,7 +44,9 @@ public class LocationCalculatorForPuttingObjectsInFront : MonoBehaviour
     {
         bool canPlaceObject;
         Vector3 originOfRayForCheckingIfThereAreStackedObjects = raycastInfo.point + gameObject.transform.forward * 0.2f;
-        RaycastHit[] objectsOnTopOfAnotherRaycastInfo = Physics.RaycastAll(originOfRayForCheckingIfThereAreStackedObjects, Vector3.up, maximumHeightOnWhichDaleCanPlaceObjects);
+        int layerBitMask = 1 <<layerMask.value;
+        int everythingExceptLayerMask = ~layerBitMask;
+        RaycastHit[] objectsOnTopOfAnotherRaycastInfo = Physics.RaycastAll(originOfRayForCheckingIfThereAreStackedObjects, Vector3.up, maximumHeightOnWhichDaleCanPlaceObjects, everythingExceptLayerMask);
         if (objectsOnTopOfAnotherRaycastInfo.Length > 1)
         {
 
