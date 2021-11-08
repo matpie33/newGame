@@ -36,7 +36,7 @@ public class PickingUpObjectsHandler : MonoBehaviour
         LocationForPuttingObject locationForPuttingObject = locationCalculatorForPuttingObjectsInFront.CalculateLocationWhereToPutObject();
         if (locationForPuttingObject.CanPlaceObject)
         {
-            objectToPickup.transform.position = locationForPuttingObject.WhereToPut + 0.5f * objectToPickup.GetComponentInChildren<Renderer>().bounds.size.y * Vector3.up + Vector3.up * 0.5f;
+            objectToPickup.transform.position = locationForPuttingObject.WhereToPut + 0.5f * objectToPickup.GetComponentInChildren<Renderer>().bounds.size.y * Vector3.up + Vector3.up *  0.1f;
         }
         objectToPickup = null;
 
@@ -79,6 +79,7 @@ public class PickingUpObjectsHandler : MonoBehaviour
         objectToPickup.transform.SetParent(null);
         objectToPickup.GetComponent<Rigidbody>().isKinematic = false;
         objectsInFrontDetectingCollider.enabled = true;
+        objectToPickup.transform.rotation = Quaternion.identity;
         SetPickingUpObject(false);
 
     }

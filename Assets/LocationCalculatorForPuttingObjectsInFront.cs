@@ -42,7 +42,7 @@ public class LocationCalculatorForPuttingObjectsInFront : MonoBehaviour
         bool canPlaceObject;
         Vector3 originOfRayForCheckingIfThereAreStackedObjects = raycastInfo.point + gameObject.transform.forward * 0.2f;
         RaycastHit[] objectsOnTopOfAnotherRaycastInfo = Physics.RaycastAll(originOfRayForCheckingIfThereAreStackedObjects, Vector3.up, maximumHeightOnWhichDaleCanPlaceObjects);
-        if (objectsOnTopOfAnotherRaycastInfo.Length > 0)
+        if (objectsOnTopOfAnotherRaycastInfo.Length > 1)
         {
 
             Tuple<Vector3, float> objectYPositionAndHalfOfHeight = GetPropertiesOfObjectOnTopOfAllOther(objectsOnTopOfAnotherRaycastInfo);
