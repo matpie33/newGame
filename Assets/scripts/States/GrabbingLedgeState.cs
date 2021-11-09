@@ -37,6 +37,7 @@ class GrabbingLedgeState : State
             daleStateHandler.movementController.enabled = true;
 
             daleStateHandler.animator.applyRootMotion = false;
+            daleStateHandler.keyboardController.ConsumePickupOrReleaseKey();
             return daleStateHandler.walkingState;
         }
         return this;

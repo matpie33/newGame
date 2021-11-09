@@ -40,6 +40,10 @@ public class KeyboardController : MonoBehaviour
 
     }
 
+    public void ConsumePickupOrReleaseKey()
+    {
+        IsPickupOrReleaseObjectsKeyPressed = false;
+    }
 
 
 }
