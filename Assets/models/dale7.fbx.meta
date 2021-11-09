@@ -543,7 +543,7 @@ ModelImporter:
       takeName: prepareToJump
       internalID: 0
       firstFrame: 0
-      lastFrame: 12
+      lastFrame: 4
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -572,7 +572,7 @@ ModelImporter:
       takeName: jumpAir
       internalID: 0
       firstFrame: 0
-      lastFrame: 39
+      lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

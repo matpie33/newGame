@@ -25,12 +25,11 @@ class JumpingState : State
     public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
     {
         Animator animator = daleStateHandler.animator;
-        MovementController movementController = daleStateHandler.movementController;
 
         animator.SetBool("jump", true);
         animator.SetBool("movingBackward", false);
         daleStateHandler.horizontalMovementController.SetRespondingToArrowKeys(false);
         daleStateHandler.horizontalMovementController.KeepHorizontalSpeed(true);
-        daleStateHandler.verticalMovementController.PrepareToJump();
+        daleStateHandler.verticalMovementController.JumpToAir();
     }
 }
