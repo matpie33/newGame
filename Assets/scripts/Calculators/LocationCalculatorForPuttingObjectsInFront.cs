@@ -13,7 +13,7 @@ public class LocationCalculatorForPuttingObjectsInFront : MonoBehaviour
     private LayerMask layerMask;
 
 
-    public LocationForPuttingObject CalculateLocationWhereToPutObject()
+    public LocationForPuttingObject CalculateLocationWhereToPutObject(GameObject objectToPickup)
     {
         Vector3 daleSize;
         float maximumHeightOnWhichDaleCanPlaceObjects;
@@ -26,8 +26,13 @@ public class LocationCalculatorForPuttingObjectsInFront : MonoBehaviour
         Vector3 position = Vector3.zero;
         if (isAnyObjectInFrontOfDale)
         {
-            canPlaceObject = FindLocationWhereToPutObject(daleSize, maximumHeightOnWhichDaleCanPlaceObjects, raycastInfo, ref position);
+            canPlaceObject = FindLocationWhereToPutObject(daleSize, maximumHeightOnWhichDaleCanPlaceObjects, raycastInfo, ref position, objectToPickup);
 
+        }
+        else
+        {
+            canPlaceObject = true;
+            position = gameObject.transform.position + 0.5f * Vector3.Scale(gameObject.transform.forward, daleSize) + 0.3f * gameObject.transform.forward;
         }
         return CreateLocationForPuttingObject(canPlaceObject, position);
     }
@@ -40,7 +45,7 @@ public class LocationCalculatorForPuttingObjectsInFront : MonoBehaviour
         return locationForPuttingObject;
     }
 
-    private bool FindLocationWhereToPutObject(Vector3 daleSize, float maximumHeightOnWhichDaleCanPlaceObjects, RaycastHit raycastInfo, ref Vector3 position)
+    private bool FindLocationWhereToPutObject(Vector3 daleSize, float maximumHeightOnWhichDaleCanPlaceObjects, RaycastHit raycastInfo, ref Vector3 position, GameObject objectToPickup)
     {
         bool canPlaceObject;
         Vector3 originOfRayForCheckingIfThereAreStackedObjects = raycastInfo.point + gameObject.transform.forward * 0.2f;
@@ -70,7 +75,7 @@ public class LocationCalculatorForPuttingObjectsInFront : MonoBehaviour
             if (heightOfObjectInFrontOfDale <= maximumHeightOnWhichDaleCanPlaceObjects)
             {
                 canPlaceObject = true;
-                position = objectInFrontOfDale.transform.position + Vector3.up * 0.5f * heightOfObjectInFrontOfDale;
+                position = objectInFrontOfDale.transform.position + Vector3.up * 0.5f * heightOfObjectInFrontOfDale + Vector3.Scale(objectToPickup.GetComponentInChildren<Renderer>().bounds.size, Vector3.up) * 0.5f;
             }
             else
             {

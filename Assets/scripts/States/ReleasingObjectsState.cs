@@ -7,16 +7,22 @@ using UnityEngine;
 
 class ReleasingObjectsState : State
 {
+    private bool isReleasingSuccessful;
 
     public State DuringState(DaleStateHandler daleStateHandler)
     {
-        if (!daleStateHandler.keyboardController.IsPickupOrReleaseObjectsKeyPressed)
+        if (daleStateHandler.keyboardController.IsPickupOrReleaseObjectsKeyPressed)
         {
+            return this;
+        }
+        else if (isReleasingSuccessful)
+        {
+            isReleasingSuccessful = false;
             return daleStateHandler.walkingState;
         }
         else
         {
-            return this;
+            return daleStateHandler.holdingObjectState;
         }
 
     }
@@ -25,7 +31,7 @@ class ReleasingObjectsState : State
     {
 
         daleStateHandler.predictedTrajectoryCalculator.SetEnabled(false);
-        daleStateHandler.pickingUpObjectsHandler.PutObjectInFront();
+        isReleasingSuccessful = daleStateHandler.pickingUpObjectsHandler.PutObjectInFront();
 
 
     }

@@ -30,15 +30,22 @@ public class PickingUpObjectsController : MonoBehaviour
         locationCalculatorForPuttingObjectsInFront = GetComponent<LocationCalculatorForPuttingObjectsInFront>();
     }
 
-    public void PutObjectInFront()
+    public bool PutObjectInFront()
     {
-        ReleaseObject();
-        LocationForPuttingObject locationForPuttingObject = locationCalculatorForPuttingObjectsInFront.CalculateLocationWhereToPutObject();
+
+        LocationForPuttingObject locationForPuttingObject = locationCalculatorForPuttingObjectsInFront.CalculateLocationWhereToPutObject(objectToPickup);
+        Debug.Log("object in front size: " + objectToPickup.GetComponentInChildren<Renderer>().bounds.size);
         if (locationForPuttingObject.CanPlaceObject)
         {
-            objectToPickup.transform.position = locationForPuttingObject.WhereToPut + 0.5f * objectToPickup.GetComponentInChildren<Renderer>().bounds.size.y * Vector3.up + Vector3.up * 0.1f;
+            objectToPickup.transform.position = locationForPuttingObject.WhereToPut;
+            ReleaseObject();
+            objectToPickup = null;
+            return true;
         }
-        objectToPickup = null;
+        else
+        {
+            return false;
+        }
 
 
 
