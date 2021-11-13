@@ -23,6 +23,7 @@ class HoldingObjectState : State
 
     public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
     {
+        daleStateHandler.audioManager.ToggleSound("pickingUpObjectSound", true);
         daleStateHandler.pickingUpObjectsHandler.PickupObject();
         daleStateHandler.predictedTrajectoryCalculator.SetEnabled(true);
 

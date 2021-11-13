@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickingUpObjectsHandler : MonoBehaviour
+public class PickingUpObjectsController : MonoBehaviour
 {
     private bool isPickingUpObject;
     [SerializeField]
     private BoxCollider objectsInFrontDetectingCollider;
-    private DaleRigsHandler rigsHandler;
+    private DaleRigsController rigsHandler;
     [SerializeField]
     public GameObject parentPositionObject;
     public GameObject objectToPickup { get; set; }
@@ -24,7 +24,7 @@ public class PickingUpObjectsHandler : MonoBehaviour
 
     void Start()
     {
-        rigsHandler = GetComponent<DaleRigsHandler>();
+        rigsHandler = GetComponent<DaleRigsController>();
         animator = GetComponent<Animator>();
         handsReferenceCalculator = GetComponent<HandsReferenceCalculator>();
         locationCalculatorForPuttingObjectsInFront = GetComponent<LocationCalculatorForPuttingObjectsInFront>();
@@ -36,7 +36,7 @@ public class PickingUpObjectsHandler : MonoBehaviour
         LocationForPuttingObject locationForPuttingObject = locationCalculatorForPuttingObjectsInFront.CalculateLocationWhereToPutObject();
         if (locationForPuttingObject.CanPlaceObject)
         {
-            objectToPickup.transform.position = locationForPuttingObject.WhereToPut + 0.5f * objectToPickup.GetComponentInChildren<Renderer>().bounds.size.y * Vector3.up + Vector3.up *  0.1f;
+            objectToPickup.transform.position = locationForPuttingObject.WhereToPut + 0.5f * objectToPickup.GetComponentInChildren<Renderer>().bounds.size.y * Vector3.up + Vector3.up * 0.1f;
         }
         objectToPickup = null;
 

@@ -28,7 +28,9 @@ class DaleStateHandler : MonoBehaviour
 
     public Animator animator { get; private set; }
 
-    public PickingUpObjectsHandler pickingUpObjectsHandler { get; private set; }
+    public PickingUpObjectsController pickingUpObjectsHandler { get; private set; }
+
+    public AudioManager audioManager;
 
     private State currentState;
 
@@ -38,11 +40,12 @@ class DaleStateHandler : MonoBehaviour
         keyboardController = FindObjectOfType<KeyboardController>();
         characterController = FindObjectOfType<CharacterController>();
         movementController = FindObjectOfType<MovementController>();
-        pickingUpObjectsHandler = GetComponent<PickingUpObjectsHandler>();
+        pickingUpObjectsHandler = GetComponent<PickingUpObjectsController>();
         ledgeDetectionState = FindObjectOfType<LedgeDetectionState>();
         verticalMovementController = GetComponent<VerticalMovementController>();
         horizontalMovementController = GetComponent<HorizontalMovementController>();
         predictedTrajectoryCalculator = GetComponent<PredictedTrajectoryCalculator>();
+        audioManager = FindObjectOfType<AudioManager>();
 
         grabbingLedgeState = new GrabbingLedgeState();
         jumpingState = new JumpingState();

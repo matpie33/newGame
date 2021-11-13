@@ -7,10 +7,6 @@ public class DaleHealth : MonoBehaviour
 
     public int Health { get; set; }
 
-    public void SetHealth(int health)
-    {
-        this.Health = health;
-    }
 
 
 }

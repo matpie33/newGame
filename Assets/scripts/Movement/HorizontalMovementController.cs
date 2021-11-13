@@ -26,6 +26,8 @@ public class HorizontalMovementController : MonoBehaviour
     [SerializeField]
     private float howMuchToMoveBackOnCollision = 0.01f;
 
+    private AudioManager audioManager;
+
     public void MoveBack()
     {
         moveBackOnCollision = true;
@@ -34,6 +36,7 @@ public class HorizontalMovementController : MonoBehaviour
     public void Start()
     {
         animator = GetComponent<Animator>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
 
@@ -56,6 +59,8 @@ public class HorizontalMovementController : MonoBehaviour
             RotateCharacterTowardsAngle(targetAngle);
             animator.SetBool("run", true);
             animator.SetBool("movingBackward", false);
+            audioManager.ToggleSound("daleRunningSound", true);
+            audioManager.ToggleSound("daleBackwardsSound", false);
 
 
         }
@@ -63,6 +68,8 @@ public class HorizontalMovementController : MonoBehaviour
         {
             animator.SetBool("movingBackward", true);
             animator.SetBool("run", false);
+            audioManager.ToggleSound("daleRunningSound", false);
+            audioManager.ToggleSound("daleBackwardsSound", true);
             RotateCharacterTowardsAngle(targetAngle);
             movementDirection *= 0.25f;
         }
@@ -71,6 +78,8 @@ public class HorizontalMovementController : MonoBehaviour
             movementDirection = new Vector3(Mathf.MoveTowards(currentMovementDirection.x, 0, maxDelta), 0, Mathf.MoveTowards(currentMovementDirection.z, 0, maxDelta));
             animator.SetBool("run", false);
             animator.SetBool("movingBackward", false);
+            audioManager.ToggleSound("daleRunningSound", false);
+            audioManager.ToggleSound("daleBackwardsSound", false);
         }
         if (keepHorizontalSpeed)
         {

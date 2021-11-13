@@ -28,6 +28,7 @@ class JumpingState : State
 
         animator.SetBool("jump", true);
         animator.SetBool("movingBackward", false);
+        daleStateHandler.audioManager.ToggleSound("daleJumpSound", true);
         daleStateHandler.horizontalMovementController.SetRespondingToArrowKeys(false);
         daleStateHandler.horizontalMovementController.KeepHorizontalSpeed(true);
         daleStateHandler.verticalMovementController.JumpToAir();

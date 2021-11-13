@@ -17,7 +17,7 @@ public class GameManagement : MonoBehaviour
     private bool timeOffsetPassedBetweenDrainingHP = true;
     private const int SECONDS_BETWEEN_DRAINING_HP = 2;
     public GameObject objectsMarker;
-    private PickingUpObjectsHandler pickingUpObjectsHandler;
+    private PickingUpObjectsController pickingUpObjectsHandler;
 
     public static GameManagement instance;
 
@@ -32,7 +32,7 @@ public class GameManagement : MonoBehaviour
         daleHealth.Health = hpMaxValue;
         daleHPSlider.maxValue = hpMaxValue;
         daleHPSlider.value = hpMaxValue;
-        pickingUpObjectsHandler = FindObjectOfType<PickingUpObjectsHandler>();
+        pickingUpObjectsHandler = FindObjectOfType<PickingUpObjectsController>();
     }
 
     public void HandleShowingPickableObjectMarker(Collider other)

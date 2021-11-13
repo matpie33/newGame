@@ -5,12 +5,12 @@ using UnityEngine;
 public class DetectObjectsInFront : MonoBehaviour
 {
     private LedgeDetectionState ledgeDetectionState;
-    private PickingUpObjectsHandler pickingUpObjectsHandler;
+    private PickingUpObjectsController pickingUpObjectsHandler;
 
     void Start()
     {
         ledgeDetectionState = GetComponentInParent<LedgeDetectionState>();
-        pickingUpObjectsHandler = GetComponentInParent<PickingUpObjectsHandler>();
+        pickingUpObjectsHandler = GetComponentInParent<PickingUpObjectsController>();
     }
 
     void OnTriggerEnter(Collider other)

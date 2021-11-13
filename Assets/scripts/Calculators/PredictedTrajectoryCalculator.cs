@@ -8,7 +8,7 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
 
     private GameObject destinationMarker;
 
-    private PickingUpObjectsHandler pickingUpObjectsHandler;
+    private PickingUpObjectsController pickingUpObjectsHandler;
 
     private float deltaTimeToCalculateTrajectory = 0.01f;
 
@@ -26,7 +26,7 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
 
     public void Start()
     {
-        pickingUpObjectsHandler = GetComponent<PickingUpObjectsHandler>();
+        pickingUpObjectsHandler = GetComponent<PickingUpObjectsController>();
         enabled = false;
     }
 

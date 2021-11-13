@@ -75,6 +75,9 @@ ModelImporter:
   - first:
       74: -3012361547672260724
     second: run
+  - first:
+      74: 7429522086595595392
+    second: idlePose.002
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -510,11 +513,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: idlePose
-      takeName: idlePose
+      name: idlePose.002
+      takeName: idlePose.002
       internalID: 0
       firstFrame: 0
-      lastFrame: 51
+      lastFrame: 35
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

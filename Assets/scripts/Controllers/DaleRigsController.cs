@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-public class DaleRigsHandler : MonoBehaviour
+public class DaleRigsController : MonoBehaviour
 {
     [SerializeField]
     private Rig pickingUpObjectsHandsRig;

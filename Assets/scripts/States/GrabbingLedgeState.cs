@@ -20,6 +20,8 @@ class GrabbingLedgeState : State
             daleStateHandler.animator.applyRootMotion = true;
             daleStateHandler.movementController.enabled = false;
             daleStateHandler.characterController.enabled = false;
+            daleStateHandler.audioManager.ToggleSound("pickingUpObjectSound", true);
+
         }
         if (climbingAnimationFinished)
         {

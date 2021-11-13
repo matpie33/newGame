@@ -6,7 +6,7 @@ public class ThrowBothHandsAnimationStartBehaviour : StateMachineBehaviour
 {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        FindObjectOfType<DaleRigsHandler>().DisablePickupObjectRig();
+        FindObjectOfType<DaleRigsController>().DisablePickupObjectRig();
 
     }
 }
