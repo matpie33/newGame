@@ -50,19 +50,13 @@ public class GameManagement : MonoBehaviour
 
     public void SetObjectToPickup(GameObject objectToPickup)
     {
-        if (pickingUpObjectsHandler.objectToPickup == null)
-        {
             pickingUpObjectsHandler.objectToPickup = objectToPickup;
-        }
 
     }
 
-    public void HandleHidingPickableObjectMarker(GameObject objectWithWhichWeStoppedColliding)
+    public void HandleHidingPickableObjectMarker()
     {
-        if (objectWithWhichWeStoppedColliding==null || pickingUpObjectsHandler.objectToPickup == null || objectWithWhichWeStoppedColliding.Equals(pickingUpObjectsHandler.objectToPickup))
-        {
             objectsMarker.SetActive(false);
-        }
 
     }
 
