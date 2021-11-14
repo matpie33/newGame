@@ -69,11 +69,10 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
             destination = newPoint;
             Collider[] colliders = Physics.OverlapSphere(newPoint, sphereRadiusToCheckForObstacles);
             Collider closestCollider = FindClosestCollider(colliders);
-            if (closestCollider!=null)
+            if (closestCollider != null)
             {
-                Vector3 sumOfBounds = Vector3.Scale(closestCollider.gameObject.GetComponentInChildren<Renderer>().bounds.size, new Vector3(1, 0, 1)*0.5f) +
-                     Vector3.Scale(
-                     pickingUpObjectsHandler.gameObject.GetComponentInChildren<Renderer>().bounds.size, new Vector3(1, 0, 1) * 0.5f);
+                Vector3 sumOfBounds = Vector3.Scale(MathUtils.GetObjectBounds(closestCollider.gameObject), new Vector3(1, 0, 1) * 0.5f) +
+                     Vector3.Scale(MathUtils.GetObjectBounds(pickingUpObjectsHandler.gameObject), new Vector3(1, 0, 1) * 0.5f);
                 float distanceBetweenObjects = Vector3.Distance(closestCollider.gameObject.transform.position, pickingUpObjectsHandler.transform.position) - sumOfBounds.magnitude;
                 if (distanceBetweenObjects < 0.3f)
                 {
@@ -117,7 +116,7 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
                 closestCollider = collider;
             }
         }
-        
+
         return closestCollider;
     }
 

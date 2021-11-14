@@ -71,11 +71,11 @@ public class LocationCalculatorForPuttingObjectsInFront : MonoBehaviour
         else
         {
             GameObject objectInFrontOfDale = raycastInfo.collider.gameObject;
-            float heightOfObjectInFrontOfDale = objectInFrontOfDale.GetComponentInChildren<Renderer>().bounds.size.y;
+            float heightOfObjectInFrontOfDale = MathUtils.GetObjectBounds(objectInFrontOfDale).y;
             if (heightOfObjectInFrontOfDale <= maximumHeightOnWhichDaleCanPlaceObjects)
             {
                 canPlaceObject = true;
-                position = objectInFrontOfDale.transform.position + Vector3.up * 0.5f * heightOfObjectInFrontOfDale + Vector3.Scale(objectToPickup.GetComponentInChildren<Renderer>().bounds.size, Vector3.up) * 0.5f;
+                position = objectInFrontOfDale.transform.position + Vector3.up * 0.5f * heightOfObjectInFrontOfDale + Vector3.Scale(MathUtils.GetObjectBounds(objectToPickup), Vector3.up) * 0.5f;
             }
             else
             {
@@ -88,7 +88,7 @@ public class LocationCalculatorForPuttingObjectsInFront : MonoBehaviour
 
     private void CheckIfThereIsObjectInFrontOfDale(out Vector3 daleSize, out float maximumHeightOnWhichDaleCanPlaceObjects, out RaycastHit raycastInfo, out bool isAnyObjectInFrontOfDale)
     {
-        daleSize = gameObject.GetComponentInChildren<Renderer>().bounds.size;
+        daleSize = MathUtils.GetObjectBounds(gameObject);
         maximumHeightOnWhichDaleCanPlaceObjects = daleSize.y;
         float daleSizeHorizontally = Vector3.Scale(daleSize, gameObject.transform.forward).magnitude;
         Vector3 pointSlightlyAboveDaleCenter = gameObject.transform.position + Vector3.up * distanceAboveDaleCenterForRaycastStart;
@@ -111,7 +111,7 @@ public class LocationCalculatorForPuttingObjectsInFront : MonoBehaviour
             if (collidingObject.transform.position.y > maximumY)
             {
                 positionOfHighestObjectInStack = collidingObject.transform.position;
-                halfBoundY = collidingObject.GetComponentInChildren<Renderer>().bounds.size.y / 2;
+                halfBoundY = MathUtils.GetObjectBounds(collidingObject).y / 2;
             }
         }
         return Tuple.Create(positionOfHighestObjectInStack, halfBoundY);

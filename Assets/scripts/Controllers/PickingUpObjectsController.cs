@@ -34,7 +34,6 @@ public class PickingUpObjectsController : MonoBehaviour
     {
 
         LocationForPuttingObject locationForPuttingObject = locationCalculatorForPuttingObjectsInFront.CalculateLocationWhereToPutObject(objectToPickup);
-        Debug.Log("object in front size: " + objectToPickup.GetComponentInChildren<Renderer>().bounds.size);
         if (locationForPuttingObject.CanPlaceObject)
         {
             objectToPickup.transform.position = locationForPuttingObject.WhereToPut;
