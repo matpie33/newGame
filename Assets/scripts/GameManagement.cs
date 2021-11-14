@@ -35,15 +35,17 @@ public class GameManagement : MonoBehaviour
         pickingUpObjectsHandler = FindObjectOfType<PickingUpObjectsController>();
     }
 
-    public void HandleShowingPickableObjectMarker(Collider other)
+    public bool HandleShowingPickableObjectMarker(Collider other)
     {
-        if (pickingUpObjectsHandler.objectToPickup == null && other.attachedRigidbody != null && other.gameObject.CompareTag("pickable"))
+        if ( other.attachedRigidbody != null && other.gameObject.CompareTag("pickable"))
         {
             objectsMarker.SetActive(true);
             Vector3 positionForMarker = other.transform.position;
             positionForMarker.y += other.bounds.size.y / 2 + objectsMarker.GetComponentInChildren<MeshRenderer>().bounds.size.y / 2;
             objectsMarker.transform.position = positionForMarker;
+            return true;
         }
+        return false;
     }
 
     public void SetObjectToPickup(GameObject objectToPickup)
@@ -55,9 +57,12 @@ public class GameManagement : MonoBehaviour
 
     }
 
-    public void HidePickableObjectMarker()
+    public void HandleHidingPickableObjectMarker(GameObject objectWithWhichWeStoppedColliding)
     {
-        objectsMarker.SetActive(false);
+        if (objectWithWhichWeStoppedColliding==null || pickingUpObjectsHandler.objectToPickup == null || objectWithWhichWeStoppedColliding.Equals(pickingUpObjectsHandler.objectToPickup))
+        {
+            objectsMarker.SetActive(false);
+        }
 
     }
 

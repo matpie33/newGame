@@ -32,6 +32,8 @@ class DaleStateHandler : MonoBehaviour
 
     public AudioManager audioManager;
 
+    public GameObject objectsOnTheFloorDetector;
+
     private State currentState;
 
 

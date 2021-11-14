@@ -20,7 +20,6 @@ public class DetectObjectsInFront : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        GameManagement.instance.HidePickableObjectMarker();
         ledgeDetectionState.IsThereWall = false;
         pickingUpObjectsHandler.objectToPickup = null;
     }

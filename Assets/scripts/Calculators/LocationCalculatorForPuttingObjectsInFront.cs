@@ -49,8 +49,7 @@ public class LocationCalculatorForPuttingObjectsInFront : MonoBehaviour
     {
         bool canPlaceObject;
         Vector3 originOfRayForCheckingIfThereAreStackedObjects = raycastInfo.point + gameObject.transform.forward * 0.2f;
-        int layerBitMask = 1 << layerMask.value;
-        int everythingExceptLayerMask = ~layerBitMask;
+        int everythingExceptLayerMask = GetLayerMaskForRay();
         RaycastHit[] objectsOnTopOfAnotherRaycastInfo = Physics.RaycastAll(originOfRayForCheckingIfThereAreStackedObjects, Vector3.up, maximumHeightOnWhichDaleCanPlaceObjects, everythingExceptLayerMask);
         if (objectsOnTopOfAnotherRaycastInfo.Length > 1)
         {
@@ -86,14 +85,21 @@ public class LocationCalculatorForPuttingObjectsInFront : MonoBehaviour
         return canPlaceObject;
     }
 
+    private int GetLayerMaskForRay()
+    {
+        int everythingExceptLayerMask = ~layerMask.value;
+        return everythingExceptLayerMask;
+    }
+
     private void CheckIfThereIsObjectInFrontOfDale(out Vector3 daleSize, out float maximumHeightOnWhichDaleCanPlaceObjects, out RaycastHit raycastInfo, out bool isAnyObjectInFrontOfDale)
     {
+        int everythingExceptLayerMask = GetLayerMaskForRay();
         daleSize = MathUtils.GetObjectBounds(gameObject);
         maximumHeightOnWhichDaleCanPlaceObjects = daleSize.y;
         float daleSizeHorizontally = Vector3.Scale(daleSize, gameObject.transform.forward).magnitude;
         Vector3 pointSlightlyAboveDaleCenter = gameObject.transform.position + Vector3.up * distanceAboveDaleCenterForRaycastStart;
         Vector3 rayOrigin = pointSlightlyAboveDaleCenter + Vector3.Scale(daleSize, Vector3.down);
-        isAnyObjectInFrontOfDale = Physics.Raycast(rayOrigin, gameObject.transform.forward, out raycastInfo, daleSizeHorizontally + howFarToSearchForObstacleFromDale);
+        isAnyObjectInFrontOfDale = Physics.Raycast(rayOrigin, gameObject.transform.forward, out raycastInfo, daleSizeHorizontally + howFarToSearchForObstacleFromDale, everythingExceptLayerMask);
     }
 
     private Tuple<Vector3, float> GetPropertiesOfObjectOnTopOfAllOther(RaycastHit[] raycastInfos)

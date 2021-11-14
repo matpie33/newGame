@@ -30,6 +30,7 @@ class WalkingState : State
             daleStateHandler.animator.SetBool("climbLedge", false);
 
         }
+        daleStateHandler.objectsOnTheFloorDetector.SetActive(true);
         daleStateHandler.horizontalMovementController.SetRespondingToArrowKeys(true);
         daleStateHandler.horizontalMovementController.KeepHorizontalSpeed(false);
         daleStateHandler.characterController.enabled = true;

@@ -24,6 +24,7 @@ class HoldingObjectState : State
     public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
     {
         daleStateHandler.predictedTrajectoryCalculator.SetEnabled(true);
+        daleStateHandler.objectsOnTheFloorDetector.SetActive(false);
         if (previousState is ReleasingObjectsState)
         {
             return;

@@ -7,14 +7,19 @@ public class DetectPickableObjects : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        GameManagement.instance.HandleShowingPickableObjectMarker(other);
-        GameManagement.instance.SetObjectToPickup(other.gameObject);
+        bool isPickable = GameManagement.instance.HandleShowingPickableObjectMarker(other);
+        if (isPickable)
+        {
+            GameManagement.instance.SetObjectToPickup(other.gameObject);
+        }
     }
 
 
     public void OnTriggerExit(Collider other)
     {
-        GameManagement.instance.HidePickableObjectMarker();
+        GameManagement.instance.HandleHidingPickableObjectMarker(other.gameObject);
+
+
     }
 
 }
