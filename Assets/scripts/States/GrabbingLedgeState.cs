@@ -35,6 +35,7 @@ class GrabbingLedgeState : State
         }
         if (daleStateHandler.keyboardController.IsPickupOrReleaseObjectsKeyPressed)
         {
+            grabbingAnimationFinished = false;
             daleStateHandler.animator.SetBool("isGrabbing", false);
             daleStateHandler.movementController.enabled = true;
 

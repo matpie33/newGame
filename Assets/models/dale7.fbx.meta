@@ -84,6 +84,15 @@ ModelImporter:
   - first:
       74: -6745010567910190028
     second: ThrowBothHands.001
+  - first:
+      74: -4767021350700389635
+    second: climbWall.001
+  - first:
+      74: 1487992324236930428
+    second: ledgeGrab.001
+  - first:
+      74: 8484094591192177198
+    second: ledgeGrab (1)
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -200,11 +209,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|ledgeGrab
-      takeName: Armature|ledgeGrab
+      name: ledgeGrab (1)
+      takeName: ledgeGrab
       internalID: 0
       firstFrame: 0
-      lastFrame: 21
+      lastFrame: 5
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -432,11 +441,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: climbWall
-      takeName: climbWall
+      name: climbWall.001
+      takeName: climbWall.001
       internalID: 0
       firstFrame: 0
-      lastFrame: 72
+      lastFrame: 26
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
