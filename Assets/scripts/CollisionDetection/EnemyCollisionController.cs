@@ -29,7 +29,7 @@ public class EnemyCollisionController : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         Rigidbody rigidBody = collision.collider.GetComponent<Rigidbody>();
-        if (rigidBody != null && collision.impulse.magnitude > 2)
+        if (rigidBody != null && collision.relativeVelocity.magnitude > 10)
         {
             Destroy(gameObject);
             Destroy(collision.collider.gameObject);
