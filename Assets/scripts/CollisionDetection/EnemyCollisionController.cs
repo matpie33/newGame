@@ -19,6 +19,10 @@ public class EnemyCollisionController : MonoBehaviour
 
     void Update()
     {
+        if (navMeshAgent == null)
+        {
+            return;
+        }
         if (Vector3.Distance(transform.position, player.transform.position) < navMeshAgent.stoppingDistance)
         {
             gameManagement.DecreasePlayerHP();
@@ -33,6 +37,7 @@ public class EnemyCollisionController : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(collision.collider.gameObject);
+
         }
 
     }
