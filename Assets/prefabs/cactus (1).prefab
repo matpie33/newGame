@@ -3801,7 +3801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f48c4aa3e695b74b894dbe561f339ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceOnWhichDecreaseHp: 0.8
+  distanceOnWhichDecreaseHp: 1
 --- !u!1 &8343080649264816428
 GameObject:
   m_ObjectHideFlags: 0
