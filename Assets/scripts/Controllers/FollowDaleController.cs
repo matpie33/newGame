@@ -7,8 +7,7 @@ public class FollowDaleController : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
 
-    [SerializeField]
-    private Transform playerPosition;
+    private GameObject dale;
 
     [SerializeField]
     private float minimumDistanceToFollowPlayer = 5;
@@ -16,14 +15,15 @@ public class FollowDaleController : MonoBehaviour
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        dale = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
-            navMeshAgent.destination = playerPosition.transform.position;
-        if (Vector3.Distance(playerPosition.position, gameObject.transform.position) < minimumDistanceToFollowPlayer)
+            navMeshAgent.destination = dale.transform.position;
+        if (Vector3.Distance(dale.transform.position, gameObject.transform.position) < minimumDistanceToFollowPlayer)
         {
-            gameObject.transform.LookAt(playerPosition);
+            gameObject.transform.LookAt(dale.transform);
         }
 
 
