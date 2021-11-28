@@ -18,6 +18,8 @@ public class PickingUpObjectsController : MonoBehaviour
     [SerializeField]
     private int initialThrowingSpeed = 40;
 
+    private CharacterController characterController;
+
     private LocationCalculatorForPuttingObjectsInFront locationCalculatorForPuttingObjectsInFront;
 
 
@@ -28,6 +30,50 @@ public class PickingUpObjectsController : MonoBehaviour
         animator = GetComponent<Animator>();
         handsReferenceCalculator = GetComponent<HandsReferenceCalculator>();
         locationCalculatorForPuttingObjectsInFront = GetComponent<LocationCalculatorForPuttingObjectsInFront>();
+        characterController = GetComponent<CharacterController>();
+    }
+
+    public void CalculatePlayerPositionForPickingUpObject()
+    {
+        Vector3 objectToPickupSize = MathUtils.GetObjectBounds(objectToPickup);
+        Vector3 objectToPickupPosition = objectToPickup.transform.position;
+
+        Vector3 positionInFrontX = objectToPickupPosition + objectToPickupSize.x * Vector3.right;
+        Vector3 positionBehindX = objectToPickupPosition - objectToPickupSize.x * Vector3.right;
+        Vector3 positionInFrontZ = objectToPickupPosition + objectToPickupSize.z * Vector3.forward;
+        Vector3 positionBehindZ = objectToPickupPosition - objectToPickupSize.z * Vector3.forward;
+        Vector3 dalePosition = gameObject.transform.position;
+
+        float distanceToBehindZ = Vector3.Distance(dalePosition, positionBehindZ);
+        float distanceToFrontZ = Vector3.Distance(dalePosition, positionInFrontZ);
+        float distanceToBehindX = Vector3.Distance(dalePosition, positionBehindX);
+        float distanceToFrontX = Vector3.Distance(dalePosition, positionInFrontX);
+
+        float minimumValue = Mathf.Min(new float[] { distanceToBehindX, distanceToBehindZ, distanceToFrontX, distanceToFrontZ });
+        Vector3 destination;
+        if (minimumValue == distanceToBehindZ)
+        {
+            destination = positionBehindZ;
+        }
+        else if (minimumValue == distanceToFrontZ)
+        {
+            destination = positionInFrontZ;
+        }
+        else if (minimumValue == distanceToBehindX)
+        {
+            destination = positionBehindX;
+        }
+        else
+        {
+            destination = positionInFrontX;
+        }
+        destination.y = objectToPickupPosition.y;
+
+        characterController.enabled = false;
+        characterController.transform.position = destination;
+        characterController.enabled = true;
+        characterController.transform.rotation = Quaternion.LookRotation(objectToPickupPosition - destination);
+
     }
 
     public bool PutObjectInFront()
