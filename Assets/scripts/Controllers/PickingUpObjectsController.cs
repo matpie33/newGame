@@ -67,12 +67,13 @@ public class PickingUpObjectsController : MonoBehaviour
         {
             destination = positionInFrontX;
         }
-        destination.y = objectToPickupPosition.y;
+        destination.y = gameObject.transform.position.y;
 
         characterController.enabled = false;
         characterController.transform.position = destination;
         characterController.enabled = true;
-        characterController.transform.rotation = Quaternion.LookRotation(objectToPickupPosition - destination);
+        Vector3 objectToPickupPositionWithYEqualToDestinationY = new Vector3(objectToPickupPosition.x, destination.y, objectToPickupPosition.z);
+        characterController.transform.rotation = Quaternion.LookRotation(objectToPickupPositionWithYEqualToDestinationY - destination);
 
     }
 
