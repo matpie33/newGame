@@ -40,6 +40,7 @@ public class PredictedTrajectoryCalculator : MonoBehaviour
             destinationMarker.GetComponent<Rigidbody>().useGravity = false;
             destinationMarker.transform.localScale = pickingUpObjectsHandler.objectToPickup.transform.lossyScale;
             destinationMarker.GetComponentInChildren<Renderer>().material.color = Color.red;
+            destinationMarker.layer = 8;
         }
         else
         {

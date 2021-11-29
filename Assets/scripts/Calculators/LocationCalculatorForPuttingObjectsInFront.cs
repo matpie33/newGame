@@ -19,7 +19,7 @@ public class LocationCalculatorForPuttingObjectsInFront : MonoBehaviour
         float maximumHeightOnWhichDaleCanPlaceObjects;
         RaycastHit raycastInfo;
         bool isAnyObjectInFrontOfDale;
-        CheckIfThereIsObjectInFrontOfDale(out daleSize, out maximumHeightOnWhichDaleCanPlaceObjects, out raycastInfo, out isAnyObjectInFrontOfDale);
+        CheckIfThereIsObjectInFrontOfDale(out daleSize, out maximumHeightOnWhichDaleCanPlaceObjects, out raycastInfo, out isAnyObjectInFrontOfDale, objectToPickup);
 
 
         bool canPlaceObject = false;
@@ -91,7 +91,7 @@ public class LocationCalculatorForPuttingObjectsInFront : MonoBehaviour
         return everythingExceptLayerMask;
     }
 
-    private void CheckIfThereIsObjectInFrontOfDale(out Vector3 daleSize, out float maximumHeightOnWhichDaleCanPlaceObjects, out RaycastHit raycastInfo, out bool isAnyObjectInFrontOfDale)
+    private void CheckIfThereIsObjectInFrontOfDale(out Vector3 daleSize, out float maximumHeightOnWhichDaleCanPlaceObjects, out RaycastHit raycastInfo, out bool isAnyObjectInFrontOfDale, GameObject objectToPickup)
     {
         int everythingExceptLayerMask = GetLayerMaskForRay();
         daleSize = MathUtils.GetObjectBounds(gameObject);
@@ -100,6 +100,11 @@ public class LocationCalculatorForPuttingObjectsInFront : MonoBehaviour
         Vector3 pointSlightlyAboveDaleCenter = gameObject.transform.position + Vector3.up * distanceAboveDaleCenterForRaycastStart;
         Vector3 rayOrigin = pointSlightlyAboveDaleCenter + Vector3.Scale(daleSize, Vector3.down);
         isAnyObjectInFrontOfDale = Physics.Raycast(rayOrigin, gameObject.transform.forward, out raycastInfo, daleSizeHorizontally + howFarToSearchForObstacleFromDale, everythingExceptLayerMask);
+
+        if (raycastInfo.distance > MathUtils.GetLengthOfObjectInGiventDirection(objectToPickup, gameObject.transform.forward))
+        {
+            isAnyObjectInFrontOfDale = false;
+        }
     }
 
     private Tuple<Vector3, float> GetPropertiesOfObjectOnTopOfAllOther(RaycastHit[] raycastInfos)
