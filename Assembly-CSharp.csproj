@@ -84,6 +84,7 @@
     <Compile Include="Assets\scripts\AnimationStateListeners\ClimbingAnimationFinished.cs" />
     <Compile Include="Assets\scripts\States\GrabbingLedgeState.cs" />
     <Compile Include="Assets\scripts\Calculators\PredictedTrajectoryCalculator.cs" />
+    <Compile Include="Assets\BossAttackController.cs" />
     <Compile Include="Assets\scripts\Controllers\FollowDaleController.cs" />
     <Compile Include="Assets\scripts\Movement\HorizontalMovementController.cs" />
     <Compile Include="Assets\scripts\Data\DaleHealth.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Assets\scripts\States\DaleStateHandler.cs" />
     <Compile Include="Assets\scripts\Calculators\LocationCalculatorForPuttingObjectsInFront.cs" />
     <Compile Include="Assets\scripts\Controllers\PickingUpObjectsController.cs" />
+    <Compile Include="Assets\EnemyBallsCollisionDetector.cs" />
     <Compile Include="Assets\scripts\GetPlayer.cs" />
     <Compile Include="Assets\scripts\CollisionDetection\DetectObjectsInFront.cs" />
   </ItemGroup>
