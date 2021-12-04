@@ -37,7 +37,7 @@ public class GameManagement : MonoBehaviour
 
     public bool HandleShowingPickableObjectMarker(Collider other)
     {
-        if ( other.attachedRigidbody != null && other.gameObject.CompareTag("pickable"))
+        if (other.attachedRigidbody != null && other.gameObject.CompareTag(TagsManager.PICKABLE))
         {
             objectsMarker.SetActive(true);
             Vector3 positionForMarker = other.transform.position;
@@ -50,13 +50,13 @@ public class GameManagement : MonoBehaviour
 
     public void SetObjectToPickup(GameObject objectToPickup)
     {
-            pickingUpObjectsHandler.objectToPickup = objectToPickup;
+        pickingUpObjectsHandler.objectToPickup = objectToPickup;
 
     }
 
     public void HandleHidingPickableObjectMarker()
     {
-            objectsMarker.SetActive(false);
+        objectsMarker.SetActive(false);
 
     }
 

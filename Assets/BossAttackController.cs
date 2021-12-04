@@ -17,7 +17,7 @@ public class BossAttackController : MonoBehaviour
 
     public void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag(TagsManager.PLAYER);
     }
 
     void Update()

@@ -15,12 +15,12 @@ public class FollowDaleController : MonoBehaviour
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        dale = GameObject.FindGameObjectWithTag("Player");
+        dale = GameObject.FindGameObjectWithTag(TagsManager.PLAYER);
     }
 
     void Update()
     {
-            navMeshAgent.destination = dale.transform.position;
+        navMeshAgent.destination = dale.transform.position;
         if (Vector3.Distance(dale.transform.position, gameObject.transform.position) < minimumDistanceToFollowPlayer)
         {
             gameObject.transform.LookAt(dale.transform);
