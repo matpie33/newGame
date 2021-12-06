@@ -5,13 +5,29 @@ using UnityEngine;
 public class EnemyBallsCollisionDetector : MonoBehaviour
 {
 
-    public void OnCollisionEnter(Collision collision)
+    private GameObject dale;
+
+    [SerializeField]
+    private float minimumDistanceToHit = 0.03f;
+
+    public void Start()
     {
-        if (collision.collider.gameObject.tag.Equals(TagsManager.PLAYER))
+        dale = GameObject.FindGameObjectWithTag(TagsManager.PLAYER);
+    }
+
+
+    public void OnCollisionEnter()
+    {
+        Destroy(gameObject);
+    }
+
+    public void FixedUpdate()
+    {
+        if (Vector3.Distance(transform.position, dale.transform.position) < minimumDistanceToHit)
         {
             GameManagement.instance.DecreasePlayerHP();
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 
 }

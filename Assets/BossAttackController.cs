@@ -20,7 +20,7 @@ public class BossAttackController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag(TagsManager.PLAYER);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!isWaitingForNextAttack)
         {
@@ -40,7 +40,7 @@ public class BossAttackController : MonoBehaviour
             = spawnedObject.GetComponentInChildren<Rigidbody>();
         spawnedObjectRB.useGravity = false;
         Vector3 direction = player.transform.position - spawnedObject.transform.position;
-        spawnedObjectRB.AddForce(direction * 1.5f, ForceMode.VelocityChange); ;
+        spawnedObjectRB.AddForce(direction, ForceMode.VelocityChange); ;
         isWaitingForNextAttack = false;
     }
 }
