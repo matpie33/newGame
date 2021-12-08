@@ -102,6 +102,7 @@
     <Compile Include="Assets\scripts\TagsManager.cs" />
     <Compile Include="Assets\scripts\PlayerData.cs" />
     <Compile Include="Assets\scripts\SavingAndLoading.cs" />
+    <Compile Include="Assets\DaleDieAnimationFinished.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

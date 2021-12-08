@@ -17,6 +17,11 @@ public class BossHpController : MonoBehaviour
         slider.value = maxHP;
     }
 
+    public void ResetHp()
+    {
+        slider.value = maxHP;
+    }
+
     public void OnCollisionEnter(Collision collision)
     {
         Rigidbody rigidBody = collision.collider.GetComponent<Rigidbody>();

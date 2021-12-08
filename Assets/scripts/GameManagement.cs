@@ -24,6 +24,7 @@ public class GameManagement : MonoBehaviour
     private GameObject dale;
     private bool isDaleDead;
     private DaleMovementController daleMovementController;
+    private BossHpController bossHpController;
 
     void Awake()
     {
@@ -33,13 +34,19 @@ public class GameManagement : MonoBehaviour
     void Start()
     {
         daleHealth = GetPlayer.instance.player.GetComponent<DaleHealth>();
-        daleHealth.Health = hpMaxValue;
         daleHPSlider.maxValue = hpMaxValue;
-        daleHPSlider.value = hpMaxValue;
+        SetDaleHpToMaxValue();
         pickingUpObjectsHandler = FindObjectOfType<PickingUpObjectsController>();
         dale = GameObject.FindGameObjectWithTag(TagsManager.PLAYER);
         daleAnimator = dale.GetComponentInChildren<Animator>();
         daleMovementController = FindObjectOfType<DaleMovementController>();
+        bossHpController = FindObjectOfType<BossHpController>();
+    }
+
+    private void SetDaleHpToMaxValue()
+    {
+        daleHealth.Health = hpMaxValue;
+        daleHPSlider.value = hpMaxValue;
     }
 
     public bool HandleShowingPickableObjectMarker(Collider other)
@@ -69,19 +76,28 @@ public class GameManagement : MonoBehaviour
 
     public void DecreasePlayerHP()
     {
-        if (!isDaleDead && daleHealth.Health <= 0)
-        {
-            PlayerData playerData = SavingAndLoading.LoadPlayer();
-            dale.transform.position = playerData.GetPosition();
-            daleAnimator.SetBool("isDead", true);
-            isDaleDead = true;
-            daleMovementController.enabled = false;
-            return;
-        }
+        
         if (timeOffsetPassedBetweenDrainingHP)
         {
             StartCoroutine(DrainHpFromPlayer());
         }
+        if (!isDaleDead && daleHealth.Health <= 0)
+        {
+            daleAnimator.SetTrigger("isDead");
+            isDaleDead = true;
+            daleMovementController.enabled = false;
+            return;
+        }
+    }
+
+    public void ResetDaleToBossStage()
+    {
+        PlayerData playerData = SavingAndLoading.LoadPlayer();
+        dale.transform.position = playerData.GetPosition();
+        bossHpController.ResetHp();
+        daleMovementController.enabled = true;
+        SetDaleHpToMaxValue();
+        isDaleDead = false;
     }
 
     IEnumerator DrainHpFromPlayer()

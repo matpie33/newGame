@@ -21,7 +21,7 @@ public class EnemyBallsCollisionDetector : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
         if (Vector3.Distance(transform.position, dale.transform.position) < minimumDistanceToHit)
         {
