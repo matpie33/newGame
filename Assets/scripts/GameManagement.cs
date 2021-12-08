@@ -71,6 +71,8 @@ public class GameManagement : MonoBehaviour
     {
         if (!isDaleDead && daleHealth.Health <= 0)
         {
+            PlayerData playerData = SavingAndLoading.LoadPlayer();
+            dale.transform.position = playerData.GetPosition();
             daleAnimator.SetBool("isDead", true);
             isDaleDead = true;
             daleMovementController.enabled = false;
@@ -93,6 +95,7 @@ public class GameManagement : MonoBehaviour
 
 
     }
+
 
 
 
