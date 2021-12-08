@@ -13,7 +13,7 @@ class DaleStateHandler : MonoBehaviour
     public WalkingState walkingState { get; private set; }
     public KeyboardController keyboardController { get; private set; }
     public CharacterController characterController { get; private set; }
-    public MovementController movementController { get; private set; }
+    public DaleMovementController movementController { get; private set; }
 
 
     public HorizontalMovementController horizontalMovementController { get; private set; }
@@ -41,7 +41,7 @@ class DaleStateHandler : MonoBehaviour
     {
         keyboardController = FindObjectOfType<KeyboardController>();
         characterController = FindObjectOfType<CharacterController>();
-        movementController = FindObjectOfType<MovementController>();
+        movementController = FindObjectOfType<DaleMovementController>();
         pickingUpObjectsHandler = GetComponent<PickingUpObjectsController>();
         ledgeDetectionState = FindObjectOfType<LedgeDetectionState>();
         verticalMovementController = GetComponent<VerticalMovementController>();

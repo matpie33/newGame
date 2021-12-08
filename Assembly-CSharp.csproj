@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,12 +53,10 @@
     <UnityVersion>2021.1.23f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\scripts\Push.cs" />
     <Compile Include="Assets\scripts\States\ReleasingObjectsState.cs" />
     <Compile Include="Assets\AudioManager.cs" />
+    <Compile Include="Assets\BossStageDetector.cs" />
     <Compile Include="Assets\scripts\CollisionDetection\HoldObjectCollisionDetection.cs" />
     <Compile Include="Assets\scripts\Controllers\EnemyController.cs" />
     <Compile Include="Assets\scripts\CollisionDetection\DetectFreeSpaceToClimb.cs" />
@@ -67,7 +65,7 @@
     <Compile Include="Assets\scripts\States\HoldingObjectState.cs" />
     <Compile Include="Assets\scripts\States\ThrowingObjectsState.cs" />
     <Compile Include="Assets\scripts\Movement\VerticalMovementController.cs" />
-    <Compile Include="Assets\scripts\Movement\MovementController.cs" />
+    <Compile Include="Assets\scripts\Movement\DaleMovementController.cs" />
     <Compile Include="Assets\scripts\AnimationStateListeners\GrabbingAnimationFinished.cs" />
     <Compile Include="Assets\scripts\States\JumpingState.cs" />
     <Compile Include="Assets\scripts\CollisionDetection\DetectPickableObjects.cs" />
@@ -80,6 +78,7 @@
     <Compile Include="Assets\scripts\Calculators\HandsReferenceCalculator.cs" />
     <Compile Include="Assets\CollisionDecreasingHP.cs" />
     <Compile Include="Assets\scripts\CollisionDetection\EnemyCollisionController.cs" />
+    <Compile Include="Assets\CutsceneFinishedHandler.cs" />
     <Compile Include="Assets\scripts\Destroy.cs" />
     <Compile Include="Assets\scripts\AnimationStateListeners\ClimbingAnimationFinished.cs" />
     <Compile Include="Assets\scripts\States\GrabbingLedgeState.cs" />
@@ -101,7 +100,6 @@
     <Compile Include="Assets\scripts\CollisionDetection\DetectObjectsInFront.cs" />
     <Compile Include="Assets\BossPatrol.cs" />
     <Compile Include="Assets\scripts\TagsManager.cs" />
-    <Compile Include="Assets\BossStageDetector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

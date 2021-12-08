@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class BossStageDetector : MonoBehaviour
 {
@@ -10,19 +11,36 @@ public class BossStageDetector : MonoBehaviour
 
     [SerializeField]
     private GameObject bossUI;
+
+    [SerializeField]
+    private PlayableDirector playableDirector;
+
+    private DaleMovementController movementController;
+
+
+
+    private bool played;
+
     public void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
+        movementController = FindObjectOfType<DaleMovementController>();
     }
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals(TagsManager.PLAYER))
+        if (!played && other.gameObject.tag.Equals(TagsManager.PLAYER))
         {
             audioManager.ToggleSound("BossMusic", true);
             audioManager.ToggleSound("stageMusic", false);
             boss.SetActive(true);
             bossUI.SetActive(true);
+            playableDirector.Play();
+            played = true;
+            movementController.enabled = false;
+
+
         }
     }
+
 
 }
