@@ -13,7 +13,7 @@ public class EnemyCollisionController : MonoBehaviour
     {
         player = GetPlayer.instance.player;
         gameManagement = FindObjectOfType<GameManagement>();
-        navMeshAgent = FindObjectOfType<NavMeshAgent>();
+        navMeshAgent = GetComponentInChildren<NavMeshAgent>();
 
     }
 

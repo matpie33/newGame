@@ -20,6 +20,10 @@ public class GameManagement : MonoBehaviour
     private PickingUpObjectsController pickingUpObjectsHandler;
 
     public static GameManagement instance;
+    private Animator daleAnimator;
+    private GameObject dale;
+    private bool isDaleDead;
+    private DaleMovementController daleMovementController;
 
     void Awake()
     {
@@ -33,6 +37,9 @@ public class GameManagement : MonoBehaviour
         daleHPSlider.maxValue = hpMaxValue;
         daleHPSlider.value = hpMaxValue;
         pickingUpObjectsHandler = FindObjectOfType<PickingUpObjectsController>();
+        dale = GameObject.FindGameObjectWithTag(TagsManager.PLAYER);
+        daleAnimator = dale.GetComponentInChildren<Animator>();
+        daleMovementController = FindObjectOfType<DaleMovementController>();
     }
 
     public bool HandleShowingPickableObjectMarker(Collider other)
@@ -62,6 +69,13 @@ public class GameManagement : MonoBehaviour
 
     public void DecreasePlayerHP()
     {
+        if (!isDaleDead && daleHealth.Health <= 0)
+        {
+            daleAnimator.SetBool("isDead", true);
+            isDaleDead = true;
+            daleMovementController.enabled = false;
+            return;
+        }
         if (timeOffsetPassedBetweenDrainingHP)
         {
             StartCoroutine(DrainHpFromPlayer());
@@ -75,6 +89,7 @@ public class GameManagement : MonoBehaviour
         daleHPSlider.value = daleHealth.Health;
         yield return new WaitForSeconds(SECONDS_BETWEEN_DRAINING_HP);
         timeOffsetPassedBetweenDrainingHP = true;
+
 
 
     }
