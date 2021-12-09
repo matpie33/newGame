@@ -29,6 +29,7 @@ public class GameManagement : MonoBehaviour
     void Awake()
     {
         instance = this;
+
     }
 
     void Start()
@@ -41,6 +42,7 @@ public class GameManagement : MonoBehaviour
         daleAnimator = dale.GetComponentInChildren<Animator>();
         daleMovementController = FindObjectOfType<DaleMovementController>();
         bossHpController = FindObjectOfType<BossHpController>();
+        SavingAndLoading.Save(dale);
     }
 
     private void SetDaleHpToMaxValue()
@@ -76,7 +78,6 @@ public class GameManagement : MonoBehaviour
 
     public void DecreasePlayerHP()
     {
-        
         if (timeOffsetPassedBetweenDrainingHP)
         {
             StartCoroutine(DrainHpFromPlayer());
@@ -90,7 +91,7 @@ public class GameManagement : MonoBehaviour
         }
     }
 
-    public void ResetDaleToBossStage()
+    public void ResetDaleToLastCheckpoint()
     {
         PlayerData playerData = SavingAndLoading.LoadPlayer();
         dale.transform.position = playerData.GetPosition();
