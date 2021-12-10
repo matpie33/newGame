@@ -8,23 +8,16 @@ using UnityEngine.Animations.Rigging;
 public class GameManagement : MonoBehaviour
 {
     public const int force = 3000;
-
-    private const int HP_DECREASE_VALUE = 20;
-    public int hpMaxValue = 100;
-    private DaleHealth daleHealth;
+    private DaleState daleState;
     public Slider daleHPSlider;
-
-    private bool timeOffsetPassedBetweenDrainingHP = true;
-    private const int SECONDS_BETWEEN_DRAINING_HP = 2;
     public GameObject objectsMarker;
     private PickingUpObjectsController pickingUpObjectsHandler;
-
     public static GameManagement instance;
-    private Animator daleAnimator;
     private GameObject dale;
-    private bool isDaleDead;
+
     private DaleMovementController daleMovementController;
     private BossHpController bossHpController;
+    private DaleHpController playerHpController;
 
     void Awake()
     {
@@ -34,22 +27,16 @@ public class GameManagement : MonoBehaviour
 
     void Start()
     {
-        daleHealth = GetPlayer.instance.player.GetComponent<DaleHealth>();
-        daleHPSlider.maxValue = hpMaxValue;
-        SetDaleHpToMaxValue();
+        playerHpController = FindObjectOfType<DaleHpController>();
+        daleState = GetPlayer.instance.player.GetComponent<DaleState>();
         pickingUpObjectsHandler = FindObjectOfType<PickingUpObjectsController>();
         dale = GameObject.FindGameObjectWithTag(TagsManager.PLAYER);
-        daleAnimator = dale.GetComponentInChildren<Animator>();
         daleMovementController = FindObjectOfType<DaleMovementController>();
         bossHpController = FindObjectOfType<BossHpController>();
         SavingAndLoadingController.Save(dale);
     }
 
-    private void SetDaleHpToMaxValue()
-    {
-        daleHealth.Health = hpMaxValue;
-        daleHPSlider.value = hpMaxValue;
-    }
+
 
     public bool HandleShowingPickableObjectMarker(Collider other)
     {
@@ -76,20 +63,7 @@ public class GameManagement : MonoBehaviour
 
     }
 
-    public void DecreasePlayerHP()
-    {
-        if (timeOffsetPassedBetweenDrainingHP)
-        {
-            StartCoroutine(DrainHpFromPlayer());
-        }
-        if (!isDaleDead && daleHealth.Health <= 0)
-        {
-            daleAnimator.SetTrigger("isDead");
-            isDaleDead = true;
-            daleMovementController.enabled = false;
-            return;
-        }
-    }
+
 
     public void ResetDaleToLastCheckpoint()
     {
@@ -97,21 +71,11 @@ public class GameManagement : MonoBehaviour
         dale.transform.position = playerData.GetPosition();
         bossHpController.ResetHp();
         daleMovementController.enabled = true;
-        SetDaleHpToMaxValue();
-        isDaleDead = false;
+        playerHpController.SetDaleHpToMaxValue();
+        daleState.IsDead = false;
     }
 
-    IEnumerator DrainHpFromPlayer()
-    {
-        timeOffsetPassedBetweenDrainingHP = false;
-        daleHealth.Health = daleHealth.Health - HP_DECREASE_VALUE;
-        daleHPSlider.value = daleHealth.Health;
-        yield return new WaitForSeconds(SECONDS_BETWEEN_DRAINING_HP);
-        timeOffsetPassedBetweenDrainingHP = true;
 
-
-
-    }
 
 
 

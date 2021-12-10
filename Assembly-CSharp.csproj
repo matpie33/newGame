@@ -89,7 +89,6 @@
     <Compile Include="Assets\scripts\Controllers\BossAttackController.cs" />
     <Compile Include="Assets\scripts\Controllers\FollowDaleController.cs" />
     <Compile Include="Assets\scripts\Movement\HorizontalMovementController.cs" />
-    <Compile Include="Assets\scripts\Data\DaleHealth.cs" />
     <Compile Include="Assets\scripts\utility\MathUtils.cs" />
     <Compile Include="Assets\scripts\AnimationStateListeners\ThrowBothHandsAnimationStartBehaviour.cs" />
     <Compile Include="Assets\scripts\States\PickingUpObjectsState.cs" />
@@ -103,6 +102,8 @@
     <Compile Include="Assets\scripts\CollisionDetection\DetectObjectsInFront.cs" />
     <Compile Include="Assets\scripts\Controllers\BossPatrolController.cs" />
     <Compile Include="Assets\scripts\Constant\TagsManager.cs" />
+    <Compile Include="Assets\scripts\Controllers\DaleHpController.cs" />
+    <Compile Include="Assets\scripts\Data\DaleState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

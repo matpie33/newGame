@@ -9,9 +9,11 @@ public class CollisionDecreasingHP : MonoBehaviour
     private float distanceOnWhichDecreaseHp = 0.8f;
 
     private GameManagement gameManagement;
+    private DaleHpController daleHpController;
 
     public void Start()
     {
+        daleHpController = FindObjectOfType<DaleHpController>();
         player = GameObject.FindGameObjectWithTag(TagsManager.PLAYER);
         gameManagement = GameManagement.instance;
     }
@@ -20,7 +22,7 @@ public class CollisionDecreasingHP : MonoBehaviour
     {
         if (Vector3.Distance(player.transform.position, gameObject.transform.position) < distanceOnWhichDecreaseHp)
         {
-            gameManagement.DecreasePlayerHP();
+            daleHpController.DecreasePlayerHP();
         }
     }
 

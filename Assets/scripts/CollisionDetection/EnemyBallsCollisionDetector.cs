@@ -9,6 +9,7 @@ public class EnemyBallsCollisionDetector : MonoBehaviour
 
     [SerializeField]
     private float minimumDistanceToHit = 0.03f;
+    private DaleHpController daleHpController;
 
     public void Start()
     {
@@ -25,7 +26,7 @@ public class EnemyBallsCollisionDetector : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, dale.transform.position) < minimumDistanceToHit)
         {
-            GameManagement.instance.DecreasePlayerHP();
+            daleHpController.DecreasePlayerHP();
             Destroy(gameObject);
         }
     }

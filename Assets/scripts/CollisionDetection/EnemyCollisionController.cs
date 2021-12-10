@@ -6,12 +6,13 @@ using UnityEngine.AI;
 public class EnemyCollisionController : MonoBehaviour
 {
     private GameObject player;
-    private GameManagement gameManagement;
     private NavMeshAgent navMeshAgent;
+    private DaleHpController daleHpController;
 
     void Start()
     {
         player = GetPlayer.instance.player;
+        daleHpController = FindObjectOfType<DaleHpController>();
         gameManagement = FindObjectOfType<GameManagement>();
         navMeshAgent = GetComponentInChildren<NavMeshAgent>();
 
@@ -25,7 +26,7 @@ public class EnemyCollisionController : MonoBehaviour
         }
         if (Vector3.Distance(transform.position, player.transform.position) < navMeshAgent.stoppingDistance)
         {
-            gameManagement.DecreasePlayerHP();
+            daleHpController.DecreasePlayerHP();
 
         }
     }
