@@ -7,6 +7,11 @@ public class MenuController : MonoBehaviour
 {
     public void StartGame()
     {
+        SceneManager.LoadScene("instructions");
+    }
+
+    public void PlayGame()
+    {
         SceneManager.LoadScene("level1");
     }
 
