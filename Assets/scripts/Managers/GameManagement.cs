@@ -42,7 +42,7 @@ public class GameManagement : MonoBehaviour
         daleAnimator = dale.GetComponentInChildren<Animator>();
         daleMovementController = FindObjectOfType<DaleMovementController>();
         bossHpController = FindObjectOfType<BossHpController>();
-        SavingAndLoading.Save(dale);
+        SavingAndLoadingController.Save(dale);
     }
 
     private void SetDaleHpToMaxValue()
@@ -93,7 +93,7 @@ public class GameManagement : MonoBehaviour
 
     public void ResetDaleToLastCheckpoint()
     {
-        PlayerData playerData = SavingAndLoading.LoadPlayer();
+        PlayerData playerData = SavingAndLoadingController.LoadPlayer();
         dale.transform.position = playerData.GetPosition();
         bossHpController.ResetHp();
         daleMovementController.enabled = true;

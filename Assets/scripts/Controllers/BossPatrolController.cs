@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BossPatrol : MonoBehaviour
+public class BossPatrolController : MonoBehaviour
 {
     private const float TIME_BETWEEN_CHANGING_POSITION = 4f;
     private bool isWaitingForNextMove;

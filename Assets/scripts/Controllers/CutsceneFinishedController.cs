@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class CutsceneFinishedHandler : MonoBehaviour
+public class CutsceneFinishedController : MonoBehaviour
 {
 
     [SerializeField]

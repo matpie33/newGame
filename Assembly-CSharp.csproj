@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,13 +53,10 @@
     <UnityVersion>2021.1.23f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\scripts\Push.cs" />
     <Compile Include="Assets\scripts\States\ReleasingObjectsState.cs" />
-    <Compile Include="Assets\AudioManager.cs" />
-    <Compile Include="Assets\BossStageDetector.cs" />
+    <Compile Include="Assets\scripts\Managers\AudioManager.cs" />
+    <Compile Include="Assets\scripts\CollisionDetection\BossStageDetector.cs" />
     <Compile Include="Assets\scripts\CollisionDetection\HoldObjectCollisionDetection.cs" />
     <Compile Include="Assets\scripts\Controllers\EnemyController.cs" />
     <Compile Include="Assets\scripts\CollisionDetection\DetectFreeSpaceToClimb.cs" />
@@ -76,20 +73,20 @@
     <Compile Include="Assets\scripts\Data\JumpStatus.cs" />
     <Compile Include="Assets\scripts\Controllers\DaleRigsController.cs" />
     <Compile Include="Assets\scripts\Data\LedgeDetectionState.cs" />
-    <Compile Include="Assets\BossHpController.cs" />
-    <Compile Include="Assets\scripts\GameManagement.cs" />
-    <Compile Include="Assets\scripts\PlayerData.cs" />
+    <Compile Include="Assets\scripts\utility\BossHpController.cs" />
+    <Compile Include="Assets\scripts\Managers\GameManagement.cs" />
+    <Compile Include="Assets\scripts\Data\PlayerData.cs" />
     <Compile Include="Assets\scripts\Calculators\HandsReferenceCalculator.cs" />
-    <Compile Include="Assets\CollisionDecreasingHP.cs" />
+    <Compile Include="Assets\scripts\CollisionDetection\CollisionDecreasingHP.cs" />
     <Compile Include="Assets\scripts\CollisionDetection\EnemyCollisionController.cs" />
-    <Compile Include="Assets\DaleDieAnimationFinished.cs" />
-    <Compile Include="Assets\CutsceneFinishedHandler.cs" />
+    <Compile Include="Assets\scripts\AnimationStateListeners\DaleDieAnimationFinished.cs" />
+    <Compile Include="Assets\scripts\Controllers\CutsceneFinishedController.cs" />
     <Compile Include="Assets\scripts\Destroy.cs" />
-    <Compile Include="Assets\scripts\SavingAndLoading.cs" />
+    <Compile Include="Assets\scripts\Controllers\SavingAndLoadingController.cs" />
     <Compile Include="Assets\scripts\AnimationStateListeners\ClimbingAnimationFinished.cs" />
     <Compile Include="Assets\scripts\States\GrabbingLedgeState.cs" />
     <Compile Include="Assets\scripts\Calculators\PredictedTrajectoryCalculator.cs" />
-    <Compile Include="Assets\BossAttackController.cs" />
+    <Compile Include="Assets\scripts\Controllers\BossAttackController.cs" />
     <Compile Include="Assets\scripts\Controllers\FollowDaleController.cs" />
     <Compile Include="Assets\scripts\Movement\HorizontalMovementController.cs" />
     <Compile Include="Assets\scripts\Data\DaleHealth.cs" />
@@ -101,11 +98,11 @@
     <Compile Include="Assets\scripts\States\DaleStateHandler.cs" />
     <Compile Include="Assets\scripts\Calculators\LocationCalculatorForPuttingObjectsInFront.cs" />
     <Compile Include="Assets\scripts\Controllers\PickingUpObjectsController.cs" />
-    <Compile Include="Assets\EnemyBallsCollisionDetector.cs" />
+    <Compile Include="Assets\scripts\CollisionDetection\EnemyBallsCollisionDetector.cs" />
     <Compile Include="Assets\scripts\GetPlayer.cs" />
     <Compile Include="Assets\scripts\CollisionDetection\DetectObjectsInFront.cs" />
-    <Compile Include="Assets\BossPatrol.cs" />
-    <Compile Include="Assets\scripts\TagsManager.cs" />
+    <Compile Include="Assets\scripts\Controllers\BossPatrolController.cs" />
+    <Compile Include="Assets\scripts\Constant\TagsManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

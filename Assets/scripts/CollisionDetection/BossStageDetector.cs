@@ -38,7 +38,7 @@ public class BossStageDetector : MonoBehaviour
             playableDirector.Play();
             played = true;
             movementController.enabled = false;
-            SavingAndLoading.Save(dale);
+            SavingAndLoadingController.Save(dale);
 
 
         }
