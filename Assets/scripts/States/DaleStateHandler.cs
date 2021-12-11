@@ -25,10 +25,11 @@ class DaleStateHandler : MonoBehaviour
     public ThrowingObjectsState throwingObjectsState { get; private set; }
     public HoldingObjectState holdingObjectState { get; private set; }
 
-
     public Animator animator { get; private set; }
 
     public PickingUpObjectsController pickingUpObjectsHandler { get; private set; }
+
+    public PickableObjectsMarkerManager pickableObjectsMarkerManager;
 
     public AudioManager audioManager;
 
@@ -48,6 +49,7 @@ class DaleStateHandler : MonoBehaviour
         horizontalMovementController = GetComponent<HorizontalMovementController>();
         predictedTrajectoryCalculator = GetComponent<PredictedTrajectoryCalculator>();
         audioManager = FindObjectOfType<AudioManager>();
+        pickableObjectsMarkerManager = FindObjectOfType<PickableObjectsMarkerManager>();
 
         grabbingLedgeState = new GrabbingLedgeState();
         jumpingState = new JumpingState();

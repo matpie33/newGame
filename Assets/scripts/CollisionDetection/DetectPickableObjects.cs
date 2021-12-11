@@ -6,14 +6,22 @@ public class DetectPickableObjects : MonoBehaviour
 {
 
     private ISet<GameObject> objectsWithWhichICollide = new HashSet<GameObject>();
+    private PickingUpObjectsController pickingUpObjectsController;
+    private PickableObjectsMarkerManager pickableObjectsMarkerManager;
+
+    public void Start()
+    {
+        pickingUpObjectsController = FindObjectOfType<PickingUpObjectsController>();
+        pickableObjectsMarkerManager = FindObjectOfType<PickableObjectsMarkerManager>();
+    }
 
     public void OnTriggerEnter(Collider other)
     {
-        bool isPickable = GameManagement.instance.HandleShowingPickableObjectMarker(other);
+        bool isPickable = pickableObjectsMarkerManager.HandleShowingPickableObjectMarker(other);
         if (isPickable)
         {
             objectsWithWhichICollide.Add(other.gameObject);
-            GameManagement.instance.SetObjectToPickup(other.gameObject);
+            pickingUpObjectsController.objectToPickup = other.gameObject;
         }
     }
 
@@ -23,10 +31,10 @@ public class DetectPickableObjects : MonoBehaviour
         objectsWithWhichICollide.Remove(other.gameObject);
         if (objectsWithWhichICollide.Count == 0)
         {
-            GameManagement.instance.HandleHidingPickableObjectMarker();
-            GameManagement.instance.SetObjectToPickup(null);
+            pickableObjectsMarkerManager.HandleHidingPickableObjectMarker();
+            pickingUpObjectsController.objectToPickup = null;
         }
-        
+
 
 
     }

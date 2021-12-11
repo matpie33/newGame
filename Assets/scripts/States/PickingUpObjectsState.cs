@@ -24,7 +24,7 @@ class PickingUpObjectsState : State
     public void OnTransition(State previousState, DaleStateHandler daleStateHandler)
     {
 
-        GameManagement.instance.HandleHidingPickableObjectMarker();
+        daleStateHandler.pickableObjectsMarkerManager.HandleHidingPickableObjectMarker();
         animator = daleStateHandler.animator;
         AnimatePickingUp();
 

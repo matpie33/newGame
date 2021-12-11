@@ -11,9 +11,8 @@ public class EnemyCollisionController : MonoBehaviour
 
     void Start()
     {
-        player = GetPlayer.instance.player;
+        player = GameObject.FindGameObjectWithTag(TagsManager.PLAYER);
         daleHpController = FindObjectOfType<DaleHpController>();
-        gameManagement = FindObjectOfType<GameManagement>();
         navMeshAgent = GetComponentInChildren<NavMeshAgent>();
 
     }

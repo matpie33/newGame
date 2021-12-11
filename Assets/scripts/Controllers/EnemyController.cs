@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        player = GetPlayer.instance.player.transform;
+        player = GameObject.FindGameObjectWithTag(TagsManager.PLAYER).transform;
     }
 
     void Update()

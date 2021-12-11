@@ -61,6 +61,8 @@
     <Compile Include="Assets\scripts\Controllers\EnemyController.cs" />
     <Compile Include="Assets\scripts\CollisionDetection\DetectFreeSpaceToClimb.cs" />
     <Compile Include="Assets\scripts\Controllers\KeyboardController.cs" />
+    <Compile Include="Assets\scripts\Data\DaleState.cs" />
+    <Compile Include="Assets\scripts\Controllers\DaleHpController.cs" />
     <Compile Include="Assets\scripts\Controllers\MenuController.cs" />
     <Compile Include="Assets\scripts\States\HoldingObjectState.cs" />
     <Compile Include="Assets\scripts\States\ThrowingObjectsState.cs" />
@@ -74,10 +76,10 @@
     <Compile Include="Assets\scripts\Controllers\DaleRigsController.cs" />
     <Compile Include="Assets\scripts\Data\LedgeDetectionState.cs" />
     <Compile Include="Assets\scripts\utility\BossHpController.cs" />
-    <Compile Include="Assets\scripts\Managers\GameManagement.cs" />
+    <Compile Include="Assets\scripts\Managers\PickableObjectsMarkerManager.cs" />
     <Compile Include="Assets\scripts\Data\PlayerData.cs" />
     <Compile Include="Assets\scripts\Calculators\HandsReferenceCalculator.cs" />
-    <Compile Include="Assets\scripts\CollisionDetection\CollisionDecreasingHP.cs" />
+    <Compile Include="Assets\scripts\CollisionDetection\StaticObjectCollisionWithDaleDector.cs" />
     <Compile Include="Assets\scripts\CollisionDetection\EnemyCollisionController.cs" />
     <Compile Include="Assets\scripts\AnimationStateListeners\DaleDieAnimationFinished.cs" />
     <Compile Include="Assets\scripts\Controllers\CutsceneFinishedController.cs" />
@@ -98,12 +100,10 @@
     <Compile Include="Assets\scripts\Calculators\LocationCalculatorForPuttingObjectsInFront.cs" />
     <Compile Include="Assets\scripts\Controllers\PickingUpObjectsController.cs" />
     <Compile Include="Assets\scripts\CollisionDetection\EnemyBallsCollisionDetector.cs" />
-    <Compile Include="Assets\scripts\GetPlayer.cs" />
     <Compile Include="Assets\scripts\CollisionDetection\DetectObjectsInFront.cs" />
     <Compile Include="Assets\scripts\Controllers\BossPatrolController.cs" />
     <Compile Include="Assets\scripts\Constant\TagsManager.cs" />
-    <Compile Include="Assets\scripts\Controllers\DaleHpController.cs" />
-    <Compile Include="Assets\scripts\Data\DaleState.cs" />
+    <Compile Include="Assets\scripts\Controllers\CheckpointsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
