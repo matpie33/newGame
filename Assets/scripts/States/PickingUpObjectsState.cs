@@ -27,6 +27,7 @@ class PickingUpObjectsState : State
         daleStateHandler.pickableObjectsMarkerManager.HandleHidingPickableObjectMarker();
         animator = daleStateHandler.animator;
         AnimatePickingUp();
+        daleStateHandler.horizontalMovementController.MovementEnabled = false;
 
         daleStateHandler.pickingUpObjectsHandler.CalculatePlayerPositionForPickingUpObject();
     }

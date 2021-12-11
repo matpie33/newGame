@@ -27,6 +27,7 @@ public class HorizontalMovementController : MonoBehaviour
     private float howMuchToMoveBackOnCollision = 0.01f;
 
     private AudioManager audioManager;
+    public bool MovementEnabled { private get; set; }
 
     public void MoveBack()
     {
@@ -37,6 +38,7 @@ public class HorizontalMovementController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         audioManager = FindObjectOfType<AudioManager>();
+        MovementEnabled = true;
     }
 
 
@@ -85,6 +87,10 @@ public class HorizontalMovementController : MonoBehaviour
         {
             movementDirection = currentMovementDirection;
         }
+        if (!MovementEnabled)
+        {
+            return Vector3.zero;
+        }
         currentMovementDirection = movementDirection;
         movementDirection *= Time.deltaTime * MOVEMENT_SPEED;
         return movementDirection;
@@ -129,6 +135,10 @@ public class HorizontalMovementController : MonoBehaviour
 
     private void RotateCharacterTowardsAngle(float targetAngle)
     {
+        if (!MovementEnabled)
+        {
+            return;
+        }
         float smoothedAngle = SmoothAngle(targetAngle);
         transform.rotation = Quaternion.Euler(0, smoothedAngle, 0);
     }
