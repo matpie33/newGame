@@ -9,14 +9,14 @@ public class CutsceneFinishedController : MonoBehaviour
     [SerializeField]
     private PlayableDirector playableDirector;
 
-    private DaleMovementController daleMovementController;
+    private HorizontalMovementController horizontalMovementController;
 
 
     public void OnEnable()
     {
         playableDirector.stopped += OnPlayableDirectorStopped;
         playableDirector = GetComponent<PlayableDirector>();
-        daleMovementController = FindObjectOfType<DaleMovementController>();
+        horizontalMovementController = FindObjectOfType<HorizontalMovementController>();
     }
 
     void OnPlayableDirectorStopped(PlayableDirector aDirector)
@@ -24,7 +24,7 @@ public class CutsceneFinishedController : MonoBehaviour
         if (playableDirector = aDirector)
         {
             FindObjectOfType<BossAttackController>().enabled = true;
-            daleMovementController.enabled = true;
+            horizontalMovementController.MovementEnabled = true;
 
         }
     }

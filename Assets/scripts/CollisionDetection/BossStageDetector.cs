@@ -15,7 +15,7 @@ public class BossStageDetector : MonoBehaviour
     [SerializeField]
     private PlayableDirector playableDirector;
 
-    private DaleMovementController movementController;
+    private HorizontalMovementController movementController;
 
     private GameObject dale;
 
@@ -24,7 +24,7 @@ public class BossStageDetector : MonoBehaviour
     public void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
-        movementController = FindObjectOfType<DaleMovementController>();
+        movementController = FindObjectOfType<HorizontalMovementController>();
         dale = GameObject.FindGameObjectWithTag(TagsManager.PLAYER);
     }
     public void OnTriggerEnter(Collider other)
@@ -37,7 +37,7 @@ public class BossStageDetector : MonoBehaviour
             bossUI.SetActive(true);
             playableDirector.Play();
             played = true;
-            movementController.enabled = false;
+            movementController.MovementEnabled = false;
             SavingAndLoadingController.Save(dale);
 
 

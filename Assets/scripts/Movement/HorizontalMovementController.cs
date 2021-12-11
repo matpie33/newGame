@@ -55,7 +55,7 @@ public class HorizontalMovementController : MonoBehaviour
         float targetAngle = CalculateTargetAngle(directionMultiplier * direction);
         Vector3 movementDirection = directionMultiplier * CalculateHorizontalMovementDirection(targetAngle);
 
-        if (direction.magnitude > 0 && !isMovingBackward)
+        if (MovementEnabled && direction.magnitude > 0 && !isMovingBackward)
         {
 
             RotateCharacterTowardsAngle(targetAngle);
@@ -66,7 +66,7 @@ public class HorizontalMovementController : MonoBehaviour
 
 
         }
-        else if (isMovingBackward)
+        else if (MovementEnabled && isMovingBackward)
         {
             animator.SetBool("movingBackward", true);
             animator.SetBool("run", false);
