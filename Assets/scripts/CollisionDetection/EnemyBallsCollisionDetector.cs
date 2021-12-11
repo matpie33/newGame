@@ -14,6 +14,7 @@ public class EnemyBallsCollisionDetector : MonoBehaviour
     public void Start()
     {
         dale = GameObject.FindGameObjectWithTag(TagsManager.PLAYER);
+        daleHpController = FindObjectOfType<DaleHpController>();
     }
 
 

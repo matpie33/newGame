@@ -23,7 +23,7 @@ public class EnemyCollisionController : MonoBehaviour
         {
             return;
         }
-        if (Vector3.Distance(transform.position, player.transform.position) < navMeshAgent.stoppingDistance)
+        if (Vector3.Distance(transform.position, player.transform.position) < 1.2)
         {
             daleHpController.DecreasePlayerHP();
 

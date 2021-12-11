@@ -14,14 +14,14 @@ class CheckpointsController : MonoBehaviour
     private DaleHpController playerHpController;
     private GameObject dale;
 
-    void Start()
+    void Awake()
     {
         playerHpController = FindObjectOfType<DaleHpController>();
         daleState = FindObjectOfType<DaleState>();
         pickingUpObjectsHandler = FindObjectOfType<PickingUpObjectsController>();
         dale = GameObject.FindGameObjectWithTag(TagsManager.PLAYER);
         daleMovementController = FindObjectOfType<DaleMovementController>();
-        bossHpController = FindObjectOfType<BossHpController>();
+        bossHpController = Resources.FindObjectsOfTypeAll<BossHpController>()[0];
         SavingAndLoadingController.Save(dale);
     }
 
