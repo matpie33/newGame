@@ -502,11 +502,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: pickupObject.001
-      takeName: pickupObject.001
+      name: pickupObject
+      takeName: pickupObject
       internalID: 0
       firstFrame: 0
-      lastFrame: 15
+      lastFrame: 10
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
