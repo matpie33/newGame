@@ -8,7 +8,6 @@ using UnityEngine;
 class CheckpointsController : MonoBehaviour
 {
     private DaleState daleState;
-    private PickingUpObjectsController pickingUpObjectsHandler;
     private DaleMovementController daleMovementController;
     private BossHpController bossHpController;
     private DaleHpController playerHpController;
@@ -18,10 +17,13 @@ class CheckpointsController : MonoBehaviour
     {
         playerHpController = FindObjectOfType<DaleHpController>();
         daleState = FindObjectOfType<DaleState>();
-        pickingUpObjectsHandler = FindObjectOfType<PickingUpObjectsController>();
         dale = GameObject.FindGameObjectWithTag(TagsManager.PLAYER);
         daleMovementController = FindObjectOfType<DaleMovementController>();
-        bossHpController = Resources.FindObjectsOfTypeAll<BossHpController>()[0];
+        BossHpController[] bossHpController = Resources.FindObjectsOfTypeAll<BossHpController>();
+        if (bossHpController.Length > 0)
+        {
+            this.bossHpController = bossHpController[0];
+        }
         SavingAndLoadingController.Save(dale);
     }
 
