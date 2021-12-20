@@ -2,7 +2,28 @@ fileFormatVersion: 2
 guid: a3b2e043cc1d1a8489d7010b9ac3339a
 ModelImporter:
   serializedVersion: 21100
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -139364887524879693
+    second: move
+  - first:
+      74: 2845759425010373711
+    second: Armature|move
+  - first:
+      74: 4781951162920444690
+    second: Armature|ArmatureAction
+  - first:
+      74: 271997525282036724
+    second: Armature|CylinderAction
+  - first:
+      74: -88723805440604879
+    second: Cylinder|CylinderAction
+  - first:
+      74: -3419257869308726280
+    second: walk
+  - first:
+      74: -4799524434163024911
+    second: Armature|walk
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -94,7 +115,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
