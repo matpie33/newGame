@@ -6,35 +6,37 @@ using UnityEngine.AI;
 public class WormMovementPatrol : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
-
-
     [SerializeField]
-    private List<Vector3> destinations;
+    private Transform destinationPoint;
 
-    private Vector3 currentDestination;
+    private List<Vector3> extremePoints = new List<Vector3>();
+
+    private Vector3 destinationToWhichWeCurrentlyMove;
     private int indexOfCurrentDestination;
 
     void Start()
     {
+        extremePoints.Add(destinationPoint.position);
+        extremePoints.Add(gameObject.transform.position);
         navMeshAgent = GetComponent<NavMeshAgent>();
         indexOfCurrentDestination = 0;
-        currentDestination = destinations[indexOfCurrentDestination];
-        navMeshAgent.SetDestination(currentDestination);
+        destinationToWhichWeCurrentlyMove = extremePoints[indexOfCurrentDestination];
+        navMeshAgent.SetDestination(destinationToWhichWeCurrentlyMove);
     }
 
     void Update()
     {
-        if (Vector3.Distance(currentDestination, gameObject.transform.position) < 0.5f)
+        if (Vector3.Distance(destinationToWhichWeCurrentlyMove, gameObject.transform.position) < 0.5f)
         {
             indexOfCurrentDestination++;
             if (indexOfCurrentDestination == 2)
             {
                 indexOfCurrentDestination = 0;
             }
-            currentDestination = destinations[indexOfCurrentDestination];
-            navMeshAgent.SetDestination(currentDestination);
-            gameObject.transform.LookAt(currentDestination);
+            destinationToWhichWeCurrentlyMove = extremePoints[indexOfCurrentDestination];
+            navMeshAgent.SetDestination(destinationToWhichWeCurrentlyMove);
 
         }
+        gameObject.transform.LookAt(destinationToWhichWeCurrentlyMove);
     }
 }
