@@ -18,9 +18,13 @@ public class PickingUpObjectsController : MonoBehaviour
     [SerializeField]
     private int initialThrowingSpeed = 40;
 
+    [SerializeField]
+    private Camera thirdPersonCamera;
+
     private CharacterController characterController;
 
     private LocationCalculatorForPuttingObjectsInFront locationCalculatorForPuttingObjectsInFront;
+
 
 
 
@@ -140,7 +144,7 @@ public class PickingUpObjectsController : MonoBehaviour
     public Vector3 GetInitialSpeedForThrownObject()
     {
         return initialThrowingSpeed
-            * (transform.forward + new Vector3(0, 0.01f, 0));
+            * (thirdPersonCamera.transform.forward + new Vector3(0, 0.01f, 0));
     }
 
     public void ThrowObject()
